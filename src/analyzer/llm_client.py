@@ -1,29 +1,25 @@
-import json
-import urllib.request
+import os
 
+from groq import Groq
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL_NAME = "qwen3:4b"
+MODEL_NAME = "qwen/qwen3.8-27b"
+client = Groq(
+    api_key=os.environ["GROQ_API_KEY"],
+)
 
 
 def generate_response(prompt: str) -> str:
-    """Generate a response from the local Ollama model."""
-    payload = {
-        "model": MODEL_NAME,
-        "prompt": prompt,
-        "stream": False,
-    }
-
-    data = json.dumps(payload).encode("utf-8")
-
-    request = urllib.request.Request(
-        OLLAMA_URL,
-        data=data,
-        headers={"Content-Type": "application/json"},
-        method="POST",
+    """Generate a response using the Groq-hosted Qwen model."""
+    response = client.chat.completions.create(
+        model=MODEL_NAME,
+        messages=[
+            {
+                "role": "user",
+                "content": prompt,
+            }
+        ],
+        reasoning_effort="none",
+        max_tokens=300,
     )
 
-    with urllib.request.urlopen(request) as response:
-        result = json.loads(response.read().decode("utf-8"))
-
-    return result["response"]
+    return response.choices[0].message.content

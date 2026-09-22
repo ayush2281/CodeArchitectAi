@@ -4,12 +4,12 @@ import networkx as nx
 def detect_architecture_issues(
     graph: nx.DiGraph,
     analysis: dict,
+    cycles: list[list[str]],
+    highly_connected_modules: list[str],
 ) -> list[dict]:
     """Detect basic architecture issues from dependency relationships."""
     issues = []
 
-    # Circular dependencies
-    cycles = list(nx.simple_cycles(graph))
 
     for cycle in cycles:
         issues.append({
@@ -18,15 +18,29 @@ def detect_architecture_issues(
             "modules": cycle,
             "message": "Circular dependency detected between project modules.",
         })
-
+    for module in highly_connected_modules:
+        issues.append({
+          "type": "highly_connected_module",
+          "severity": "medium",
+          "module": module,
+          "message": (
+               f"Module has high connectivity "
+               f"(fan-in: {analysis[module]['fan_in']}, "
+               f"fan-out: {analysis[module]['fan_out']})."
+           ),
+        })
     # Highly connected modules
     for module, metrics in analysis.items():
-        if metrics["total_connections"] >= 3:
+        if metrics["fan_in"] >= 3 and metrics["fan_out"] >= 3:
             issues.append({
                 "type": "high_coupling",
                 "severity": "medium",
                 "module": module,
-                "message": "Module has a high number of dependency connections.",
+                "message": (
+                    f"Module has high coupling "
+                    f"(fan-in: {metrics['fan_in']}, "
+                    f"fan-out: {metrics['fan_out']})."
+                ),                
             })
 
     return issues

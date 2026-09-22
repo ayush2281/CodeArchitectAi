@@ -23,7 +23,7 @@ def find_circular_dependencies(graph: nx.DiGraph) -> list[list[str]]:
     return list(nx.simple_cycles(graph))
 
 
-def find_highly_connected_modules(
+def find_high_connectivity_modules(
     analysis: dict,
     threshold: int = 3,
 ) -> list[str]:

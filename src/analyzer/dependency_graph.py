@@ -1,8 +1,7 @@
-import ast
 from pathlib import Path
+import ast
 import networkx as nx
-
-
+from src.analyzer.ast_parser import parse_python_file, extract_imports
 def build_dependency_graph(
     python_files: list[Path],
     project_root: Path,
@@ -27,8 +26,8 @@ def build_dependency_graph(
         )
 
     for file_path in python_files:
-        source = file_path.read_text(encoding="utf-8")
-        tree = ast.parse(source, filename=str(file_path))
+        tree = parse_python_file(file_path)
+        imports = extract_imports(tree)
 
         relative = file_path.relative_to(project_root)
         source_module = str(relative.with_suffix("")).replace("\\", ".").replace("/", ".")
@@ -36,24 +35,13 @@ def build_dependency_graph(
         if source_module.endswith(".__init__"):
             source_module = source_module[:-9]
 
-        for node in ast.walk(tree):
-            if isinstance(node, ast.Import):
-                for alias in node.names:
-                    _add_dependency(
-                        graph,
-                        source_module,
-                        alias.name,
-                        module_map,
-                    )
-
-            elif isinstance(node, ast.ImportFrom):
-                if node.module:
-                    _add_dependency(
-                        graph,
-                        source_module,
-                        node.module,
-                        module_map,
-                    )
+        for imported_module in imports:
+           _add_dependency(
+           graph,
+           source_module,
+           imported_module,
+           module_map,
+           )
 
     return graph
 

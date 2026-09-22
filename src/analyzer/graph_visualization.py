@@ -1,0 +1,57 @@
+from pathlib import Path
+
+import networkx as nx
+from pyvis.network import Network
+
+
+def create_dependency_graph(
+    nodes: list[str],
+    edges: list[tuple[str, str]],
+) -> nx.DiGraph:
+    """Create a directed dependency graph from analysis results."""
+    graph = nx.DiGraph()
+
+    graph.add_nodes_from(nodes)
+    graph.add_edges_from(edges)
+
+    return graph
+
+
+def get_graph_statistics(graph: nx.DiGraph) -> dict:
+    """Return basic statistics for a dependency graph."""
+    return {
+        "nodes": graph.number_of_nodes(),
+        "edges": graph.number_of_edges(),
+        "density": nx.density(graph),
+        "is_directed": graph.is_directed(),
+    }
+
+
+def save_dependency_graph(
+    graph: nx.DiGraph,
+    output_path: str = "dependency_graph.html",
+) -> None:
+    """Create an interactive HTML visualization of the dependency graph."""
+    network = Network(
+        height="700px",
+        width="100%",
+        directed=True,
+    )
+
+    for node in graph.nodes:
+        network.add_node(
+            node,
+            label=node.split(".")[-1],
+            title=node,
+        )
+
+    for source, target in graph.edges:
+        network.add_edge(
+            source,
+            target,
+        )
+
+    network.write_html(
+        str(Path(output_path)),
+        open_browser=False,
+    )
