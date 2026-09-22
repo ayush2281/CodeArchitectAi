@@ -59,10 +59,7 @@ def analyze_project(
     architecture_issue_summary = summarize_architecture_issues(
         architecture_issues
     )
-    architecture_report = generate_architecture_report(
-        architecture_issues,
-        dependency_analysis,
-    )
+   
     # 6. Build call graph
     call_graph = build_call_graph(
         python_files,
@@ -104,6 +101,17 @@ def analyze_project(
             impact_analysis = {
               "error": str(error),
             }
+    architecture_report = generate_architecture_report(
+        architecture_issues,
+        dependency_analysis,
+        call_graph={
+            "nodes": list(call_graph.nodes),
+            "edges": list(call_graph.edges),
+        },
+        unreferenced_functions=unreferenced_functions,
+        impact_analysis=impact_analysis,
+        graph_statistics=graph_statistics,
+    )        
     return {
         "files": [str(path) for path in python_files],
         "dependency_analysis": dependency_analysis,

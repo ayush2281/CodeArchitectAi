@@ -6,6 +6,10 @@ from src.analyzer.llm_client import generate_response
 def generate_architecture_report(
     issues: list[dict],
     analysis: dict,
+    call_graph: dict | None = None,
+    unreferenced_functions: list[dict] | None = None,
+    impact_analysis: dict | None = None,
+    graph_statistics: dict | None = None,
 ) -> str:
     """Generate an architecture report using the local LLM."""
     prompt = f"""
@@ -18,6 +22,22 @@ Architecture issues:
 
 Dependency analysis:
 {json.dumps(analysis, indent=2)}
+
+Call graph:
+
+{json.dumps(call_graph or {}, indent=2)}
+
+Potentially unreferenced functions:
+
+{json.dumps(unreferenced_functions or [], indent=2)}
+
+Change impact analysis:
+
+{json.dumps(impact_analysis or {}, indent=2)}
+
+Graph statistics:
+
+{json.dumps(graph_statistics or {}, indent=2)}
 
 Return only the final report. Do not explain your reasoning or repeat the input. Use exactly these 4 sections and keep each section to 1–2 sentences:
 1. Architecture Overview
