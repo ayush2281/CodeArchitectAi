@@ -3,4 +3,5 @@ __pycache__/
 *.pyc
 .env
 dependency_graph.html
+call_graph.html
 lib/

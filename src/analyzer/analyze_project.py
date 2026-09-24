@@ -18,6 +18,7 @@ from src.analyzer.graph_visualization import (
     create_dependency_graph,
     get_graph_statistics,
     save_dependency_graph,
+    save_call_graph,
 )
 def analyze_project(
     repo_path: str,
@@ -85,6 +86,10 @@ def analyze_project(
     save_dependency_graph(
         dependency_graph_visual,
         "dependency_graph.html",
+    )
+    save_call_graph(
+        call_graph,
+        "call_graph.html",
     )
     # 8. Analyze change impact if a module was specified
     impact_analysis = None

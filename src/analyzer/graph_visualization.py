@@ -55,3 +55,32 @@ def save_dependency_graph(
         str(Path(output_path)),
         open_browser=False,
     )
+    
+def save_call_graph(
+    graph: nx.DiGraph,
+    output_path: str = "call_graph.html",
+) -> None:
+    """Create an interactive HTML visualization of the call graph."""
+    network = Network(
+        height="700px",
+        width="100%",
+        directed=True,
+    )
+
+    for node in graph.nodes:
+        network.add_node(
+            node,
+            label=node.split(".")[-1],
+            title=node,
+        )
+
+    for source, target in graph.edges:
+        network.add_edge(
+            source,
+            target,
+        )
+
+    network.write_html(
+        str(Path(output_path)),
+        open_browser=False,
+    )    
