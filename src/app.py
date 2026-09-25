@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
-
+import tempfile
+import zipfile
 import streamlit as st
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -26,9 +27,22 @@ repo_path = st.text_input(
     "Repository path",
     placeholder="C:/Users/user/Projects/my-project",
 )
+uploaded_repo = st.file_uploader(
+    "Or upload a repository ZIP",
+    type=["zip"],
+)
+
+if uploaded_repo:
+    temp_dir = tempfile.mkdtemp()
+    with zipfile.ZipFile(uploaded_repo) as zip_file:
+        zip_file.extractall(temp_dir)
+    repo_path = temp_dir
+    st.info(f"Uploaded repository extracted to: {repo_path}")
+
+elif repo_path:
+    st.info(f"Selected repository: {repo_path}")
 
 if repo_path:
-    st.info(f"Selected repository: {repo_path}")
     
     changed_module = st.text_input(
         "Changed module (optional)",
@@ -54,6 +68,17 @@ if repo_path:
             )
 
         st.success("Analysis completed successfully.")
+        
+        st.subheader("Project Overview")
+
+        col1, col2, col3, col4, col5, col6 = st.columns(6)
+
+        col1.metric("Python Files", len(results["files"]))
+        col2.metric("Modules", len(results["dependency_graph_nodes"]))
+        col3.metric("Dependencies", len(results["dependency_graph_edges"]))
+        col4.metric("Functions", len(results["call_graph_nodes"]))
+        col5.metric("Call Relationships", len(results["call_graph_edges"]))
+        col6.metric("Architecture Issues", results["architecture_issue_summary"]["total"])
         st.subheader("Architecture Report")
 
         st.markdown(results["architecture_report"])
