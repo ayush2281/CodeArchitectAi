@@ -24,6 +24,7 @@ def analyze_project(
     repo_path: str,
     changed_module: str | None = None,
     changed_function: str | None = None,
+    entry_points: set[str] | None = None,
 ) -> dict:
     """Run the complete static analysis pipeline."""
 
@@ -68,13 +69,16 @@ def analyze_project(
     )
 
     # 7. Find potentially unused functions
-    unreferenced_functions = find_potentially_unreferenced_functions(
-        call_graph,
-        entry_points={
+    if entry_points is None:
+        entry_points = {
             "src.analyzer.analyze_project.analyze_project",
             "src.analyzer.architecture_report.generate_architecture_report",
-        },
-    )  
+        }
+
+    unreferenced_functions = find_potentially_unreferenced_functions(
+        call_graph,
+        entry_points=entry_points,
+    ) 
     dependency_graph_visual = create_dependency_graph(
         list(dependency_graph.nodes),
         list(dependency_graph.edges),
