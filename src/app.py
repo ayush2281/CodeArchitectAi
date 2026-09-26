@@ -53,6 +53,19 @@ if repo_path:
         "Changed function (optional)",
         placeholder="src.analyzer.repository_scanner.find_python_files",
     )
+    entry_points_input = st.text_input(
+        "Entry points (optional, comma-separated)",
+        placeholder="src.analyzer.analyze_project.analyze_project",
+    )
+    entry_points = (
+        {
+            entry_point.strip()
+            for entry_point in entry_points_input.split(",")
+            if entry_point.strip()
+        }
+        if entry_points_input
+        else None
+    )
     if changed_function and "." not in changed_function:
         changed_function = (
             f"{changed_module}.{changed_function}"
@@ -65,6 +78,7 @@ if repo_path:
                 repo_path,
                 changed_module=changed_module or None,
                 changed_function=changed_function or None,
+                entry_points=entry_points,
             )
 
         st.success("Analysis completed successfully.")
