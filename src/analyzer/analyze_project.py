@@ -1,4 +1,6 @@
 from pathlib import Path
+
+CODEARCHITECT_ROOT = Path(__file__).resolve().parents[2]
 from src.analyzer.impact_analysis import explain_impact  
 from src.analyzer.architecture_report import generate_architecture_report
 from src.analyzer.repository_scanner import find_python_files
@@ -87,13 +89,15 @@ def analyze_project(
     graph_statistics = get_graph_statistics(
         dependency_graph_visual
     )  
+    output_dir = CODEARCHITECT_ROOT / "outputs"
+    output_dir.mkdir(exist_ok=True)
     save_dependency_graph(
         dependency_graph_visual,
-        str(project_root / "dependency_graph.html"),
+        str(output_dir / "dependency_graph.html"),
     )
     save_call_graph(
         call_graph,
-        str(project_root / "call_graph.html"),
+        str(output_dir / "call_graph.html"),
     )
     # 8. Analyze change impact if a module was specified
     impact_analysis = None
@@ -136,6 +140,6 @@ def analyze_project(
         "call_graph_edges": list(call_graph.edges),
         "unreferenced_functions": unreferenced_functions,
         "impact_analysis": impact_analysis,
-        "dependency_graph_path": str(project_root / "dependency_graph.html"),
-        "call_graph_path": str(project_root / "call_graph.html"),
+        "dependency_graph_path": str(output_dir / "dependency_graph.html"),
+        "call_graph_path": str(output_dir / "call_graph.html"),
     }

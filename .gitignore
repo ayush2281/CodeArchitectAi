@@ -5,3 +5,4 @@ __pycache__/
 dependency_graph.html
 call_graph.html
 lib/
+outputs/
