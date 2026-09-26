@@ -98,7 +98,7 @@ if repo_path:
         st.markdown(results["architecture_report"])
         st.subheader("Dependency Graph")
 
-        graph_path = Path("dependency_graph.html")
+        graph_path = Path(results["dependency_graph_path"])
 
         if graph_path.exists():
             st.components.v1.html(
@@ -117,6 +117,18 @@ if repo_path:
             f"{len(results['call_graph_nodes'])} functions and "
             f"{len(results['call_graph_edges'])} call relationships."
         )
+        call_graph_path = Path(results["call_graph_path"])
+
+        if call_graph_path.exists():
+            st.components.v1.html(
+                call_graph_path.read_text(encoding="utf-8"),
+                height=700,
+        scrolling=True,
+            )
+        else:
+            st.warning("Call graph was not generated.")
+        
+        
         st.subheader("Analysis Summary")
 
         col1, col2, col3, col4 = st.columns(4)

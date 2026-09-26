@@ -89,11 +89,11 @@ def analyze_project(
     )  
     save_dependency_graph(
         dependency_graph_visual,
-        "dependency_graph.html",
+        str(project_root / "dependency_graph.html"),
     )
     save_call_graph(
         call_graph,
-        "call_graph.html",
+        str(project_root / "call_graph.html"),
     )
     # 8. Analyze change impact if a module was specified
     impact_analysis = None
@@ -136,4 +136,6 @@ def analyze_project(
         "call_graph_edges": list(call_graph.edges),
         "unreferenced_functions": unreferenced_functions,
         "impact_analysis": impact_analysis,
+        "dependency_graph_path": str(project_root / "dependency_graph.html"),
+        "call_graph_path": str(project_root / "call_graph.html"),
     }
