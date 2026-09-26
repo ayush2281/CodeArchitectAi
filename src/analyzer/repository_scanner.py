@@ -3,8 +3,8 @@ EXCLUDED_DIRS = {
     ".venv",
     ".git",
     "__pycache__",
+    "github-test-repo",
 }
-
 
 def find_python_files(repo_path: str) -> list[Path]:
     """Find Python files while ignoring generated/dependency directories."""

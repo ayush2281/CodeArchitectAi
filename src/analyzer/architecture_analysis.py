@@ -19,8 +19,14 @@ def analyze_dependencies(graph: nx.DiGraph) -> dict:
 
 
 def find_circular_dependencies(graph: nx.DiGraph) -> list[list[str]]:
-    """Find circular dependency chains in the project."""
-    return list(nx.simple_cycles(graph))
+    """Find groups of modules involved in circular dependencies."""
+    cycles = []
+
+    for component in nx.strongly_connected_components(graph):
+        if len(component) > 1:
+            cycles.append(sorted(component))
+
+    return sorted(cycles)
 
 
 def find_high_connectivity_modules(

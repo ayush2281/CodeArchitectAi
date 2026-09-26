@@ -9,10 +9,12 @@ def find_potentially_unreferenced_functions(
     entry_points: set[str] | None = None,
 ) -> list[dict]:
     """Find functions with no detected internal callers."""
-    if entry_points is None:
-        entry_points = {
-           "src.analyzer.analyze_project.analyze_project",
-        }
+    if not entry_points or not any(
+        entry_point in call_graph
+        for entry_point in entry_points
+    ):
+        return []
+    
     unreferenced = []
 
     reachable = set()

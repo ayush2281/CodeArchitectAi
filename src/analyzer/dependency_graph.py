@@ -20,6 +20,9 @@ def build_dependency_graph(
 
         module_map[module] = file_path
 
+        if module.startswith("src."):
+            module_map[module[4:]] = file_path
+
         graph.add_node(
             module,
             file_path=str(file_path),
@@ -35,13 +38,22 @@ def build_dependency_graph(
         if source_module.endswith(".__init__"):
             source_module = source_module[:-9]
 
-        for imported_module in imports:
-           _add_dependency(
-           graph,
-           source_module,
-           imported_module,
-           module_map,
-           )
+        for imported_module, level in imports:
+            if level > 0:
+                parts = source_module.split(".")
+                base = ".".join(parts[:-level])
+
+                if imported_module:
+                    imported_module = f"{base}.{imported_module}"
+                else:
+                    imported_module = base
+
+            _add_dependency(
+                graph,
+                source_module,
+                imported_module,
+                module_map,
+            )
 
     return graph
 

@@ -8,18 +8,18 @@ def parse_python_file(file_path: Path) -> ast.AST:
     return ast.parse(source, filename=str(file_path))
 
 
-def extract_imports(tree: ast.AST) -> list[str]:
-    """Extract imported module names from an AST."""
+def extract_imports(tree: ast.AST) -> list[tuple[str, int]]:
+    """Extract imported module names and relative import levels."""
     imports = []
 
     for node in ast.walk(tree):
         if isinstance(node, ast.Import):
             for alias in node.names:
-                imports.append(alias.name)
+                imports.append((alias.name, 0))
 
         elif isinstance(node, ast.ImportFrom):
             if node.module:
-                imports.append(node.module)
+                imports.append((node.module, node.level))
 
     return imports
 def extract_definitions(tree: ast.AST) -> dict[str, list[str]]:
