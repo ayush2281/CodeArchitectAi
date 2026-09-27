@@ -89,7 +89,7 @@ def analyze_project(
     graph_statistics = get_graph_statistics(
         dependency_graph_visual
     )  
-    output_dir = CODEARCHITECT_ROOT / "outputs"
+    output_dir = CODEARCHITECT_ROOT / "outputs" / project_root.name
     output_dir.mkdir(exist_ok=True)
     save_dependency_graph(
         dependency_graph_visual,
