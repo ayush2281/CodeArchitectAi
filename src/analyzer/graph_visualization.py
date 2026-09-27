@@ -39,9 +39,9 @@ def save_dependency_graph(
         neighborhood_highlight=True,
     ) 
     network.barnes_hut(
-        gravitational_constant=-8000,
+        gravity=-8000,
         central_gravity=0.3,
-        spring_length=250,
+        spring_length=140,
         spring_strength=0.04,
         damping=0.09,
         overlap=0,
@@ -77,7 +77,7 @@ def save_call_graph(
         neighborhood_highlight=True,
     )
     network.barnes_hut(
-        gravitational_constant=-8000,
+        gravity=-8000,
         central_gravity=0.3,
         spring_length=170,
         spring_strength=0.04,
