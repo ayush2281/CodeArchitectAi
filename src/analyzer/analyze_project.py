@@ -90,7 +90,7 @@ def analyze_project(
         dependency_graph_visual
     )  
     output_dir = CODEARCHITECT_ROOT / "outputs" / project_root.name
-    output_dir.mkdir(exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
     save_dependency_graph(
         dependency_graph_visual,
         str(output_dir / "dependency_graph.html"),
