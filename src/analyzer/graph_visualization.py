@@ -36,6 +36,15 @@ def save_dependency_graph(
         height="700px",
         width="100%",
         directed=True,
+        neighborhood_highlight=True,
+    ) 
+    network.barnes_hut(
+        gravitational_constant=-8000,
+        central_gravity=0.3,
+        spring_length=250,
+        spring_strength=0.04,
+        damping=0.09,
+        overlap=0,
     )
 
     for node in graph.nodes:
@@ -65,12 +74,22 @@ def save_call_graph(
         height="700px",
         width="100%",
         directed=True,
+        neighborhood_highlight=True,
+    )
+    network.barnes_hut(
+        gravitational_constant=-8000,
+        central_gravity=0.3,
+        spring_length=170,
+        spring_strength=0.04,
+        damping=0.09,
+        overlap=1,
     )
 
     for node in graph.nodes:
         network.add_node(
             node,
             label=node.split(".")[-1],
+            font={"size": 14},
             title=node,
         )
 
