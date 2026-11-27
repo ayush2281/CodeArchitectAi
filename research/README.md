@@ -36,4 +36,4 @@ Repository commits: `results/commit_hashes_full.jsonl`. Repositories were cloned
 - leak.py: effect of using the latest snapshot, all else equal (results/leak_results.json); run after rank.py
 - timing.py: repeated timings; `python timing.py small` and `python timing.py django`
 The eight new repositories are cloned with `git clone --depth 1500` into ../newrepos; commit identifiers are in results/rank_results.json under new.meta.
-Not yet verified: a rerun from a fresh clone. No licence file is included; the authors must choose one.
+Not yet verified: a rerun from a fresh clone.
