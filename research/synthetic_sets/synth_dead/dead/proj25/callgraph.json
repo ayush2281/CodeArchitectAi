@@ -1,0 +1,50 @@
+{
+ "events252": [
+  "events252.register",
+  "events252.register.deco"
+ ],
+ "events252.dispatch": [
+  "events252.on_parse0",
+  "events252.on_sync1",
+  "events252.on_update2"
+ ],
+ "events252.on_parse0": [],
+ "events252.on_sync1": [],
+ "events252.on_update2": [],
+ "events252.register": [],
+ "events252.register.deco": [],
+ "extra25": [],
+ "extra25.Unused25.never_25": [],
+ "extra25.call_by_name_25": [
+  "extra25.hook_25"
+ ],
+ "extra25.hook_25": [],
+ "extra25.legacy_25": [],
+ "extra25.old_helper_25": [],
+ "fmt251": [],
+ "fmt251.InvoiceFmt0.render": [],
+ "fmt251.MessageFmt1.render": [],
+ "fmt251.TicketFmt2.render": [],
+ "fmt251.get_formatter": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events252.dispatch",
+  "extra25.call_by_name_25",
+  "fmt251.InvoiceFmt0.render",
+  "fmt251.MessageFmt1.render",
+  "fmt251.get_formatter",
+  "strat250.Context.__init__",
+  "strat250.Context.execute"
+ ],
+ "strat250": [],
+ "strat250.Context.__init__": [],
+ "strat250.Context.execute": [
+  "strat250.audit_strategy1",
+  "strat250.format_strategy0"
+ ],
+ "strat250.audit_strategy1": [],
+ "strat250.format_strategy0": [],
+ "strat250.parse_strategy2": []
+}

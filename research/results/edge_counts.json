@@ -1,0 +1,142 @@
+{
+ "requests": {
+  "function_nodes": 248,
+  "module_nodes": 19,
+  "function_to_function": 250,
+  "module_level_to_function": 6,
+  "total_edges": 256
+ },
+ "flask": {
+  "function_nodes": 363,
+  "module_nodes": 24,
+  "function_to_function": 237,
+  "module_level_to_function": 6,
+  "total_edges": 243
+ },
+ "click": {
+  "function_nodes": 541,
+  "module_nodes": 17,
+  "function_to_function": 525,
+  "module_level_to_function": 1,
+  "total_edges": 526
+ },
+ "jinja": {
+  "function_nodes": 759,
+  "module_nodes": 25,
+  "function_to_function": 967,
+  "module_level_to_function": 11,
+  "total_edges": 978
+ },
+ "itsdangerous": {
+  "function_nodes": 54,
+  "module_nodes": 8,
+  "function_to_function": 63,
+  "module_level_to_function": 0,
+  "total_edges": 63
+ },
+ "httpx": {
+  "function_nodes": 434,
+  "module_nodes": 23,
+  "function_to_function": 398,
+  "module_level_to_function": 2,
+  "total_edges": 400
+ },
+ "attrs": {
+  "function_nodes": 211,
+  "module_nodes": 19,
+  "function_to_function": 152,
+  "module_level_to_function": 17,
+  "total_edges": 169
+ },
+ "tqdm": {
+  "function_nodes": 232,
+  "module_nodes": 31,
+  "function_to_function": 198,
+  "module_level_to_function": 3,
+  "total_edges": 201
+ },
+ "rich": {
+  "function_nodes": 888,
+  "module_nodes": 100,
+  "function_to_function": 1046,
+  "module_level_to_function": 208,
+  "total_edges": 1254
+ },
+ "python-dotenv": {
+  "function_nodes": 66,
+  "module_nodes": 8,
+  "function_to_function": 65,
+  "module_level_to_function": 3,
+  "total_edges": 68
+ },
+ "werkzeug": {
+  "function_nodes": 1033,
+  "module_nodes": 54,
+  "function_to_function": 882,
+  "module_level_to_function": 24,
+  "total_edges": 906
+ },
+ "markupsafe": {
+  "function_nodes": 53,
+  "module_nodes": 2,
+  "function_to_function": 17,
+  "module_level_to_function": 0,
+  "total_edges": 17
+ },
+ "pluggy": {
+  "function_nodes": 101,
+  "module_nodes": 13,
+  "function_to_function": 86,
+  "module_level_to_function": 0,
+  "total_edges": 86
+ },
+ "more-itertools": {
+  "function_nodes": 280,
+  "module_nodes": 3,
+  "function_to_function": 102,
+  "module_level_to_function": 1,
+  "total_edges": 103
+ },
+ "urllib3": {
+  "function_nodes": 485,
+  "module_nodes": 35,
+  "function_to_function": 454,
+  "module_level_to_function": 14,
+  "total_edges": 470
+ },
+ "starlette": {
+  "function_nodes": 519,
+  "module_nodes": 36,
+  "function_to_function": 435,
+  "module_level_to_function": 1,
+  "total_edges": 436
+ },
+ "jsonschema": {
+  "function_nodes": 699,
+  "module_nodes": 37,
+  "function_to_function": 610,
+  "module_level_to_function": 20,
+  "total_edges": 630
+ },
+ "typer": {
+  "function_nodes": 558,
+  "module_nodes": 34,
+  "function_to_function": 645,
+  "module_level_to_function": 8,
+  "total_edges": 653
+ },
+ "tomli": {
+  "function_nodes": 40,
+  "module_nodes": 4,
+  "function_to_function": 80,
+  "module_level_to_function": 0,
+  "total_edges": 80
+ },
+ "idna": {
+  "function_nodes": 47,
+  "module_nodes": 10,
+  "function_to_function": 69,
+  "module_level_to_function": 2,
+  "total_edges": 71
+ }
+}

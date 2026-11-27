@@ -1,0 +1,61 @@
+{
+ "events192": [
+  "events192.register",
+  "events192.register.deco"
+ ],
+ "events192.dispatch": [
+  "events192.on_audit0",
+  "events192.on_audit1",
+  "events192.on_load2"
+ ],
+ "events192.on_audit0": [],
+ "events192.on_audit1": [],
+ "events192.on_load2": [],
+ "events192.register": [],
+ "events192.register.deco": [],
+ "extra19": [],
+ "extra19.Unused19.never_19": [],
+ "extra19.call_by_name_19": [
+  "extra19.hook_19"
+ ],
+ "extra19.hook_19": [],
+ "extra19.legacy_19": [],
+ "extra19.old_helper_19": [],
+ "func190": [],
+ "func190.apply_all": [
+  "func190.event_auditc",
+  "func190.item_buildb"
+ ],
+ "func190.event_auditc": [
+  "func190.message_parsea"
+ ],
+ "func190.item_buildb": [],
+ "func190.message_parsea": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events192.dispatch",
+  "extra19.call_by_name_19",
+  "func190.apply_all",
+  "res191.consume"
+ ],
+ "res191": [],
+ "res191.Resource.__enter__": [
+  "res191.Resource.open"
+ ],
+ "res191.Resource.__exit__": [
+  "res191.Resource.close"
+ ],
+ "res191.Resource.close": [],
+ "res191.Resource.open": [],
+ "res191.consume": [
+  "res191.Resource.__enter__",
+  "res191.Resource.__exit__",
+  "res191.stream"
+ ],
+ "res191.stream": [
+  "res191.transform"
+ ],
+ "res191.transform": []
+}

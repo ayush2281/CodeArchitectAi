@@ -1,0 +1,57 @@
+{
+ "main": [
+  "res242.consume",
+  "shapes241.JobBase.run",
+  "strat240.Context.__init__",
+  "strat240.Context.execute"
+ ],
+ "res242": [],
+ "res242.Resource.__enter__": [
+  "res242.Resource.open"
+ ],
+ "res242.Resource.__exit__": [
+  "res242.Resource.close"
+ ],
+ "res242.Resource.close": [],
+ "res242.Resource.open": [],
+ "res242.consume": [
+  "res242.Resource.__enter__",
+  "res242.Resource.__exit__",
+  "res242.stream"
+ ],
+ "res242.stream": [
+  "res242.transform"
+ ],
+ "res242.transform": [],
+ "shapes241": [],
+ "shapes241.Item0.helper": [],
+ "shapes241.Item0.step": [
+  "shapes241.Item0.helper"
+ ],
+ "shapes241.JobBase.finish": [],
+ "shapes241.JobBase.prepare": [],
+ "shapes241.JobBase.run": [
+  "shapes241.Item0.step",
+  "shapes241.JobBase.finish",
+  "shapes241.JobBase.prepare",
+  "shapes241.Report1.finish",
+  "shapes241.Report1.step"
+ ],
+ "shapes241.JobBase.step": [],
+ "shapes241.Report1.finish": [
+  "shapes241.JobBase.finish"
+ ],
+ "shapes241.Report1.helper": [],
+ "shapes241.Report1.step": [
+  "shapes241.Report1.helper"
+ ],
+ "strat240": [],
+ "strat240.Context.__init__": [],
+ "strat240.Context.execute": [
+  "strat240.merge_strategy1",
+  "strat240.save_strategy0"
+ ],
+ "strat240.merge_strategy1": [],
+ "strat240.save_strategy0": [],
+ "strat240.sync_strategy2": []
+}

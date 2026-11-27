@@ -1,0 +1,54 @@
+{
+ "deco221": [
+  "deco221.logged"
+ ],
+ "deco221.cart_sync2": [],
+ "deco221.logged": [],
+ "deco221.logged.wrapper": [
+  "deco221.cart_sync2",
+  "deco221.note",
+  "deco221.ticket_build0",
+  "deco221.ticket_render1"
+ ],
+ "deco221.note": [],
+ "deco221.pipeline": [
+  "deco221.logged.wrapper"
+ ],
+ "deco221.ticket_build0": [],
+ "deco221.ticket_render1": [],
+ "main": [
+  "deco221.pipeline",
+  "rec220.counter",
+  "rec220.counter.inc",
+  "rec220.even",
+  "rec220.fact",
+  "util222.core.event_auditx",
+  "util222.extra.combo"
+ ],
+ "rec220": [],
+ "rec220.bump": [],
+ "rec220.counter": [],
+ "rec220.counter.inc": [
+  "rec220.bump"
+ ],
+ "rec220.even": [
+  "rec220.odd"
+ ],
+ "rec220.fact": [
+  "rec220.fact"
+ ],
+ "rec220.odd": [
+  "rec220.even"
+ ],
+ "util222": [],
+ "util222.core": [],
+ "util222.core.account_audity": [],
+ "util222.core.event_auditx": [
+  "util222.core.inner"
+ ],
+ "util222.core.inner": [],
+ "util222.extra": [],
+ "util222.extra.combo": [
+  "util222.core.account_audity"
+ ]
+}

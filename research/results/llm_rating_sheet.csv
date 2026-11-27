@@ -1,0 +1,317 @@
+﻿item_id,repository,ground_truth_summary,report_text,factual_correctness_1to5,relevance_of_recommendations_1to5,completeness_1to5,clarity_1to5,consistency_with_analysis_1to5,comments
+R01,jinja,modules=25; functions=759; dependency edges=91; call relationships=967; issues=30; cycles=1; modules with fan-in+fan-out>=3: 23,"**Architecture Overview**  
+The codebase consists of 25 modules with 91 directed dependency edges, giving a density of 0.152.  
+A single high‑severity circular dependency involves all 25 modules; 29 medium‑severity problems are reported.
+
+**Detected Problems**  
+The circular dependency links every listed module directly or indirectly.  
+Six modules (jinja2.compiler, jinja2.environment, jinja2.lexer, jinja2.nodes, jinja2.runtime, jinja2.utils) exceed the coupling threshold (fan‑in ≥ 4, fan‑out ≥ 5).  
+Twenty‑three modules are identified as highly connected (fan‑in ≥ 1 and fan‑out ≥ 1).
+
+**Why They Matter**  
+These dependencies create a complex network of module interactions that could hinder understanding of module responsibilities.  
+The high‑coupling modules exhibit many incoming and outgoing connections, which may increase the effort to modify or extend them without affecting other modules.
+
+**Recommended Improvements**  
+Inspect the dependency graph to identify the precise dependency paths that form the cycle and refactor the involved modules to eliminate the cycle.  
+Review the six high‑coupling modules and consider breaking or delegating responsibilities to reduce the number of imports and exports they handle.",,,,,,
+R02,pluggy,modules=13; functions=101; dependency edges=24; call relationships=86; issues=10; cycles=0; modules with fan-in+fan-out>=3: 9,"1. Architecture Overview
+The analyzed codebase consists of 13 modules connected by 24 directed edges, resulting in a graph density of approximately 0.154. The system exhibits a distributed connectivity pattern where several modules are identified as highly connected.
+
+2. Detected Problems
+Ten medium-severity issues were detected, comprising nine instances of high-connectivity modules and one instance of high coupling in `pluggy._impl`. The most connected modules are `pluggy._hooks`, `pluggy._impl`, and `pluggy._manager`, each with six total connections.
+
+3. Why They Matter
+The report identifies these specific fan-in and fan-out metrics as the sole basis for the detected medium-severity issues. No specific architectural principles, runtime behaviors, or change impacts are defined or evaluated in the provided analysis.
+
+4. Recommended Improvements
+Inspection should be conducted on the dependency relationships of `pluggy._hooks`, `pluggy._impl`, and `pluggy._manager` to verify their connectivity against project-specific architectural intent. Restructuring recommendations require additional context on design goals, as the provided analysis does not establish specific directional constraints or quality standards.",,,,,,
+R03,tomli,modules=4; functions=40; dependency edges=4; call relationships=80; issues=1; cycles=0; modules with fan-in+fan-out>=3: 1,"**Architecture Overview**  
+The analysis examined four modules with a call graph of 40 functions and 80 call relationships, yielding a directed graph density of 0.33.  
+**Detected Problems**  
+One medium‑severity highly connected module is identified: `tomli._parser` (fan‑in = 1, fan‑out = 2).  
+**Why They Matter**  
+This module has a higher number of incoming and outgoing connections than the others, marking it as the only medium‑severity architectural issue.  
+**Recommended Improvements**  
+Review and, if necessary, refactor the dependencies of `tomli._parser` to ensure its fan‑in and fan‑out remain within the observed patterns; no further changes are mandated by the current analysis.",,,,,,
+R04,tomli,modules=4; functions=40; dependency edges=4; call relationships=80; issues=1; cycles=0; modules with fan-in+fan-out>=3: 1,"1. Architecture Overview
+The system comprises four modules with four directed dependency edges, resulting in a graph density of approximately 0.33. The module `tomli._parser` exhibits the highest total connectivity among the analyzed components.
+
+2. Detected Problems
+One medium-severity issue was identified, flagging `tomli._parser` as a highly connected module with a fan-in of 1 and a fan-out of 2. No potentially unreferenced functions or change impact concerns were detected in the analysis.
+
+3. Why They Matter
+The high connectivity of `tomli._parser` indicates it participates in a larger number of direct dependency relationships compared to other modules like `tomli._re` and `tomli._types`. This specific focus highlights the module as a point of interest within the dependency graph structure.
+
+4. Recommended Improvements
+Inspect the specific dependencies within `tomli._parser` to understand the reasons for its connection with one dependent and two dependents. Consider restructuring these explicit relationships if the current connectivity level does not align with intended architectural boundaries.",,,,,,
+R05,requests,modules=19; functions=248; dependency edges=73; call relationships=250; issues=22; cycles=1; modules with fan-in+fan-out>=3: 16,"**Architecture Overview**  
+Nineteen modules were analyzed, resulting in 73 directed dependency edges and a density of 0.213, with one high‑severity and 21 medium‑severity issues detected.  
+
+**Detected Problems**  
+The analysis identified a single high‑severity circular dependency involving requests._types, adapters, auth, cookies, exceptions, hooks, models, and utils; 10 modules are flagged for medium‑severity high coupling, and 16 for medium‑severity high connectivity.  
+
+**Why They Matter**  
+These patterns create more inter‑module connections, which can make it difficult to trace how modules depend on each other and increase the risk of unintended side effects when changes occur. The circular dependency introduces a loop that can complicate dependency resolution across the affected modules.  
+
+**Recommended Improvements**  
+Refactor the modules in the circular dependency cycle to eliminate the loop, and review the high‑coupling modules (auth, cookies, models, utils, _types) to reduce unnecessary imports or dependencies, thereby lowering their fan‑in/fan‑out counts.",,,,,,
+R06,pluggy,modules=13; functions=101; dependency edges=24; call relationships=86; issues=10; cycles=0; modules with fan-in+fan-out>=3: 9,"**Architecture Overview:** The codebase contains 13 modules with 24 directed dependency edges (density ≈ 0.15); nine modules are reported as highly connected and one module as highly coupled.  
+
+**Detected Problems:** Medium‑severity highly‑connected warnings are issued for pluggy._caller, pluggy._config, pluggy._decorators, pluggy._execution, pluggy._hooks, pluggy._impl, pluggy._manager, pluggy._result, and pluggy, and a medium‑severity high‑coupling warning is reported for pluggy._impl.  
+
+**Why They Matter:** High connectivity indicates that these modules have multiple inbound or outbound module dependencies (fan‑in/fan‑out ranging from 1 to 5), and high coupling shows comparable fan‑in and fan‑out, both of which can broaden the set of code affected by changes to the modules.  
+
+**Recommended Improvements:** Inspect the dependency relationships of the identified modules and consider refactoring to introduce intermediate abstractions or separate responsibilities, especially for pluggy._impl, to reduce direct module‑to‑module links where they are unnecessary.",,,,,,
+R07,httpx,modules=23; functions=434; dependency edges=87; call relationships=398; issues=29; cycles=2; modules with fan-in+fan-out>=3: 21,"**Architecture Overview**  
+The static analysis examined 23 modules, 87 directed edges, and identified 434 functions with 398 call relationships, with top connected modules including `httpx._models`, `httpx._types`, and `httpx._client`.  
+
+**Detected Problems**  
+There are 29 issues: 2 high‑severity circular dependencies involving the httpx and httpx._auth groups, 21 medium‑severity highly connected modules, and 5 medium‑severity high‑coupling modules.  
+
+**Why They Matter**  
+Circular dependencies create dependency cycles that can complicate module resolution, while high connectivity and high coupling indicate modules that interact with many others, potentially leading to complex intermodule relationships.  
+
+**Recommended Improvements**  
+Review the circular dependency chains and refactor to break the cycles; examine the high‑coupling modules (`httpx._auth`, `httpx._client`, `httpx._config`, `httpx._models`, `httpx._types`) to isolate their dependencies, and evaluate the highly connected modules for potential decomposition.",,,,,,
+R08,markupsafe,modules=2; functions=53; dependency edges=2; call relationships=17; issues=2; cycles=1; modules with fan-in+fan-out>=3: 1,"**Architecture Overview**  
+The static analysis examined two modules: markupsafe and markupsafe._native. The dependency graph is fully connected with a density of 1.0, showing that markupsafe has fan‑in 1 and fan‑out 2.  
+
+**Detected Problems**  
+A high‑severity circular dependency was detected involving the markupsafe module. A medium‑severity highly‑connected module was identified for markupsafe (fan‑in 1, fan‑out 2).  
+
+**Why They Matter**  
+The circular dependency indicates that markupsafe participates in a cycle of module dependencies, while the high fan‑out suggests it imports multiple other modules, both of which can complicate understanding of the module relationships.  
+
+**Recommended Improvements**  
+Review and refactor the dependencies of markupsafe to eliminate the circular path, and examine its imports to clarify the fan‑out connections, ensuring each dependency is intentional.",,,,,,
+R09,requests,modules=19; functions=248; dependency edges=73; call relationships=250; issues=22; cycles=1; modules with fan-in+fan-out>=3: 16,"1. Architecture Overview
+The analyzed codebase contains 19 modules with 73 dependencies, forming a directed graph with a density of approximately 0.21. The structure includes one high-severity circular dependency involving eight modules and sixteen medium-severity highly connected modules.
+
+2. Detected Problems
+A circular dependency exists among `requests._types`, `requests.adapters`, `requests.auth`, `requests.cookies`, `requests.exceptions`, `requests.hooks`, `requests.models`, and `requests.utils`. Modules such as `requests.models` and `requests.sessions` exhibit high connectivity, with `requests.models` having a fan-in of 10 and a fan-out of 11.
+
+3. Why They Matter
+The identified cyclic relationships among the eight listed modules indicate mutually dependent code structures within the project. High connectivity scores, such as the 21 total connections observed in `requests.models`, reflect the specific volume of dependencies defined in the current codebase.
+
+4. Recommended Improvements
+Inspect the import statements within the eight modules involved in the circular dependency to identify and restructure specific mutual imports. Review the dependency lists of `requests.models`, `requests.sessions`, and other high-connectivity modules to assess the necessity of their current fan-in and fan-out relationships.",,,,,,
+R10,itsdangerous,modules=8; functions=54; dependency edges=21; call relationships=63; issues=8; cycles=0; modules with fan-in+fan-out>=3: 7,"1. Architecture Overview
+The itsdangerous codebase consists of 8 modules with 21 directed dependency edges, resulting in a graph density of 0.375. The analysis identifies 54 functions involved in 63 call relationships across the system.
+
+2. Detected Problems
+Eight medium-severity issues were detected, primarily involving seven highly connected modules with total connections ranging from 5 to 6. The module itsdangerous.serializer is additionally flagged for high coupling with a fan-in and fan-out of 3.
+
+3. Why They Matter
+These connectivity values indicate that multiple modules depend on their shared dependencies, specifically itsdangerous.exc and itsdangerous.encoding. The high coupling in itsdangerous.serializer reflects a specific dependency density defined by the analysis thresholds.
+
+4. Recommended Improvements
+Inspect the dependency relationships of the seven highly connected modules to verify if the current structure aligns with intended design constraints. Review the internal dependencies of itsdangerous.serializer to address the detected high coupling metrics.",,,,,,
+R11,pluggy,modules=13; functions=101; dependency edges=24; call relationships=86; issues=10; cycles=0; modules with fan-in+fan-out>=3: 9,"**Architecture Overview**  
+The codebase comprises 13 modules with 24 directed dependency edges, yielding a density of 0.154. The call graph contains 101 functions and 86 call relationships.
+
+**Detected Problems**  
+Ten medium‑severity issues were flagged: nine modules have high connectivity (fan‑in 1‑4, fan‑out 0‑5) and one module, `pluggy._impl`, also has high coupling (fan‑in 3, fan‑out 3).
+
+**Why They Matter**  
+These findings identify modules that participate in many dependency relationships, which may complicate understanding of the module interactions and could increase the effort required to modify or extend the affected modules.
+
+**Recommended Improvements**  
+Inspect each high‑connected module and `pluggy._impl` to verify the necessity of each dependency, consider decomposing responsibilities that contribute to fan‑in/fan‑out, and review the coupling within `pluggy._impl` for potential decoupling of its imports and exposed interfaces.",,,,,,
+R12,markupsafe,modules=2; functions=53; dependency edges=2; call relationships=17; issues=2; cycles=1; modules with fan-in+fan-out>=3: 1,"**Architecture Overview**  
+The analysis covered two project modules with a fully connected directed graph (density = 1.0) and identified 53 functions and 17 call relationships.
+
+**Detected Problems**  
+A high‑severity circular dependency involving the `markupsafe` module was reported, and the same module was flagged as medium‑severity for high connectivity (fan‑in = 1, fan‑out = 2).
+
+**Why They Matter**  
+Circular dependencies can prevent successful module import resolution and complicate the codebase structure, while high connectivity means the `markupsafe` module both relies on and is relied upon by multiple other modules, increasing the scope of potential impact when changes occur.
+
+**Recommended Improvements**  
+Examine the dependency path that creates the circular reference around `markupsafe` and refactor to break the cycle; also review the outgoing and incoming dependencies of `markupsafe` to determine if any can be simplified or deferred.",,,,,,
+R13,itsdangerous,modules=8; functions=54; dependency edges=21; call relationships=63; issues=8; cycles=0; modules with fan-in+fan-out>=3: 7,"**Architecture Overview**  
+The codebase contains eight modules with a directed dependency graph of 21 edges, yielding a density of 0.375.
+
+**Detected Problems**  
+Seven modules—itsdangerous.encoding, itsdangerous.exc, itsdangerous.serializer, itsdangerous.signer, itsdangerous.timed, itsdangerous.url_safe, and itsdangerous—exhibit high connectivity, and itsdangerous.serializer also shows high coupling (fan‑in 3, fan‑out 3).
+
+**Why They Matter**  
+High fan‑in and fan‑out values mean many modules depend on or depend upon these modules, while the high‑coupling metric indicates that a module’s implementation relies on multiple other modules, potentially complicating comprehension and modification.
+
+**Recommended Improvements**  
+Inspect each high‑connectivity and the high‑coupling module to identify opportunities to decouple responsibilities, extract shared functionality into separate utilities, and verify that dependencies are intentional and necessary.",,,,,,
+R14,itsdangerous,modules=8; functions=54; dependency edges=21; call relationships=63; issues=8; cycles=0; modules with fan-in+fan-out>=3: 7,"**Architecture Overview** – The codebase consists of 8 modules with a directed dependency graph of 21 edges (density 0.375). Seven modules are reported as highly connected and one module (itsdangerous.serializer) is reported as highly coupled, yielding eight medium‑severity issues.
+
+**Detected Problems** – Modules itsdangerous.encoding, itsdangerous.exc, itsdangerous.serializer, itsdangerous.signer, itsdangerous.timed, itsdangerous.url_safe, and itsdangerous each have high connectivity; itsdangerous.serializer additionally has high coupling.
+
+**Why They Matter** – High connectivity means a module is referenced by many other modules (high fan‑in) or depends on many modules (high fan‑out), which can increase the scope of change propagation; high coupling indicates a module has comparable fan‑in and fan‑out, suggesting tighter interdependence with its peers.
+
+**Recommended Improvements** – Review the dependency lists of the identified modules to confirm each import is necessary, and where possible refactor to isolate responsibilities or introduce intermediate abstractions; specifically assess the bidirectional dependencies of itsdangerous.serializer to determine if the coupling can be reduced.",,,,,,
+R15,python-dotenv,modules=8; functions=66; dependency edges=8; call relationships=65; issues=2; cycles=0; modules with fan-in+fan-out>=3: 2,"**Architecture Overview**  
+The static analysis examined 8 modules, identified two medium‑severity highly‑connected modules, and found no functions that appear unreferenced.  
+
+**Detected Problems**  
+Module `dotenv.main` has fan‑in 3 and fan‑out 2, while module `dotenv.cli` has fan‑in 1 and fan‑out 2; both are flagged as medium‑severity highly‑connected modules.  
+
+**Why They Matter**  
+These modules exhibit higher connectivity than the rest of the codebase, indicating they are both depended upon by multiple modules and depend on several others.  
+
+**Recommended Improvements**  
+Review the import relationships of `dotenv.main` and `dotenv.cli` to confirm that each dependency is intentional; if unnecessary, remove or encapsulate the dependency.",,,,,,
+R16,flask,modules=24; functions=363; dependency edges=95; call relationships=237; issues=34; cycles=1; modules with fan-in+fan-out>=3: 21,"**Architecture Overview**  
+The static analysis covered 24 modules with 95 directed dependency edges (density ≈ 0.17), identified 21 modules as highly connected, and recorded 363 functions participating in 237 call relationships.  
+
+**Detected Problems**  
+A high‑severity circular dependency is present among the listed Flask submodules. Additionally, 21 modules are flagged as highly connected (e.g., `flask.app`, `flask.sansio.app`, `flask.globals`, `flask.wrappers`, etc.) and 14 modules are reported with medium‑severity high coupling, totaling 34 issues (1 high, 33 medium).  
+
+**Why They Matter**  
+Circular dependencies can obstruct reliable module import order, while high connectivity and high coupling indicate modules that both depend on many others and are depended on by many, increasing the scope of impact when changes are made.  
+
+**Recommended Improvements**  
+Inspect the circular dependency chain and refactor imports or introduce intermediate abstractions to break the cycle; for each highly connected or high‑coupling module, review its import relationships and consider extracting shared responsibilities into separate modules to reduce inbound and outbound dependencies, ensuring no new cycles are introduced.",,,,,,
+R17,python-dotenv,modules=8; functions=66; dependency edges=8; call relationships=65; issues=2; cycles=0; modules with fan-in+fan-out>=3: 2,"1. Architecture Overview
+The codebase comprises eight modules connected by eight directed dependencies, resulting in a graph density of approximately 0.14. The module `dotenv.main` exhibits the highest total connectivity with a fan-in of 3 and a fan-out of 2.
+
+2. Detected Problems
+Two medium-severity issues were identified, both classified as highly connected modules: `dotenv.cli` (fan-in: 1, fan-out: 2) and `dotenv.main` (fan-in: 3, fan-out: 2). No unreferenced functions or high-severity architectural issues were detected in the analysis.
+
+3. Why They Matter
+The analysis explicitly flags these two modules as having high connectivity based on their specific fan-in and fan-out values relative to the configured thresholds. These flags indicate that these modules maintain the highest number of connections within the analyzed set of eight modules.
+
+4. Recommended Improvements
+Inspect the specific import relationships contributing to the fan-in and fan-out counts for `dotenv.cli` and `dotenv.main` to verify if they align with intended design constraints. Consider restructuring the dependencies of these two modules if the current connectivity levels do not meet the project's architectural guidelines for module isolation.",,,,,,
+R18,jinja,modules=25; functions=759; dependency edges=91; call relationships=967; issues=30; cycles=1; modules with fan-in+fan-out>=3: 23,"**Architecture Overview**  
+The codebase consists of 25 Jinja2 modules with a directed dependency graph containing 91 edges (density ≈ 0.15). Twenty‑three modules are flagged as highly connected, and six modules are flagged as having high coupling.
+
+**Detected Problems**  
+A high‑severity circular dependency exists among the listed Jinja2 sub‑modules, and thirty total issues were identified: one circular dependency (high) and twenty‑nine medium‑severity issues comprising highly connected modules and high‑coupling modules (compiler, environment, lexer, nodes, runtime, utils).
+
+**Why They Matter**  
+Circular dependencies can prevent reliable module import resolution, while high connectivity and coupling increase the number of direct and indirect module relationships that must be considered during changes.
+
+**Recommended Improvements**  
+Inspect the circular dependency chain to isolate and break the cycle, and review the dependency lists of the highly connected and high‑coupling modules to determine whether any imports can be redirected, deferred, or abstracted to reduce inter‑module reliance.",,,,,,
+R19,click,modules=17; functions=541; dependency edges=61; call relationships=525; issues=23; cycles=2; modules with fan-in+fan-out>=3: 14,"1. Architecture Overview
+The analyzed Python codebase consists of 17 modules connected by 61 dependency edges, resulting in a graph density of approximately 0.224. The topology includes 541 functions and 525 direct call relationships, with no potentially unreferenced functions detected.
+
+2. Detected Problems
+Analysis identified two high-severity circular dependencies, one between `click._compat` and `click._winconsole`, and another involving 11 modules including `click.core`, `click.types`, and `click.utils`. Additionally, 14 modules were flagged as highly connected and 7 modules were flagged for high coupling based on their specific fan-in and fan-out counts.
+
+3. Why They Matter
+The presence of two circular dependency groups and 21 medium-severity connectivity or coupling issues indicates a need to address the specific identified dependency relationships. The top connected modules, such as `click.core` and `click.utils`, exhibit the highest total connection counts within the network.
+
+4. Recommended Improvements
+Inspect the explicit dependency paths within the two detected circular dependency groups, particularly the 11-module cycle involving `click.core`, to identify and restructure the specific import relationships causing the loops. Review the 14 highly connected and 7 high-coupling modules to understand their specific dependency contributions, such as the high fan-in of `click.utils` and `click._compat`, relative to the established analysis thresholds.",,,,,,
+R20,requests,modules=19; functions=248; dependency edges=73; call relationships=250; issues=22; cycles=1; modules with fan-in+fan-out>=3: 16,"**Architecture Overview** – The codebase consists of 19 modules with 73 directed dependency edges (density ≈ 0.21). Static analysis identified 22 issues (1 high severity, 21 medium) and flagged 16 modules as highly connected.  
+
+**Detected Problems** – A high‑severity circular dependency links `requests._types`, `requests.adapters`, `requests.auth`, `requests.cookies`, `requests.exceptions`, `requests.hooks`, `requests.models`, and `requests.utils`. Sixteen modules are reported as highly connected, and five modules (`requests.auth`, `requests.cookies`, `requests.models`, `requests.utils`, `requests._types`) are marked with high coupling.  
+
+**Why They Matter** – Circular dependencies can obstruct reliable import ordering, while high connectivity and high coupling indicate modules that both depend on many others and are depended upon by many, creating tightly inter‑linked code that may be harder to modify in isolation.  
+
+**Recommended Improvements** – Examine the eight‑module circular chain and refactor to remove at least one dependency in the cycle; for each highly connected or high‑coupling module, evaluate whether some imports can be relocated to shared utilities or abstracted behind interfaces to reduce direct inter‑module references.",,,,,,
+R21,python-dotenv,modules=8; functions=66; dependency edges=8; call relationships=65; issues=2; cycles=0; modules with fan-in+fan-out>=3: 2,"**Architecture Overview**  
+The codebase contains 8 modules with a directed dependency graph of 8 nodes and 8 edges (density ≈ 0.14); static analysis found 66 functions and 65 call relationships.
+
+**Detected Problems**  
+Two medium‑severity “highly_connected_module” issues were identified: `dotenv.cli` (fan‑in 1, fan‑out 2) and `dotenv.main` (fan‑in 3, fan‑out 2).
+
+**Why They Matter**  
+Both modules have incoming dependencies from several other modules and outgoing dependencies to multiple modules, making them focal points for change propagation through the recorded connections.
+
+**Recommended Improvements**  
+Review the import and dependency relationships of `dotenv.cli` and `dotenv.main` and consider refactoring or reorganizing code to reduce their fan‑in/fan‑out where appropriate.",,,,,,
+R22,markupsafe,modules=2; functions=53; dependency edges=2; call relationships=17; issues=2; cycles=1; modules with fan-in+fan-out>=3: 1,"1. Architecture Overview
+The analyzed system consists of two modules with a directed graph density of 1.0. The `markupsafe` module exhibits a fan-in of 1 and a fan-out of 2, while `markupsafe._native` has a fan-in of 1 and a fan-out of 0.
+
+2. Detected Problems
+A high-severity circular dependency has been detected involving the `markupsafe` module. Additionally, `markupsafe` is flagged as a highly connected module based on its connectivity metrics.
+
+3. Why They Matter
+The circular dependency represents a structural issue where determined relationships exist between project modules. The high connectivity metric indicates that `markupsafe` participates in multiple dependency connections relative to the analyzed scope.
+
+4. Recommended Improvements
+Inspect the dependency paths within the `markupsafe` circular group to identify specific import cycles. Restructure the explicitly detected dependency relationships to resolve the high-severity circular dependency.",,,,,,
+R23,jinja,modules=25; functions=759; dependency edges=91; call relationships=967; issues=30; cycles=1; modules with fan-in+fan-out>=3: 23,"1. Architecture Overview
+The project consists of 25 modules connected by 91 directed edges, resulting in a graph density of 0.1517. The dependency structure includes a detected circular dependency involving 20 modules within the `jinja2` package.
+
+2. Detected Problems
+A high-severity circular dependency exists among 20 `jinja2` modules, including `jinja2.environment`, `jinja2.compiler`, and `jinja2.nodes`. Additionally, 23 modules are flagged as highly connected, and 6 modules (`jinja2.compiler`, `jinja2.environment`, `jinja2.lexer`, `jinja2.nodes`, `jinja2.runtime`, and `jinja2.utils`) are identified as having high coupling based on their fan-in and fan-out metrics.
+
+3. Why They Matters
+The presence of a circular dependency links 20 modules into a single interdependent group where reachability exists through the dependency paths. The high coupling in specific modules indicates that these modules have significant numbers of incoming and outgoing dependencies to other project modules.
+
+4. Recommended Improvements
+Inspect the modules in the circular dependency group to identify and break the dependency cycles. Review the high-coupling modules to evaluate if their dependency relationships can be restructured to align with the project's architectural constraints.",,,,,,
+R24,click,modules=17; functions=541; dependency edges=61; call relationships=525; issues=23; cycles=2; modules with fan-in+fan-out>=3: 14,"**Architecture Overview**  
+The codebase consists of 17 modules with 61 directed dependency edges, yielding a density of 0.224. Fourteen modules have been identified as highly connected based on their fan‑in and fan‑out counts.  
+
+**Detected Problems**  
+Twenty‑three issues were flagged: two high‑severity circular dependencies—between `click._compat` and `click._winconsole`, and a larger cycle involving `click._termui_impl`, `click.core`, `click.decorators`, `click.exceptions`, `click.formatting`, `click.globals`, `click.parser`, `click.shell_completion`, `click.termui`, `click.types`, and `click.utils`. Fifteen modules exhibit high coupling, including `click.core`, `click.exceptions`, `click.formatting`, `click.parser`, `click.termui`, `click.types`, and `click.utils`.  
+
+**Why They Matter**  
+High coupling and circular dependencies indicate that modules are closely interrelated, which can complicate understanding and modifying the dependency graph.  
+
+**Recommended Improvements**  
+Inspect the dependency relationships in the identified cycles and refactor to eliminate the circular dependencies; reduce the number of inter‑module connections for the high‑coupling modules by decoupling their responsibilities; verify the changes with static analysis to ensure the cycles are removed and coupling metrics remain within the current thresholds.",,,,,,
+R25,flask,modules=24; functions=363; dependency edges=95; call relationships=237; issues=34; cycles=1; modules with fan-in+fan-out>=3: 21,"**Architecture Overview**  
+The codebase contains 24 modules with 95 directed edges, yielding a density of 0.172. The top connected modules are `flask.app`, `flask.sansio.app`, `flask.globals`, `flask.wrappers`, and `flask.ctx`.  
+
+**Detected Problems**  
+There is one high‑severity circular dependency among 20 Flask modules. Additionally, 21 modules are marked as highly connected (fan‑in ≥ 2 or fan‑out ≥ 3) and 12 modules have high coupling (fan‑in ≥ 3 or fan‑out ≥ 3).  
+
+**Why They Matter**  
+The circular dependency indicates that modules can reach each other through indirect paths, which may complicate module resolution. High‑coupling modules exceed the configured fan‑in/fan‑out thresholds, signaling that these modules depend on many others or are depended on by many, potentially increasing maintenance effort.  
+
+**Recommended Improvements**  
+Inspect the dependency graph to isolate and eliminate indirect cycles. Refactor modules that exceed fan‑in/fan‑out or coupling thresholds by reducing the number of module edges, and consider adding tests that assert the absence of new cycles or high‑coupling relationships.",,,,,,
+R26,httpx,modules=23; functions=434; dependency edges=87; call relationships=398; issues=29; cycles=2; modules with fan-in+fan-out>=3: 21,"**Architecture Overview** – The analysis covered 23 modules, 434 functions and 398 call relationships, yielding a directed graph density of 0.17.
+
+**Detected Problems** – Two high‑severity circular‑dependency cycles involve the groups (httpx, httpx._api, httpx._client, httpx._main, httpx._transports, httpx._transports.default) and (httpx._auth, httpx._config, httpx._content, httpx._decoders, httpx._exceptions, httpx._models, httpx._multipart, httpx._types, httpx._urlparse, httpx._urls, httpx._utils). Additionally, many modules are flagged as highly connected (e.g., httpx._models, httpx._types, httpx._client, httpx, httpx._urls, httpx._exceptions, httpx._transports.default, httpx._config) and exhibit high coupling (the same set of modules listed as highly connected).  
+
+**Why They Matter** – Circular dependencies create bidirectional import relationships that can hinder module‑level refactoring and increase the risk of import‑time errors. High connectivity and high coupling indicate that a module both depends on many others and is depended on by many, so changes in such a module may affect a wide portion of the codebase.  
+
+**Recommended Improvements** – Inspect the two circular‑dependency cycles and refactor by extracting shared functionality into a new, independent module or by reorganizing imports to break the cycles. For the highly connected and high‑coupling modules, review their import lists and consider consolidating related responsibilities or introducing thin façade layers to reduce the number of direct dependencies. Finally, re‑run the static analysis after any restructuring to confirm that cycles and excessive coupling have been mitigated.",,,,,,
+R27,flask,modules=24; functions=363; dependency edges=95; call relationships=237; issues=34; cycles=1; modules with fan-in+fan-out>=3: 21,"1. Architecture Overview
+The analyzed system comprises 24 modules with 95 directed dependency edges, resulting in a graph density of 0.172. The highest total connectivity scores belong to ""flask.app"" (18), ""flask.sansio.app"" (17), and ""flask.globals"" (16).
+
+2. Detected Problems
+A high-severity circular dependency involves all 20 explicitly listed Flask modules, creating a cycle within the project structure. Additionally, 21 modules are flagged as highly connected, and 11 specific modules are identified as having high coupling metrics.
+
+3. Why They Matter
+The presence of a circular dependency across nearly the entire module set indicates that these components are mutually dependent within the analyzed network. The high coupling flags for specific modules like ""flask.app"" and ""flask.sansio.app"" denote that these components have significant numbers of incoming and outgoing dependency links.
+
+4. Recommended Improvements
+Inspect the dependency relationships among the 20 modules in the circular dependency group to identify specific import cycles that can be broken. Review the detected high-coupling modules to assess whether their specific fan-in and fan-out connections align with the intended module boundaries.",,,,,,
+R28,click,modules=17; functions=541; dependency edges=61; call relationships=525; issues=23; cycles=2; modules with fan-in+fan-out>=3: 14,"**Architecture Overview**  
+The static analysis examined 17 modules with 61 directed dependency edges, resulting in a graph density of 0.22.
+
+**Detected Problems**  
+Two high‑severity circular dependencies were identified: one between `click._compat` and `click._winconsole`, and a larger cycle that includes `click._termui_impl`, `click.core`, `click.decorators`, `click.exceptions`, `click.formatting`, `click.globals`, `click.parser`, `click.shell_completion`, `click.termui`, `click.types`, and `click.utils`. Additionally, 14 modules (e.g., `click.core`, `click.utils`, `click.exceptions`, `click._compat`, `click.termui`, `click`, `click.types`, `click.globals`) are flagged as highly connected, and nine modules (`click.core`, `click.exceptions`, `click.formatting`, `click.parser`, `click.termui`, `click.types`, `click.utils`) are reported as having high coupling.
+
+**Why They Matter**  
+Circular dependencies create bidirectional import relationships that can prevent successful module loading. High connectivity and high coupling indicate that many modules both depend on and are depended upon by numerous others, increasing the amount of inter‑module linkage.
+
+**Recommended Improvements**  
+Inspect the two circular dependency groups and refactor them—e.g., by extracting shared functionality or applying lazy imports—to break the cycles. Review the dependency edges of the highly connected and high‑coupling modules and consider removing or redirecting unnecessary imports to reduce overall inter‑module linkage.",,,,,,
+R29,httpx,modules=23; functions=434; dependency edges=87; call relationships=398; issues=29; cycles=2; modules with fan-in+fan-out>=3: 21,"1. Architecture Overview
+The codebase consists of 23 modules with 87 directed dependency edges, resulting in a graph density of approximately 0.172. The top connected module by total connections is `httpx._models` with 21 connections (13 fan-in, 8 fan-out), followed by `httpx._types` with 16 connections.
+
+2. Detected Problems
+Two high-severity circular dependencies were detected, involving the main `httpx` package and a large cluster of 11 modules including `httpx._auth`, `httpx._config`, and `httpx._models`. Additionally, 21 modules were flagged as highly connected, and 6 specific modules (`httpx._auth`, `httpx._client`, `httpx._config`, `httpx._models`, `httpx._types`, and `httpx._urls`) were identified as having high coupling.
+
+3. Why They Matter
+The analysis explicitly identifies 29 architecture issues, comprising 2 high-severity circular dependency violations and 27 medium-severity connectivity and coupling flags. These relationships indicate specific structural entanglements among the `httpx` application, API, client, transports, and core utility modules that warrant structural inspection.
+
+4. Recommended Improvements
+Inspect the dependency graphs of the two detected circular dependency clusters to identify and remove the specific import cycles involving `httpx._api`/`_transports` and the 11-module group. Review the 6 high-coupling modules, such as `httpx._client` (fan-out 12) and `httpx._models` (total 21), to evaluate if their import relationships can be restructured to reduce inter-module dependencies.",,,,,,
+R30,tomli,modules=4; functions=40; dependency edges=4; call relationships=80; issues=1; cycles=0; modules with fan-in+fan-out>=3: 1,"**Architecture Overview**  
+The codebase consists of four modules forming a directed dependency graph with four nodes, four edges, and a density of approximately 0.33.  
+
+**Detected Problems**  
+The module `tomli._parser` is reported as a medium‑severity highly connected module, with a fan‑in of 1, a fan‑out of 2, and a total of 3 connections.  
+
+**Why They Matter**  
+Medium‑severity high connectivity means the module both relies on multiple other modules and is relied upon, increasing the potential impact of modifications to it.  
+
+**Recommended Improvements**  
+Inspect the import and usage relationships of `tomli._parser` and refactor to eliminate unnecessary dependencies, consolidating functionality where appropriate.",,,,,,

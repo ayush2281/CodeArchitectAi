@@ -1,0 +1,42 @@
+{
+ "events252": [
+  "events252.register",
+  "events252.register.deco"
+ ],
+ "events252.dispatch": [
+  "events252.on_format1",
+  "events252.on_parse2",
+  "events252.on_update0"
+ ],
+ "events252.on_format1": [],
+ "events252.on_parse2": [],
+ "events252.on_update0": [],
+ "events252.register": [],
+ "events252.register.deco": [],
+ "func251": [],
+ "func251.account_loadb": [],
+ "func251.apply_all": [
+  "func251.account_loadb",
+  "func251.order_updatec"
+ ],
+ "func251.order_updatec": [
+  "func251.user_mergea"
+ ],
+ "func251.user_mergea": [],
+ "main": [
+  "events252.dispatch",
+  "func251.apply_all",
+  "mix250.Model.__init__",
+  "mix250.Model.run"
+ ],
+ "mix250": [],
+ "mix250.LogMixin.log": [],
+ "mix250.Model.__init__": [],
+ "mix250.Model.run": [
+  "mix250.LogMixin.log",
+  "mix250.SaveMixin.save"
+ ],
+ "mix250.SaveMixin.save": [
+  "mix250.LogMixin.log"
+ ]
+}

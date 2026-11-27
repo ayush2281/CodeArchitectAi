@@ -1,0 +1,52 @@
+{
+ "events00": [
+  "events00.register",
+  "events00.register.deco"
+ ],
+ "events00.dispatch": [
+  "events00.on_format1",
+  "events00.on_save0",
+  "events00.on_send2"
+ ],
+ "events00.on_format1": [],
+ "events00.on_save0": [],
+ "events00.on_send2": [],
+ "events00.register": [],
+ "events00.register.deco": [],
+ "main": [
+  "events00.dispatch",
+  "model02.Order.__add__",
+  "model02.Order.__call__",
+  "model02.Order.__init__",
+  "model02.Order.double",
+  "model02.Order.from_text",
+  "strat01.Context.__init__",
+  "strat01.Context.execute"
+ ],
+ "model02": [],
+ "model02.Order.__add__": [
+  "model02.Order.__init__"
+ ],
+ "model02.Order.__call__": [
+  "model02.Order.scale"
+ ],
+ "model02.Order.__init__": [],
+ "model02.Order.double": [
+  "model02.Order.scale"
+ ],
+ "model02.Order.from_text": [
+  "model02.Order.__init__",
+  "model02.Order.parse"
+ ],
+ "model02.Order.parse": [],
+ "model02.Order.scale": [],
+ "strat01": [],
+ "strat01.Context.__init__": [],
+ "strat01.Context.execute": [
+  "strat01.merge_strategy1",
+  "strat01.send_strategy0"
+ ],
+ "strat01.merge_strategy1": [],
+ "strat01.parse_strategy2": [],
+ "strat01.send_strategy0": []
+}

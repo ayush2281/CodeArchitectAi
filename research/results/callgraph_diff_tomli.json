@@ -1,0 +1,1 @@
+{"v2_only": [], "pycg_only": [["tomli._parser.parse_basic_str", "tomli._parser.parse_basic_str_escape"], ["tomli._parser.parse_value", "tomli._parser.make_safe_parse_float.safe_parse_float"], ["tomli._re.match_to_number", "tomli._parser.make_safe_parse_float.safe_parse_float"]]}

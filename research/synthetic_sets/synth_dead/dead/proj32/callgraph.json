@@ -1,0 +1,50 @@
+{
+ "extra32": [],
+ "extra32.Unused32.never_32": [],
+ "extra32.call_by_name_32": [
+  "extra32.hook_32"
+ ],
+ "extra32.hook_32": [],
+ "extra32.legacy_32": [],
+ "extra32.old_helper_32": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra32.call_by_name_32",
+  "mix321.Model.__init__",
+  "mix321.Model.run",
+  "service320.JobService.create",
+  "service320.JobService.listing",
+  "service320.make_service"
+ ],
+ "mix321": [],
+ "mix321.LogMixin.log": [],
+ "mix321.Model.__init__": [],
+ "mix321.Model.run": [
+  "mix321.LogMixin.log",
+  "mix321.SaveMixin.save"
+ ],
+ "mix321.SaveMixin.save": [
+  "mix321.LogMixin.log"
+ ],
+ "repo320": [],
+ "repo320.JobRepo.__init__": [],
+ "repo320.JobRepo.save": [],
+ "repo320.JobRepo.send": [],
+ "service320": [],
+ "service320.JobService.__init__": [
+  "repo320.JobRepo.__init__"
+ ],
+ "service320.JobService.create": [
+  "repo320.JobRepo.save",
+  "service320.JobService.validate"
+ ],
+ "service320.JobService.listing": [
+  "repo320.JobRepo.send"
+ ],
+ "service320.JobService.validate": [],
+ "service320.make_service": [
+  "service320.JobService.__init__"
+ ]
+}

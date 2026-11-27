@@ -1,0 +1,76 @@
+{
+ "deco211": [
+  "deco211.logged"
+ ],
+ "deco211.item_audit1": [],
+ "deco211.item_audit2": [],
+ "deco211.logged": [],
+ "deco211.logged.wrapper": [
+  "deco211.item_audit1",
+  "deco211.item_audit2",
+  "deco211.note",
+  "deco211.report_build0"
+ ],
+ "deco211.note": [],
+ "deco211.pipeline": [
+  "deco211.logged.wrapper"
+ ],
+ "deco211.report_build0": [],
+ "extra21": [],
+ "extra21.Unused21.never_21": [],
+ "extra21.call_by_name_21": [
+  "extra21.hook_21"
+ ],
+ "extra21.hook_21": [],
+ "extra21.legacy_21": [],
+ "extra21.old_helper_21": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco211.pipeline",
+  "extra21.call_by_name_21",
+  "rec212.counter",
+  "rec212.counter.inc",
+  "rec212.even",
+  "rec212.fact",
+  "shapes210.CartBase.run"
+ ],
+ "rec212": [],
+ "rec212.bump": [],
+ "rec212.counter": [],
+ "rec212.counter.inc": [
+  "rec212.bump"
+ ],
+ "rec212.even": [
+  "rec212.odd"
+ ],
+ "rec212.fact": [
+  "rec212.fact"
+ ],
+ "rec212.odd": [
+  "rec212.even"
+ ],
+ "shapes210": [],
+ "shapes210.Cart1.finish": [
+  "shapes210.CartBase.finish"
+ ],
+ "shapes210.Cart1.helper": [],
+ "shapes210.Cart1.step": [
+  "shapes210.Cart1.helper"
+ ],
+ "shapes210.CartBase.finish": [],
+ "shapes210.CartBase.prepare": [],
+ "shapes210.CartBase.run": [
+  "shapes210.Cart1.finish",
+  "shapes210.Cart1.step",
+  "shapes210.CartBase.finish",
+  "shapes210.CartBase.prepare",
+  "shapes210.User0.step"
+ ],
+ "shapes210.CartBase.step": [],
+ "shapes210.User0.helper": [],
+ "shapes210.User0.step": [
+  "shapes210.User0.helper"
+ ]
+}

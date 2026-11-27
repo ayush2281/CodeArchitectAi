@@ -1,0 +1,67 @@
+{
+ "main": [
+  "model42.Ticket.__add__",
+  "model42.Ticket.__call__",
+  "model42.Ticket.__init__",
+  "model42.Ticket.double",
+  "model42.Ticket.from_text",
+  "res40.consume",
+  "service41.ItemService.create",
+  "service41.ItemService.listing",
+  "service41.make_service"
+ ],
+ "model42": [],
+ "model42.Ticket.__add__": [
+  "model42.Ticket.__init__"
+ ],
+ "model42.Ticket.__call__": [
+  "model42.Ticket.scale"
+ ],
+ "model42.Ticket.__init__": [],
+ "model42.Ticket.double": [
+  "model42.Ticket.scale"
+ ],
+ "model42.Ticket.from_text": [
+  "model42.Ticket.__init__",
+  "model42.Ticket.parse"
+ ],
+ "model42.Ticket.parse": [],
+ "model42.Ticket.scale": [],
+ "repo41": [],
+ "repo41.ItemRepo.__init__": [],
+ "repo41.ItemRepo.format": [],
+ "repo41.ItemRepo.sync": [],
+ "res40": [],
+ "res40.Resource.__enter__": [
+  "res40.Resource.open"
+ ],
+ "res40.Resource.__exit__": [
+  "res40.Resource.close"
+ ],
+ "res40.Resource.close": [],
+ "res40.Resource.open": [],
+ "res40.consume": [
+  "res40.Resource.__enter__",
+  "res40.Resource.__exit__",
+  "res40.stream"
+ ],
+ "res40.stream": [
+  "res40.transform"
+ ],
+ "res40.transform": [],
+ "service41": [],
+ "service41.ItemService.__init__": [
+  "repo41.ItemRepo.__init__"
+ ],
+ "service41.ItemService.create": [
+  "repo41.ItemRepo.sync",
+  "service41.ItemService.validate"
+ ],
+ "service41.ItemService.listing": [
+  "repo41.ItemRepo.format"
+ ],
+ "service41.ItemService.validate": [],
+ "service41.make_service": [
+  "service41.ItemService.__init__"
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "fmt20": [],
+ "fmt20.AccountFmt1.render": [],
+ "fmt20.CartFmt2.render": [],
+ "fmt20.TaskFmt0.render": [],
+ "fmt20.get_formatter": [],
+ "func21": [],
+ "func21.apply_all": [
+  "func21.task_auditc",
+  "func21.ticket_loadb"
+ ],
+ "func21.order_loada": [],
+ "func21.task_auditc": [
+  "func21.order_loada"
+ ],
+ "func21.ticket_loadb": [],
+ "main": [
+  "fmt20.AccountFmt1.render",
+  "fmt20.TaskFmt0.render",
+  "fmt20.get_formatter",
+  "func21.apply_all"
+ ]
+}

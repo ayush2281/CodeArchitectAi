@@ -1,0 +1,41 @@
+{
+ "deco121": [
+  "deco121.logged"
+ ],
+ "deco121.logged": [],
+ "deco121.logged.wrapper": [
+  "deco121.note",
+  "deco121.order_update0",
+  "deco121.user_load2",
+  "deco121.user_render1"
+ ],
+ "deco121.note": [],
+ "deco121.order_update0": [],
+ "deco121.pipeline": [
+  "deco121.logged.wrapper"
+ ],
+ "deco121.user_load2": [],
+ "deco121.user_render1": [],
+ "main": [
+  "deco121.pipeline",
+  "res120.consume"
+ ],
+ "res120": [],
+ "res120.Resource.__enter__": [
+  "res120.Resource.open"
+ ],
+ "res120.Resource.__exit__": [
+  "res120.Resource.close"
+ ],
+ "res120.Resource.close": [],
+ "res120.Resource.open": [],
+ "res120.consume": [
+  "res120.Resource.__enter__",
+  "res120.Resource.__exit__",
+  "res120.stream"
+ ],
+ "res120.stream": [
+  "res120.transform"
+ ],
+ "res120.transform": []
+}

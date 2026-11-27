@@ -1,0 +1,48 @@
+{
+ "extra33": [],
+ "extra33.Unused33.never_33": [],
+ "extra33.call_by_name_33": [
+  "extra33.hook_33"
+ ],
+ "extra33.hook_33": [],
+ "extra33.legacy_33": [],
+ "extra33.old_helper_33": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra33.call_by_name_33",
+  "res331.consume",
+  "util330.core.user_mergex",
+  "util330.extra.combo"
+ ],
+ "res331": [],
+ "res331.Resource.__enter__": [
+  "res331.Resource.open"
+ ],
+ "res331.Resource.__exit__": [
+  "res331.Resource.close"
+ ],
+ "res331.Resource.close": [],
+ "res331.Resource.open": [],
+ "res331.consume": [
+  "res331.Resource.__enter__",
+  "res331.Resource.__exit__",
+  "res331.stream"
+ ],
+ "res331.stream": [
+  "res331.transform"
+ ],
+ "res331.transform": [],
+ "util330": [],
+ "util330.core": [],
+ "util330.core.account_mergey": [],
+ "util330.core.inner": [],
+ "util330.core.user_mergex": [
+  "util330.core.inner"
+ ],
+ "util330.extra": [],
+ "util330.extra.combo": [
+  "util330.core.account_mergey"
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "deco341": [
+  "deco341.logged"
+ ],
+ "deco341.account_load2": [],
+ "deco341.cart_parse0": [],
+ "deco341.logged": [],
+ "deco341.logged.wrapper": [
+  "deco341.account_load2",
+  "deco341.cart_parse0",
+  "deco341.note",
+  "deco341.user_merge1"
+ ],
+ "deco341.note": [],
+ "deco341.pipeline": [
+  "deco341.logged.wrapper"
+ ],
+ "deco341.user_merge1": [],
+ "extra34": [],
+ "extra34.Unused34.never_34": [],
+ "extra34.call_by_name_34": [
+  "extra34.hook_34"
+ ],
+ "extra34.hook_34": [],
+ "extra34.legacy_34": [],
+ "extra34.old_helper_34": [],
+ "func340": [],
+ "func340.account_mergec": [
+  "func340.report_formata"
+ ],
+ "func340.apply_all": [
+  "func340.account_mergec",
+  "func340.report_updateb"
+ ],
+ "func340.report_formata": [],
+ "func340.report_updateb": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco341.pipeline",
+  "extra34.call_by_name_34",
+  "func340.apply_all"
+ ]
+}

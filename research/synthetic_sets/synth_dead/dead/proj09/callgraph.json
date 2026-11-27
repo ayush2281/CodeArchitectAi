@@ -1,0 +1,90 @@
+{
+ "events91": [
+  "events91.register",
+  "events91.register.deco"
+ ],
+ "events91.dispatch": [
+  "events91.on_check0",
+  "events91.on_load1",
+  "events91.on_send2"
+ ],
+ "events91.on_check0": [],
+ "events91.on_load1": [],
+ "events91.on_send2": [],
+ "events91.register": [],
+ "events91.register.deco": [],
+ "extra9": [],
+ "extra9.Unused9.never_9": [],
+ "extra9.call_by_name_9": [
+  "extra9.hook_9"
+ ],
+ "extra9.hook_9": [],
+ "extra9.legacy_9": [],
+ "extra9.old_helper_9": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events91.dispatch",
+  "extra9.call_by_name_9",
+  "service90.TaskService.create",
+  "service90.TaskService.listing",
+  "service90.make_service",
+  "shapes92.TaskBase.run"
+ ],
+ "repo90": [],
+ "repo90.TaskRepo.__init__": [],
+ "repo90.TaskRepo.render": [],
+ "repo90.TaskRepo.sync": [],
+ "service90": [],
+ "service90.TaskService.__init__": [
+  "repo90.TaskRepo.__init__"
+ ],
+ "service90.TaskService.create": [
+  "repo90.TaskRepo.sync",
+  "service90.TaskService.validate"
+ ],
+ "service90.TaskService.listing": [
+  "repo90.TaskRepo.render"
+ ],
+ "service90.TaskService.validate": [],
+ "service90.make_service": [
+  "service90.TaskService.__init__"
+ ],
+ "shapes92": [],
+ "shapes92.Account2.helper": [],
+ "shapes92.Account2.step": [
+  "shapes92.Account2.helper"
+ ],
+ "shapes92.Item0.helper": [],
+ "shapes92.Item0.step": [
+  "shapes92.Item0.helper"
+ ],
+ "shapes92.Item1.finish": [
+  "shapes92.TaskBase.finish"
+ ],
+ "shapes92.Item1.helper": [],
+ "shapes92.Item1.step": [
+  "shapes92.Item1.helper"
+ ],
+ "shapes92.TaskBase.finish": [],
+ "shapes92.TaskBase.prepare": [],
+ "shapes92.TaskBase.run": [
+  "shapes92.Account2.step",
+  "shapes92.Item0.step",
+  "shapes92.Item1.finish",
+  "shapes92.Item1.step",
+  "shapes92.TaskBase.finish",
+  "shapes92.TaskBase.prepare",
+  "shapes92.Ticket3.finish",
+  "shapes92.Ticket3.step"
+ ],
+ "shapes92.TaskBase.step": [],
+ "shapes92.Ticket3.finish": [
+  "shapes92.TaskBase.finish"
+ ],
+ "shapes92.Ticket3.helper": [],
+ "shapes92.Ticket3.step": [
+  "shapes92.Ticket3.helper"
+ ]
+}

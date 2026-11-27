@@ -1,0 +1,302 @@
+[
+ {
+  "repo": "requests",
+  "files": 19,
+  "ref_modules": 19,
+  "ref_edges": 73,
+  "v1_modules": 19,
+  "v1_edges": 59,
+  "v1_PRF": [
+   1.0,
+   0.8082,
+   0.8939
+  ],
+  "v2_modules": 19,
+  "v2_edges": 73,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 228,
+  "v1_calls": 60,
+  "v2_funcs": 248,
+  "v2_calls": 256,
+  "v1_cycles": 1,
+  "v2_cycles": 1,
+  "v1_s": 1.11,
+  "v2_s": 0.79,
+  "v1_MB": 3.0,
+  "v2_MB": 7.3
+ },
+ {
+  "repo": "flask",
+  "files": 24,
+  "ref_modules": 24,
+  "ref_edges": 95,
+  "v1_modules": 24,
+  "v1_edges": 74,
+  "v1_PRF": [
+   1.0,
+   0.7789,
+   0.8757
+  ],
+  "v2_modules": 24,
+  "v2_edges": 95,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 311,
+  "v1_calls": 83,
+  "v2_funcs": 363,
+  "v2_calls": 243,
+  "v1_cycles": 1,
+  "v2_cycles": 1,
+  "v1_s": 1.45,
+  "v2_s": 0.97,
+  "v1_MB": 3.4,
+  "v2_MB": 8.2
+ },
+ {
+  "repo": "click",
+  "files": 17,
+  "ref_modules": 17,
+  "ref_edges": 61,
+  "v1_modules": 17,
+  "v1_edges": 48,
+  "v1_PRF": [
+   1.0,
+   0.7869,
+   0.8807
+  ],
+  "v2_modules": 17,
+  "v2_edges": 61,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 392,
+  "v1_calls": 190,
+  "v2_funcs": 541,
+  "v2_calls": 526,
+  "v1_cycles": 2,
+  "v2_cycles": 2,
+  "v1_s": 2.27,
+  "v2_s": 1.61,
+  "v1_MB": 8.9,
+  "v2_MB": 13.6
+ },
+ {
+  "repo": "jinja",
+  "files": 25,
+  "ref_modules": 25,
+  "ref_edges": 91,
+  "v1_modules": 25,
+  "v1_edges": 78,
+  "v1_PRF": [
+   1.0,
+   0.8571,
+   0.9231
+  ],
+  "v2_modules": 25,
+  "v2_edges": 91,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 621,
+  "v1_calls": 186,
+  "v2_funcs": 759,
+  "v2_calls": 978,
+  "v1_cycles": 1,
+  "v2_cycles": 1,
+  "v1_s": 3.23,
+  "v2_s": 2.07,
+  "v1_MB": 7.5,
+  "v2_MB": 17.3
+ },
+ {
+  "repo": "itsdangerous",
+  "files": 8,
+  "ref_modules": 8,
+  "ref_edges": 21,
+  "v1_modules": 8,
+  "v1_edges": 15,
+  "v1_PRF": [
+   1.0,
+   0.7143,
+   0.8333
+  ],
+  "v2_modules": 8,
+  "v2_edges": 21,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 43,
+  "v1_calls": 16,
+  "v2_funcs": 54,
+  "v2_calls": 63,
+  "v1_cycles": 0,
+  "v2_cycles": 0,
+  "v1_s": 0.23,
+  "v2_s": 0.17,
+  "v1_MB": 1.2,
+  "v2_MB": 1.3
+ },
+ {
+  "repo": "httpx",
+  "files": 23,
+  "ref_modules": 23,
+  "ref_edges": 87,
+  "v1_modules": 23,
+  "v1_edges": 69,
+  "v1_PRF": [
+   1.0,
+   0.7931,
+   0.8846
+  ],
+  "v2_modules": 23,
+  "v2_edges": 87,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 315,
+  "v1_calls": 108,
+  "v2_funcs": 434,
+  "v2_calls": 400,
+  "v1_cycles": 1,
+  "v2_cycles": 2,
+  "v1_s": 1.7,
+  "v2_s": 1.2,
+  "v1_MB": 5.0,
+  "v2_MB": 9.8
+ },
+ {
+  "repo": "attrs",
+  "files": 19,
+  "ref_modules": 19,
+  "ref_edges": 43,
+  "v1_modules": 19,
+  "v1_edges": 28,
+  "v1_PRF": [
+   1.0,
+   0.6512,
+   0.7887
+  ],
+  "v2_modules": 19,
+  "v2_edges": 43,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 174,
+  "v1_calls": 90,
+  "v2_funcs": 211,
+  "v2_calls": 169,
+  "v1_cycles": 0,
+  "v2_cycles": 1,
+  "v1_s": 0.88,
+  "v2_s": 0.6,
+  "v1_MB": 7.6,
+  "v2_MB": 8.5
+ },
+ {
+  "repo": "tqdm",
+  "files": 31,
+  "ref_modules": 31,
+  "ref_edges": 60,
+  "v1_modules": 31,
+  "v1_edges": 50,
+  "v1_PRF": [
+   1.0,
+   0.8333,
+   0.9091
+  ],
+  "v2_modules": 31,
+  "v2_edges": 60,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 210,
+  "v1_calls": 94,
+  "v2_funcs": 232,
+  "v2_calls": 201,
+  "v1_cycles": 0,
+  "v2_cycles": 1,
+  "v1_s": 0.98,
+  "v2_s": 0.73,
+  "v1_MB": 4.2,
+  "v2_MB": 5.5
+ },
+ {
+  "repo": "rich",
+  "files": 100,
+  "ref_modules": 100,
+  "ref_edges": 421,
+  "v1_modules": 100,
+  "v1_edges": 406,
+  "v1_PRF": [
+   0.9975,
+   0.962,
+   0.9794
+  ],
+  "v2_modules": 100,
+  "v2_edges": 421,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 747,
+  "v1_calls": 385,
+  "v2_funcs": 888,
+  "v2_calls": 1254,
+  "v1_cycles": 2,
+  "v2_cycles": 4,
+  "v1_s": 7.54,
+  "v2_s": 4.51,
+  "v1_MB": 9.7,
+  "v2_MB": 42.9
+ },
+ {
+  "repo": "python-dotenv",
+  "files": 8,
+  "ref_modules": 8,
+  "ref_edges": 8,
+  "v1_modules": 8,
+  "v1_edges": 6,
+  "v1_PRF": [
+   1.0,
+   0.75,
+   0.8571
+  ],
+  "v2_modules": 8,
+  "v2_edges": 8,
+  "v2_PRF": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "v1_funcs": 59,
+  "v1_calls": 29,
+  "v2_funcs": 66,
+  "v2_calls": 68,
+  "v1_cycles": 0,
+  "v2_cycles": 0,
+  "v1_s": 0.35,
+  "v2_s": 0.23,
+  "v1_MB": 1.4,
+  "v2_MB": 1.7
+ }
+]

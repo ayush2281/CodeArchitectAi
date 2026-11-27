@@ -1,0 +1,46 @@
+{
+ "events270": [
+  "events270.register",
+  "events270.register.deco"
+ ],
+ "events270.dispatch": [
+  "events270.on_render0",
+  "events270.on_send1",
+  "events270.on_send2"
+ ],
+ "events270.on_render0": [],
+ "events270.on_send1": [],
+ "events270.on_send2": [],
+ "events270.register": [],
+ "events270.register.deco": [],
+ "fmt272": [],
+ "fmt272.EventFmt1.render": [],
+ "fmt272.OrderFmt0.render": [],
+ "fmt272.UserFmt2.render": [],
+ "fmt272.get_formatter": [],
+ "main": [
+  "events270.dispatch",
+  "fmt272.EventFmt1.render",
+  "fmt272.OrderFmt0.render",
+  "fmt272.get_formatter",
+  "res271.consume"
+ ],
+ "res271": [],
+ "res271.Resource.__enter__": [
+  "res271.Resource.open"
+ ],
+ "res271.Resource.__exit__": [
+  "res271.Resource.close"
+ ],
+ "res271.Resource.close": [],
+ "res271.Resource.open": [],
+ "res271.consume": [
+  "res271.Resource.__enter__",
+  "res271.Resource.__exit__",
+  "res271.stream"
+ ],
+ "res271.stream": [
+  "res271.transform"
+ ],
+ "res271.transform": []
+}

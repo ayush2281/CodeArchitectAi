@@ -1,0 +1,68 @@
+{
+ "extra36": [],
+ "extra36.Unused36.never_36": [],
+ "extra36.call_by_name_36": [
+  "extra36.hook_36"
+ ],
+ "extra36.hook_36": [],
+ "extra36.legacy_36": [],
+ "extra36.old_helper_36": [],
+ "fmt362": [],
+ "fmt362.MessageFmt1.render": [],
+ "fmt362.OrderFmt0.render": [],
+ "fmt362.ReportFmt2.render": [],
+ "fmt362.get_formatter": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra36.call_by_name_36",
+  "fmt362.MessageFmt1.render",
+  "fmt362.OrderFmt0.render",
+  "fmt362.get_formatter",
+  "model361.Order.__add__",
+  "model361.Order.__call__",
+  "model361.Order.__init__",
+  "model361.Order.double",
+  "model361.Order.from_text",
+  "service360.CartService.create",
+  "service360.CartService.listing",
+  "service360.make_service"
+ ],
+ "model361": [],
+ "model361.Order.__add__": [
+  "model361.Order.__init__"
+ ],
+ "model361.Order.__call__": [
+  "model361.Order.scale"
+ ],
+ "model361.Order.__init__": [],
+ "model361.Order.double": [
+  "model361.Order.scale"
+ ],
+ "model361.Order.from_text": [
+  "model361.Order.__init__",
+  "model361.Order.parse"
+ ],
+ "model361.Order.parse": [],
+ "model361.Order.scale": [],
+ "repo360": [],
+ "repo360.CartRepo.__init__": [],
+ "repo360.CartRepo.check": [],
+ "repo360.CartRepo.format": [],
+ "service360": [],
+ "service360.CartService.__init__": [
+  "repo360.CartRepo.__init__"
+ ],
+ "service360.CartService.create": [
+  "repo360.CartRepo.format",
+  "service360.CartService.validate"
+ ],
+ "service360.CartService.listing": [
+  "repo360.CartRepo.check"
+ ],
+ "service360.CartService.validate": [],
+ "service360.make_service": [
+  "service360.CartService.__init__"
+ ]
+}

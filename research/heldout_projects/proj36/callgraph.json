@@ -1,0 +1,60 @@
+{
+ "events361": [
+  "events361.register",
+  "events361.register.deco"
+ ],
+ "events361.dispatch": [
+  "events361.on_build2",
+  "events361.on_check0",
+  "events361.on_merge1"
+ ],
+ "events361.on_build2": [],
+ "events361.on_check0": [],
+ "events361.on_merge1": [],
+ "events361.register": [],
+ "events361.register.deco": [],
+ "main": [
+  "events361.dispatch",
+  "model362.Invoice.__add__",
+  "model362.Invoice.__call__",
+  "model362.Invoice.__init__",
+  "model362.Invoice.double",
+  "model362.Invoice.from_text",
+  "rec360.counter",
+  "rec360.counter.inc",
+  "rec360.even",
+  "rec360.fact"
+ ],
+ "model362": [],
+ "model362.Invoice.__add__": [
+  "model362.Invoice.__init__"
+ ],
+ "model362.Invoice.__call__": [
+  "model362.Invoice.scale"
+ ],
+ "model362.Invoice.__init__": [],
+ "model362.Invoice.double": [
+  "model362.Invoice.scale"
+ ],
+ "model362.Invoice.from_text": [
+  "model362.Invoice.__init__",
+  "model362.Invoice.parse"
+ ],
+ "model362.Invoice.parse": [],
+ "model362.Invoice.scale": [],
+ "rec360": [],
+ "rec360.bump": [],
+ "rec360.counter": [],
+ "rec360.counter.inc": [
+  "rec360.bump"
+ ],
+ "rec360.even": [
+  "rec360.odd"
+ ],
+ "rec360.fact": [
+  "rec360.fact"
+ ],
+ "rec360.odd": [
+  "rec360.even"
+ ]
+}

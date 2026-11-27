@@ -1,0 +1,30 @@
+{
+ "events171": [
+  "events171.register",
+  "events171.register.deco"
+ ],
+ "events171.dispatch": [
+  "events171.on_audit1",
+  "events171.on_format0",
+  "events171.on_send2"
+ ],
+ "events171.on_audit1": [],
+ "events171.on_format0": [],
+ "events171.on_send2": [],
+ "events171.register": [],
+ "events171.register.deco": [],
+ "func170": [],
+ "func170.apply_all": [
+  "func170.item_auditc",
+  "func170.report_buildb"
+ ],
+ "func170.item_auditc": [
+  "func170.user_builda"
+ ],
+ "func170.report_buildb": [],
+ "func170.user_builda": [],
+ "main": [
+  "events171.dispatch",
+  "func170.apply_all"
+ ]
+}

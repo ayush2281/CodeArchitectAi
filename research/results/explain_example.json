@@ -1,0 +1,114 @@
+{
+ "changed": "click.types",
+ "ranked": [
+  {
+   "module": "click.core",
+   "confidence": 0.4556677003003551,
+   "contributions": {
+    "direct_dependent": 0.087,
+    "direct_dependency": -0.256,
+    "inverse_distance": 1.173,
+    "same_package": 0.204,
+    "log_fan_in": 0.9,
+    "log_modules": -2.443,
+    "history_ratio": 0.699
+   },
+   "history_used": true
+  },
+  {
+   "module": "click.termui",
+   "confidence": 0.42569419108755246,
+   "contributions": {
+    "direct_dependent": 0.087,
+    "indirect_dependency": 0.054,
+    "inverse_distance": 1.173,
+    "same_package": 0.204,
+    "log_fan_in": 0.568,
+    "log_modules": -2.443,
+    "history_ratio": 0.599
+   },
+   "history_used": true
+  },
+  {
+   "module": "click.utils",
+   "confidence": 0.36612026532912223,
+   "contributions": {
+    "direct_dependency": -0.256,
+    "indirect_dependent": 0.072,
+    "inverse_distance": 1.173,
+    "same_package": 0.204,
+    "log_fan_in": 0.943,
+    "log_modules": -2.443,
+    "history_ratio": 0.3
+   },
+   "history_used": true
+  },
+  {
+   "module": "click.exceptions",
+   "confidence": 0.3015362302112127,
+   "contributions": {
+    "direct_dependency": -0.256,
+    "indirect_dependent": 0.072,
+    "inverse_distance": 1.173,
+    "same_package": 0.204,
+    "log_fan_in": 0.852,
+    "log_modules": -2.443,
+    "history_ratio": 0.1
+   },
+   "history_used": true
+  },
+  {
+   "module": "click._compat",
+   "confidence": 0.2848031390385982,
+   "contributions": {
+    "direct_dependency": -0.256,
+    "inverse_distance": 1.173,
+    "same_package": 0.204,
+    "log_fan_in": 0.943,
+    "log_modules": -2.443
+   },
+   "history_used": true
+  },
+  {
+   "module": "click.shell_completion",
+   "confidence": 0.2452889790140437,
+   "contributions": {
+    "direct_dependency": -0.256,
+    "indirect_dependent": 0.072,
+    "inverse_distance": 1.173,
+    "same_package": 0.204,
+    "log_fan_in": 0.568,
+    "log_modules": -2.443,
+    "history_ratio": 0.1
+   },
+   "history_used": true
+  }
+ ],
+ "paths": {
+  "click.core": [
+   "click.core",
+   "click.types"
+  ],
+  "click.termui": [
+   "click.termui",
+   "click.types"
+  ],
+  "click.utils": [
+   "click.utils",
+   "click.globals",
+   "click.core",
+   "click.types"
+  ],
+  "click.exceptions": [
+   "click.exceptions",
+   "click.core",
+   "click.types"
+  ],
+  "click._compat": null,
+  "click.shell_completion": [
+   "click.shell_completion",
+   "click.core",
+   "click.types"
+  ]
+ }
+}

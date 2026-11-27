@@ -1,0 +1,44 @@
+{
+ "deco381": [
+  "deco381.logged"
+ ],
+ "deco381.logged": [],
+ "deco381.logged.wrapper": [
+  "deco381.note",
+  "deco381.order_send0",
+  "deco381.report_parse1",
+  "deco381.task_load2"
+ ],
+ "deco381.note": [],
+ "deco381.order_send0": [],
+ "deco381.pipeline": [
+  "deco381.logged.wrapper"
+ ],
+ "deco381.report_parse1": [],
+ "deco381.task_load2": [],
+ "main": [
+  "deco381.pipeline",
+  "service380.OrderService.create",
+  "service380.OrderService.listing",
+  "service380.make_service"
+ ],
+ "repo380": [],
+ "repo380.OrderRepo.__init__": [],
+ "repo380.OrderRepo.send": [],
+ "repo380.OrderRepo.update": [],
+ "service380": [],
+ "service380.OrderService.__init__": [
+  "repo380.OrderRepo.__init__"
+ ],
+ "service380.OrderService.create": [
+  "repo380.OrderRepo.update",
+  "service380.OrderService.validate"
+ ],
+ "service380.OrderService.listing": [
+  "repo380.OrderRepo.send"
+ ],
+ "service380.OrderService.validate": [],
+ "service380.make_service": [
+  "service380.OrderService.__init__"
+ ]
+}

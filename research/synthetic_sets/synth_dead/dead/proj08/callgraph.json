@@ -1,0 +1,52 @@
+{
+ "extra8": [],
+ "extra8.Unused8.never_8": [],
+ "extra8.call_by_name_8": [
+  "extra8.hook_8"
+ ],
+ "extra8.hook_8": [],
+ "extra8.legacy_8": [],
+ "extra8.old_helper_8": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra8.call_by_name_8",
+  "mix82.Model.__init__",
+  "mix82.Model.run",
+  "strat81.Context.__init__",
+  "strat81.Context.execute",
+  "util80.core.ticket_checkx",
+  "util80.extra.combo"
+ ],
+ "mix82": [],
+ "mix82.LogMixin.log": [],
+ "mix82.Model.__init__": [],
+ "mix82.Model.run": [
+  "mix82.LogMixin.log",
+  "mix82.SaveMixin.save"
+ ],
+ "mix82.SaveMixin.save": [
+  "mix82.LogMixin.log"
+ ],
+ "strat81": [],
+ "strat81.Context.__init__": [],
+ "strat81.Context.execute": [
+  "strat81.build_strategy0",
+  "strat81.sync_strategy1"
+ ],
+ "strat81.build_strategy0": [],
+ "strat81.send_strategy2": [],
+ "strat81.sync_strategy1": [],
+ "util80": [],
+ "util80.core": [],
+ "util80.core.inner": [],
+ "util80.core.invoice_loady": [],
+ "util80.core.ticket_checkx": [
+  "util80.core.inner"
+ ],
+ "util80.extra": [],
+ "util80.extra.combo": [
+  "util80.core.invoice_loady"
+ ]
+}

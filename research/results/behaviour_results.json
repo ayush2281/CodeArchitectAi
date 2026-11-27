@@ -1,0 +1,463 @@
+{
+ "summary": {
+  "functions": 25,
+  "executed_mutants": 23,
+  "tp": 29,
+  "fp": 0,
+  "fn": 0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "mutants_exactly_right": 23,
+  "not_executed": [
+   "src.analyzer.ast_parser.extract_definitions",
+   "src.analyzer.impact_analysis.find_affected_modules"
+  ]
+ },
+ "rows": [
+  {
+   "function": "src.analyzer.analyze_project.analyze_project",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [],
+   "predicted": [],
+   "tp": 0,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.architecture_analysis.analyze_dependencies",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.architecture_analysis.find_circular_dependencies",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.architecture_analysis.find_high_connectivity_modules",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.architecture_issues.detect_architecture_issues",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.architecture_issues.summarize_architecture_issues",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.architecture_report.generate_architecture_report",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.ast_parser.parse_python_file",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.dependency_graph.build_dependency_graph"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.dependency_graph.build_dependency_graph"
+   ],
+   "tp": 2,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.ast_parser.extract_imports",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.dependency_graph.build_dependency_graph"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.dependency_graph.build_dependency_graph"
+   ],
+   "tp": 2,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.ast_parser.extract_definitions",
+   "executed": false,
+   "scenarios_failed": [],
+   "observed": [],
+   "predicted": [],
+   "tp": 0,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.call_graph.build_call_graph",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.call_graph._get_called_name",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.call_graph.build_call_graph"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.call_graph.build_call_graph"
+   ],
+   "tp": 2,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.dead_code.is_private_function",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.dead_code.find_potentially_unreferenced_functions"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.dead_code.find_potentially_unreferenced_functions"
+   ],
+   "tp": 2,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.dead_code.find_potentially_unreferenced_functions",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.dependency_graph.build_dependency_graph",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.dependency_graph._add_dependency",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.dependency_graph.build_dependency_graph"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.dependency_graph.build_dependency_graph"
+   ],
+   "tp": 2,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.graph_visualization.create_dependency_graph",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.graph_visualization.get_graph_statistics",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.graph_visualization.save_dependency_graph",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.graph_visualization.save_call_graph",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.impact_analysis.find_affected_modules",
+   "executed": false,
+   "scenarios_failed": [],
+   "observed": [],
+   "predicted": [],
+   "tp": 0,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.impact_analysis.find_affected_functions",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.impact_analysis.explain_impact"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.impact_analysis.explain_impact"
+   ],
+   "tp": 2,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.impact_analysis.explain_impact",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.llm_client.generate_response",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.architecture_report.generate_architecture_report"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project",
+    "src.analyzer.architecture_report.generate_architecture_report"
+   ],
+   "tp": 2,
+   "fp": 0,
+   "fn": 0
+  },
+  {
+   "function": "src.analyzer.repository_scanner.find_python_files",
+   "executed": true,
+   "scenarios_failed": [
+    "scenario_self",
+    "scenario_indirect",
+    "scenario_small"
+   ],
+   "observed": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "predicted": [
+    "src.analyzer.analyze_project.analyze_project"
+   ],
+   "tp": 1,
+   "fp": 0,
+   "fn": 0
+  }
+ ]
+}

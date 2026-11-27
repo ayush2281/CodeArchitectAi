@@ -1,0 +1,56 @@
+{
+ "deco71": [
+  "deco71.logged"
+ ],
+ "deco71.item_check2": [],
+ "deco71.item_sync1": [],
+ "deco71.logged": [],
+ "deco71.logged.wrapper": [
+  "deco71.item_check2",
+  "deco71.item_sync1",
+  "deco71.note",
+  "deco71.order_format0"
+ ],
+ "deco71.note": [],
+ "deco71.order_format0": [],
+ "deco71.pipeline": [
+  "deco71.logged.wrapper"
+ ],
+ "extra7": [],
+ "extra7.Unused7.never_7": [],
+ "extra7.call_by_name_7": [
+  "extra7.hook_7"
+ ],
+ "extra7.hook_7": [],
+ "extra7.legacy_7": [],
+ "extra7.old_helper_7": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco71.pipeline",
+  "extra7.call_by_name_7",
+  "model70.Job.__add__",
+  "model70.Job.__call__",
+  "model70.Job.__init__",
+  "model70.Job.double",
+  "model70.Job.from_text"
+ ],
+ "model70": [],
+ "model70.Job.__add__": [
+  "model70.Job.__init__"
+ ],
+ "model70.Job.__call__": [
+  "model70.Job.scale"
+ ],
+ "model70.Job.__init__": [],
+ "model70.Job.double": [
+  "model70.Job.scale"
+ ],
+ "model70.Job.from_text": [
+  "model70.Job.__init__",
+  "model70.Job.parse"
+ ],
+ "model70.Job.parse": [],
+ "model70.Job.scale": []
+}

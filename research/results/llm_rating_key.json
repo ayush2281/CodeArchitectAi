@@ -1,0 +1,152 @@
+[
+ {
+  "item_id": "R01",
+  "repo": "jinja",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R02",
+  "repo": "pluggy",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R03",
+  "repo": "tomli",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R04",
+  "repo": "tomli",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R05",
+  "repo": "requests",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R06",
+  "repo": "pluggy",
+  "model": "openai/gpt-oss-120b"
+ },
+ {
+  "item_id": "R07",
+  "repo": "httpx",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R08",
+  "repo": "markupsafe",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R09",
+  "repo": "requests",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R10",
+  "repo": "itsdangerous",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R11",
+  "repo": "pluggy",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R12",
+  "repo": "markupsafe",
+  "model": "openai/gpt-oss-120b"
+ },
+ {
+  "item_id": "R13",
+  "repo": "itsdangerous",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R14",
+  "repo": "itsdangerous",
+  "model": "openai/gpt-oss-120b"
+ },
+ {
+  "item_id": "R15",
+  "repo": "python-dotenv",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R16",
+  "repo": "flask",
+  "model": "openai/gpt-oss-120b"
+ },
+ {
+  "item_id": "R17",
+  "repo": "python-dotenv",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R18",
+  "repo": "jinja",
+  "model": "openai/gpt-oss-120b"
+ },
+ {
+  "item_id": "R19",
+  "repo": "click",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R20",
+  "repo": "requests",
+  "model": "openai/gpt-oss-120b"
+ },
+ {
+  "item_id": "R21",
+  "repo": "python-dotenv",
+  "model": "openai/gpt-oss-120b"
+ },
+ {
+  "item_id": "R22",
+  "repo": "markupsafe",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R23",
+  "repo": "jinja",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R24",
+  "repo": "click",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R25",
+  "repo": "flask",
+  "model": "openai/gpt-oss-20b"
+ },
+ {
+  "item_id": "R26",
+  "repo": "httpx",
+  "model": "openai/gpt-oss-120b"
+ },
+ {
+  "item_id": "R27",
+  "repo": "flask",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R28",
+  "repo": "click",
+  "model": "openai/gpt-oss-120b"
+ },
+ {
+  "item_id": "R29",
+  "repo": "httpx",
+  "model": "qwen/qwen3.8-27b"
+ },
+ {
+  "item_id": "R30",
+  "repo": "tomli",
+  "model": "openai/gpt-oss-120b"
+ }
+]

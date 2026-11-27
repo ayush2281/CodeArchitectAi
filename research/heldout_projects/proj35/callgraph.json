@@ -1,0 +1,41 @@
+{
+ "deco351": [
+  "deco351.logged"
+ ],
+ "deco351.invoice_save2": [],
+ "deco351.item_build0": [],
+ "deco351.logged": [],
+ "deco351.logged.wrapper": [
+  "deco351.invoice_save2",
+  "deco351.item_build0",
+  "deco351.message_sync1",
+  "deco351.note"
+ ],
+ "deco351.message_sync1": [],
+ "deco351.note": [],
+ "deco351.pipeline": [
+  "deco351.logged.wrapper"
+ ],
+ "main": [
+  "deco351.pipeline",
+  "rec350.counter",
+  "rec350.counter.inc",
+  "rec350.even",
+  "rec350.fact"
+ ],
+ "rec350": [],
+ "rec350.bump": [],
+ "rec350.counter": [],
+ "rec350.counter.inc": [
+  "rec350.bump"
+ ],
+ "rec350.even": [
+  "rec350.odd"
+ ],
+ "rec350.fact": [
+  "rec350.fact"
+ ],
+ "rec350.odd": [
+  "rec350.even"
+ ]
+}

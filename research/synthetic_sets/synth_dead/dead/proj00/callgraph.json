@@ -1,0 +1,60 @@
+{
+ "extra0": [],
+ "extra0.Unused0.never_0": [],
+ "extra0.call_by_name_0": [
+  "extra0.hook_0"
+ ],
+ "extra0.hook_0": [],
+ "extra0.legacy_0": [],
+ "extra0.old_helper_0": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra0.call_by_name_0",
+  "mix00.Model.__init__",
+  "mix00.Model.run",
+  "res02.consume",
+  "util01.core.message_syncx",
+  "util01.extra.combo"
+ ],
+ "mix00": [],
+ "mix00.LogMixin.log": [],
+ "mix00.Model.__init__": [],
+ "mix00.Model.run": [
+  "mix00.LogMixin.log",
+  "mix00.SaveMixin.save"
+ ],
+ "mix00.SaveMixin.save": [
+  "mix00.LogMixin.log"
+ ],
+ "res02": [],
+ "res02.Resource.__enter__": [
+  "res02.Resource.open"
+ ],
+ "res02.Resource.__exit__": [
+  "res02.Resource.close"
+ ],
+ "res02.Resource.close": [],
+ "res02.Resource.open": [],
+ "res02.consume": [
+  "res02.Resource.__enter__",
+  "res02.Resource.__exit__",
+  "res02.stream"
+ ],
+ "res02.stream": [
+  "res02.transform"
+ ],
+ "res02.transform": [],
+ "util01": [],
+ "util01.core": [],
+ "util01.core.inner": [],
+ "util01.core.message_syncx": [
+  "util01.core.inner"
+ ],
+ "util01.core.task_parsey": [],
+ "util01.extra": [],
+ "util01.extra.combo": [
+  "util01.core.task_parsey"
+ ]
+}

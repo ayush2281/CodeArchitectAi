@@ -1,0 +1,60 @@
+{
+ "events111": [
+  "events111.register",
+  "events111.register.deco"
+ ],
+ "events111.dispatch": [
+  "events111.on_check1",
+  "events111.on_send0",
+  "events111.on_sync2"
+ ],
+ "events111.on_check1": [],
+ "events111.on_send0": [],
+ "events111.on_sync2": [],
+ "events111.register": [],
+ "events111.register.deco": [],
+ "main": [
+  "events111.dispatch",
+  "model112.Report.__add__",
+  "model112.Report.__call__",
+  "model112.Report.__init__",
+  "model112.Report.double",
+  "model112.Report.from_text",
+  "res110.consume"
+ ],
+ "model112": [],
+ "model112.Report.__add__": [
+  "model112.Report.__init__"
+ ],
+ "model112.Report.__call__": [
+  "model112.Report.scale"
+ ],
+ "model112.Report.__init__": [],
+ "model112.Report.double": [
+  "model112.Report.scale"
+ ],
+ "model112.Report.from_text": [
+  "model112.Report.__init__",
+  "model112.Report.parse"
+ ],
+ "model112.Report.parse": [],
+ "model112.Report.scale": [],
+ "res110": [],
+ "res110.Resource.__enter__": [
+  "res110.Resource.open"
+ ],
+ "res110.Resource.__exit__": [
+  "res110.Resource.close"
+ ],
+ "res110.Resource.close": [],
+ "res110.Resource.open": [],
+ "res110.consume": [
+  "res110.Resource.__enter__",
+  "res110.Resource.__exit__",
+  "res110.stream"
+ ],
+ "res110.stream": [
+  "res110.transform"
+ ],
+ "res110.transform": []
+}

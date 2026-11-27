@@ -1,0 +1,35 @@
+{
+ "main": [
+  "mix341.Model.__init__",
+  "mix341.Model.run",
+  "rec340.counter",
+  "rec340.counter.inc",
+  "rec340.even",
+  "rec340.fact"
+ ],
+ "mix341": [],
+ "mix341.LogMixin.log": [],
+ "mix341.Model.__init__": [],
+ "mix341.Model.run": [
+  "mix341.LogMixin.log",
+  "mix341.SaveMixin.save"
+ ],
+ "mix341.SaveMixin.save": [
+  "mix341.LogMixin.log"
+ ],
+ "rec340": [],
+ "rec340.bump": [],
+ "rec340.counter": [],
+ "rec340.counter.inc": [
+  "rec340.bump"
+ ],
+ "rec340.even": [
+  "rec340.odd"
+ ],
+ "rec340.fact": [
+  "rec340.fact"
+ ],
+ "rec340.odd": [
+  "rec340.even"
+ ]
+}

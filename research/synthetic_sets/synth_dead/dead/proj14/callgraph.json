@@ -1,0 +1,53 @@
+{
+ "deco141": [
+  "deco141.logged"
+ ],
+ "deco141.event_parse1": [],
+ "deco141.item_build0": [],
+ "deco141.item_send2": [],
+ "deco141.logged": [],
+ "deco141.logged.wrapper": [
+  "deco141.event_parse1",
+  "deco141.item_build0",
+  "deco141.item_send2",
+  "deco141.note"
+ ],
+ "deco141.note": [],
+ "deco141.pipeline": [
+  "deco141.logged.wrapper"
+ ],
+ "extra14": [],
+ "extra14.Unused14.never_14": [],
+ "extra14.call_by_name_14": [
+  "extra14.hook_14"
+ ],
+ "extra14.hook_14": [],
+ "extra14.legacy_14": [],
+ "extra14.old_helper_14": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco141.pipeline",
+  "extra14.call_by_name_14",
+  "res140.consume"
+ ],
+ "res140": [],
+ "res140.Resource.__enter__": [
+  "res140.Resource.open"
+ ],
+ "res140.Resource.__exit__": [
+  "res140.Resource.close"
+ ],
+ "res140.Resource.close": [],
+ "res140.Resource.open": [],
+ "res140.consume": [
+  "res140.Resource.__enter__",
+  "res140.Resource.__exit__",
+  "res140.stream"
+ ],
+ "res140.stream": [
+  "res140.transform"
+ ],
+ "res140.transform": []
+}

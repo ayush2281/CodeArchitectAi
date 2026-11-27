@@ -1,0 +1,236 @@
+[
+ {
+  "id": 1,
+  "repo": "requests",
+  "module": "requests.packages",
+  "file": "<local-path>"
+ },
+ {
+  "id": 2,
+  "repo": "requests",
+  "module": "requests.compat",
+  "file": "<local-path>"
+ },
+ {
+  "id": 3,
+  "repo": "flask",
+  "module": "flask.testing",
+  "file": "<local-path>"
+ },
+ {
+  "id": 4,
+  "repo": "flask",
+  "module": "flask.sansio.app",
+  "file": "<local-path>"
+ },
+ {
+  "id": 5,
+  "repo": "click",
+  "module": "click.decorators",
+  "file": "<local-path>"
+ },
+ {
+  "id": 6,
+  "repo": "click",
+  "module": "click.exceptions",
+  "file": "<local-path>"
+ },
+ {
+  "id": 7,
+  "repo": "jinja",
+  "module": "jinja2.parser",
+  "file": "<local-path>"
+ },
+ {
+  "id": 8,
+  "repo": "jinja",
+  "module": "jinja2.constants",
+  "file": "<local-path>"
+ },
+ {
+  "id": 9,
+  "repo": "itsdangerous",
+  "module": "itsdangerous.url_safe",
+  "file": "<local-path>"
+ },
+ {
+  "id": 10,
+  "repo": "itsdangerous",
+  "module": "itsdangerous.timed",
+  "file": "<local-path>"
+ },
+ {
+  "id": 11,
+  "repo": "httpx",
+  "module": "httpx._auth",
+  "file": "<local-path>"
+ },
+ {
+  "id": 12,
+  "repo": "httpx",
+  "module": "httpx._transports.asgi",
+  "file": "<local-path>"
+ },
+ {
+  "id": 13,
+  "repo": "attrs",
+  "module": "attr.setters",
+  "file": "<local-path>"
+ },
+ {
+  "id": 14,
+  "repo": "attrs",
+  "module": "attr.converters",
+  "file": "<local-path>"
+ },
+ {
+  "id": 15,
+  "repo": "tqdm",
+  "module": "tqdm.autonotebook",
+  "file": "<local-path>"
+ },
+ {
+  "id": 16,
+  "repo": "tqdm",
+  "module": "tqdm._tqdm_pandas",
+  "file": "<local-path>"
+ },
+ {
+  "id": 17,
+  "repo": "rich",
+  "module": "rich.tree",
+  "file": "<local-path>"
+ },
+ {
+  "id": 18,
+  "repo": "rich",
+  "module": "rich.columns",
+  "file": "<local-path>"
+ },
+ {
+  "id": 19,
+  "repo": "python-dotenv",
+  "module": "dotenv.ipython",
+  "file": "<local-path>"
+ },
+ {
+  "id": 20,
+  "repo": "python-dotenv",
+  "module": "dotenv.cli",
+  "file": "<local-path>"
+ },
+ {
+  "id": 21,
+  "repo": "werkzeug",
+  "module": "werkzeug.middleware.proxy_fix",
+  "file": "<local-path>"
+ },
+ {
+  "id": 22,
+  "repo": "werkzeug",
+  "module": "werkzeug.debug.console",
+  "file": "<local-path>"
+ },
+ {
+  "id": 23,
+  "repo": "markupsafe",
+  "module": "markupsafe",
+  "file": "<local-path>"
+ },
+ {
+  "id": 24,
+  "repo": "pluggy",
+  "module": "pluggy._result",
+  "file": "<local-path>"
+ },
+ {
+  "id": 25,
+  "repo": "pluggy",
+  "module": "pluggy._callers",
+  "file": "<local-path>"
+ },
+ {
+  "id": 26,
+  "repo": "more-itertools",
+  "module": "more_itertools.more",
+  "file": "<local-path>"
+ },
+ {
+  "id": 27,
+  "repo": "more-itertools",
+  "module": "more_itertools.recipes",
+  "file": "<local-path>"
+ },
+ {
+  "id": 28,
+  "repo": "urllib3",
+  "module": "urllib3.util.url",
+  "file": "<local-path>"
+ },
+ {
+  "id": 29,
+  "repo": "urllib3",
+  "module": "urllib3.fields",
+  "file": "<local-path>"
+ },
+ {
+  "id": 30,
+  "repo": "starlette",
+  "module": "starlette.staticfiles",
+  "file": "<local-path>"
+ },
+ {
+  "id": 31,
+  "repo": "starlette",
+  "module": "starlette.background",
+  "file": "<local-path>"
+ },
+ {
+  "id": 32,
+  "repo": "jsonschema",
+  "module": "jsonschema.benchmarks.unused_registry",
+  "file": "<local-path>"
+ },
+ {
+  "id": 33,
+  "repo": "jsonschema",
+  "module": "jsonschema.tests.test_utils",
+  "file": "<local-path>"
+ },
+ {
+  "id": 34,
+  "repo": "typer",
+  "module": "typer.rich_utils",
+  "file": "<local-path>"
+ },
+ {
+  "id": 35,
+  "repo": "typer",
+  "module": "typer",
+  "file": "<local-path>"
+ },
+ {
+  "id": 36,
+  "repo": "tomli",
+  "module": "tomli._re",
+  "file": "<local-path>"
+ },
+ {
+  "id": 37,
+  "repo": "tomli",
+  "module": "tomli._parser",
+  "file": "<local-path>"
+ },
+ {
+  "id": 38,
+  "repo": "idna",
+  "module": "idna.codec",
+  "file": "<local-path>"
+ },
+ {
+  "id": 39,
+  "repo": "idna",
+  "module": "idna.idnadata",
+  "file": "<local-path>"
+ }
+]

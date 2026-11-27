@@ -1,0 +1,2 @@
+from .m8 import value_m8
+value_m6 = 1

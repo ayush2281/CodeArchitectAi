@@ -1,0 +1,52 @@
+{
+ "extra30": [],
+ "extra30.Unused30.never_30": [],
+ "extra30.call_by_name_30": [
+  "extra30.hook_30"
+ ],
+ "extra30.hook_30": [],
+ "extra30.legacy_30": [],
+ "extra30.old_helper_30": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra30.call_by_name_30",
+  "shapes301.ReportBase.run",
+  "util300.core.message_savex",
+  "util300.extra.combo"
+ ],
+ "shapes301": [],
+ "shapes301.Invoice0.helper": [],
+ "shapes301.Invoice0.step": [
+  "shapes301.Invoice0.helper"
+ ],
+ "shapes301.Invoice1.finish": [
+  "shapes301.ReportBase.finish"
+ ],
+ "shapes301.Invoice1.helper": [],
+ "shapes301.Invoice1.step": [
+  "shapes301.Invoice1.helper"
+ ],
+ "shapes301.ReportBase.finish": [],
+ "shapes301.ReportBase.prepare": [],
+ "shapes301.ReportBase.run": [
+  "shapes301.Invoice0.step",
+  "shapes301.Invoice1.finish",
+  "shapes301.Invoice1.step",
+  "shapes301.ReportBase.finish",
+  "shapes301.ReportBase.prepare"
+ ],
+ "shapes301.ReportBase.step": [],
+ "util300": [],
+ "util300.core": [],
+ "util300.core.inner": [],
+ "util300.core.job_parsey": [],
+ "util300.core.message_savex": [
+  "util300.core.inner"
+ ],
+ "util300.extra": [],
+ "util300.extra.combo": [
+  "util300.core.job_parsey"
+ ]
+}

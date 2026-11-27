@@ -1,0 +1,43 @@
+{
+ "extra10": [],
+ "extra10.Unused10.never_10": [],
+ "extra10.call_by_name_10": [
+  "extra10.hook_10"
+ ],
+ "extra10.hook_10": [],
+ "extra10.legacy_10": [],
+ "extra10.old_helper_10": [],
+ "fmt101": [],
+ "fmt101.InvoiceFmt1.render": [],
+ "fmt101.JobFmt0.render": [],
+ "fmt101.ReportFmt2.render": [],
+ "fmt101.get_formatter": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra10.call_by_name_10",
+  "fmt101.InvoiceFmt1.render",
+  "fmt101.JobFmt0.render",
+  "fmt101.get_formatter",
+  "res100.consume"
+ ],
+ "res100": [],
+ "res100.Resource.__enter__": [
+  "res100.Resource.open"
+ ],
+ "res100.Resource.__exit__": [
+  "res100.Resource.close"
+ ],
+ "res100.Resource.close": [],
+ "res100.Resource.open": [],
+ "res100.consume": [
+  "res100.Resource.__enter__",
+  "res100.Resource.__exit__",
+  "res100.stream"
+ ],
+ "res100.stream": [
+  "res100.transform"
+ ],
+ "res100.transform": []
+}

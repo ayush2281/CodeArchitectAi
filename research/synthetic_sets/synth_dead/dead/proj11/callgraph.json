@@ -1,0 +1,49 @@
+{
+ "deco111": [
+  "deco111.logged"
+ ],
+ "deco111.account_parse2": [],
+ "deco111.job_sync1": [],
+ "deco111.logged": [],
+ "deco111.logged.wrapper": [
+  "deco111.account_parse2",
+  "deco111.job_sync1",
+  "deco111.note",
+  "deco111.task_format0"
+ ],
+ "deco111.note": [],
+ "deco111.pipeline": [
+  "deco111.logged.wrapper"
+ ],
+ "deco111.task_format0": [],
+ "events110": [
+  "events110.register",
+  "events110.register.deco"
+ ],
+ "events110.dispatch": [
+  "events110.on_merge1",
+  "events110.on_sync0",
+  "events110.on_update2"
+ ],
+ "events110.on_merge1": [],
+ "events110.on_sync0": [],
+ "events110.on_update2": [],
+ "events110.register": [],
+ "events110.register.deco": [],
+ "extra11": [],
+ "extra11.Unused11.never_11": [],
+ "extra11.call_by_name_11": [
+  "extra11.hook_11"
+ ],
+ "extra11.hook_11": [],
+ "extra11.legacy_11": [],
+ "extra11.old_helper_11": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco111.pipeline",
+  "events110.dispatch",
+  "extra11.call_by_name_11"
+ ]
+}

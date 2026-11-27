@@ -1,0 +1,51 @@
+{
+ "main": [
+  "res11.consume",
+  "shapes10.AccountBase.run"
+ ],
+ "res11": [],
+ "res11.Resource.__enter__": [
+  "res11.Resource.open"
+ ],
+ "res11.Resource.__exit__": [
+  "res11.Resource.close"
+ ],
+ "res11.Resource.close": [],
+ "res11.Resource.open": [],
+ "res11.consume": [
+  "res11.Resource.__enter__",
+  "res11.Resource.__exit__",
+  "res11.stream"
+ ],
+ "res11.stream": [
+  "res11.transform"
+ ],
+ "res11.transform": [],
+ "shapes10": [],
+ "shapes10.Account2.helper": [],
+ "shapes10.Account2.step": [
+  "shapes10.Account2.helper"
+ ],
+ "shapes10.AccountBase.finish": [],
+ "shapes10.AccountBase.prepare": [],
+ "shapes10.AccountBase.run": [
+  "shapes10.Account2.step",
+  "shapes10.AccountBase.finish",
+  "shapes10.AccountBase.prepare",
+  "shapes10.Job0.step",
+  "shapes10.User1.finish",
+  "shapes10.User1.step"
+ ],
+ "shapes10.AccountBase.step": [],
+ "shapes10.Job0.helper": [],
+ "shapes10.Job0.step": [
+  "shapes10.Job0.helper"
+ ],
+ "shapes10.User1.finish": [
+  "shapes10.AccountBase.finish"
+ ],
+ "shapes10.User1.helper": [],
+ "shapes10.User1.step": [
+  "shapes10.User1.helper"
+ ]
+}

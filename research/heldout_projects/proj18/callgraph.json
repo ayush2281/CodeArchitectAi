@@ -1,0 +1,81 @@
+{
+ "deco181": [
+  "deco181.logged"
+ ],
+ "deco181.logged": [],
+ "deco181.logged.wrapper": [
+  "deco181.message_audit2",
+  "deco181.note",
+  "deco181.report_send1",
+  "deco181.user_check0"
+ ],
+ "deco181.message_audit2": [],
+ "deco181.note": [],
+ "deco181.pipeline": [
+  "deco181.logged.wrapper"
+ ],
+ "deco181.report_send1": [],
+ "deco181.user_check0": [],
+ "main": [
+  "deco181.pipeline",
+  "service182.ItemService.create",
+  "service182.ItemService.listing",
+  "service182.make_service",
+  "shapes180.ReportBase.run"
+ ],
+ "repo182": [],
+ "repo182.ItemRepo.__init__": [],
+ "repo182.ItemRepo.save": [],
+ "repo182.ItemRepo.sync": [],
+ "service182": [],
+ "service182.ItemService.__init__": [
+  "repo182.ItemRepo.__init__"
+ ],
+ "service182.ItemService.create": [
+  "repo182.ItemRepo.save",
+  "service182.ItemService.validate"
+ ],
+ "service182.ItemService.listing": [
+  "repo182.ItemRepo.sync"
+ ],
+ "service182.ItemService.validate": [],
+ "service182.make_service": [
+  "service182.ItemService.__init__"
+ ],
+ "shapes180": [],
+ "shapes180.Account3.finish": [
+  "shapes180.ReportBase.finish"
+ ],
+ "shapes180.Account3.helper": [],
+ "shapes180.Account3.step": [
+  "shapes180.Account3.helper"
+ ],
+ "shapes180.Item1.finish": [
+  "shapes180.ReportBase.finish"
+ ],
+ "shapes180.Item1.helper": [],
+ "shapes180.Item1.step": [
+  "shapes180.Item1.helper"
+ ],
+ "shapes180.Order2.helper": [],
+ "shapes180.Order2.step": [
+  "shapes180.Order2.helper"
+ ],
+ "shapes180.ReportBase.finish": [],
+ "shapes180.ReportBase.prepare": [],
+ "shapes180.ReportBase.run": [
+  "shapes180.Account3.finish",
+  "shapes180.Account3.step",
+  "shapes180.Item1.finish",
+  "shapes180.Item1.step",
+  "shapes180.Order2.step",
+  "shapes180.ReportBase.finish",
+  "shapes180.ReportBase.prepare",
+  "shapes180.Ticket0.step"
+ ],
+ "shapes180.ReportBase.step": [],
+ "shapes180.Ticket0.helper": [],
+ "shapes180.Ticket0.step": [
+  "shapes180.Ticket0.helper"
+ ]
+}

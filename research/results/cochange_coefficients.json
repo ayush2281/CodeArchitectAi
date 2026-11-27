@@ -1,0 +1,31 @@
+{
+ "with_history": {
+  "intercept": -1.080853,
+  "direct_dependent": -0.12073,
+  "direct_dependency": -0.21701,
+  "indirect_dependent": 0.116421,
+  "indirect_dependency": 0.207738,
+  "inverse_distance": 1.367599,
+  "history_ratio": 1.872854,
+  "same_package": 0.171561,
+  "log_fan_in": 0.207531,
+  "log_modules": -0.686968
+ },
+ "without_history": {
+  "intercept": -0.249232,
+  "direct_dependent": 0.043268,
+  "direct_dependency": -0.151024,
+  "indirect_dependent": 0.145495,
+  "indirect_dependency": 0.235622,
+  "inverse_distance": 1.355497,
+  "same_package": 0.150111,
+  "log_fan_in": 0.295743,
+  "log_modules": -0.903351
+ },
+ "trained_on": {
+  "protocol": "temporal: newest 30% of qualifying commits, structure and history from before them",
+  "repositories": 17,
+  "pairs": 27816,
+  "positives": 3482
+ }
+}

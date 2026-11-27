@@ -1,0 +1,71 @@
+{
+ "extra3": [],
+ "extra3.Unused3.never_3": [],
+ "extra3.call_by_name_3": [
+  "extra3.hook_3"
+ ],
+ "extra3.hook_3": [],
+ "extra3.legacy_3": [],
+ "extra3.old_helper_3": [],
+ "func32": [],
+ "func32.account_buildc": [
+  "func32.order_checka"
+ ],
+ "func32.apply_all": [
+  "func32.account_buildc",
+  "func32.cart_updateb"
+ ],
+ "func32.cart_updateb": [],
+ "func32.order_checka": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra3.call_by_name_3",
+  "func32.apply_all",
+  "model31.Account.__add__",
+  "model31.Account.__call__",
+  "model31.Account.__init__",
+  "model31.Account.double",
+  "model31.Account.from_text",
+  "service30.AccountService.create",
+  "service30.AccountService.listing",
+  "service30.make_service"
+ ],
+ "model31": [],
+ "model31.Account.__add__": [
+  "model31.Account.__init__"
+ ],
+ "model31.Account.__call__": [
+  "model31.Account.scale"
+ ],
+ "model31.Account.__init__": [],
+ "model31.Account.double": [
+  "model31.Account.scale"
+ ],
+ "model31.Account.from_text": [
+  "model31.Account.__init__",
+  "model31.Account.parse"
+ ],
+ "model31.Account.parse": [],
+ "model31.Account.scale": [],
+ "repo30": [],
+ "repo30.AccountRepo.__init__": [],
+ "repo30.AccountRepo.check": [],
+ "repo30.AccountRepo.save": [],
+ "service30": [],
+ "service30.AccountService.__init__": [
+  "repo30.AccountRepo.__init__"
+ ],
+ "service30.AccountService.create": [
+  "repo30.AccountRepo.check",
+  "service30.AccountService.validate"
+ ],
+ "service30.AccountService.listing": [
+  "repo30.AccountRepo.save"
+ ],
+ "service30.AccountService.validate": [],
+ "service30.make_service": [
+  "service30.AccountService.__init__"
+ ]
+}

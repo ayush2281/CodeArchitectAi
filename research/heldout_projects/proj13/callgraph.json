@@ -1,0 +1,58 @@
+{
+ "main": [
+  "res131.consume",
+  "service130.ReportService.create",
+  "service130.ReportService.listing",
+  "service130.make_service",
+  "util132.core.report_syncx",
+  "util132.extra.combo"
+ ],
+ "repo130": [],
+ "repo130.ReportRepo.__init__": [],
+ "repo130.ReportRepo.render": [],
+ "repo130.ReportRepo.update": [],
+ "res131": [],
+ "res131.Resource.__enter__": [
+  "res131.Resource.open"
+ ],
+ "res131.Resource.__exit__": [
+  "res131.Resource.close"
+ ],
+ "res131.Resource.close": [],
+ "res131.Resource.open": [],
+ "res131.consume": [
+  "res131.Resource.__enter__",
+  "res131.Resource.__exit__",
+  "res131.stream"
+ ],
+ "res131.stream": [
+  "res131.transform"
+ ],
+ "res131.transform": [],
+ "service130": [],
+ "service130.ReportService.__init__": [
+  "repo130.ReportRepo.__init__"
+ ],
+ "service130.ReportService.create": [
+  "repo130.ReportRepo.render",
+  "service130.ReportService.validate"
+ ],
+ "service130.ReportService.listing": [
+  "repo130.ReportRepo.update"
+ ],
+ "service130.ReportService.validate": [],
+ "service130.make_service": [
+  "service130.ReportService.__init__"
+ ],
+ "util132": [],
+ "util132.core": [],
+ "util132.core.inner": [],
+ "util132.core.report_sendy": [],
+ "util132.core.report_syncx": [
+  "util132.core.inner"
+ ],
+ "util132.extra": [],
+ "util132.extra.combo": [
+  "util132.core.report_sendy"
+ ]
+}

@@ -1,0 +1,66 @@
+{
+ "events270": [
+  "events270.register",
+  "events270.register.deco"
+ ],
+ "events270.dispatch": [
+  "events270.on_check2",
+  "events270.on_parse0",
+  "events270.on_sync1"
+ ],
+ "events270.on_check2": [],
+ "events270.on_parse0": [],
+ "events270.on_sync1": [],
+ "events270.register": [],
+ "events270.register.deco": [],
+ "extra27": [],
+ "extra27.Unused27.never_27": [],
+ "extra27.call_by_name_27": [
+  "extra27.hook_27"
+ ],
+ "extra27.hook_27": [],
+ "extra27.legacy_27": [],
+ "extra27.old_helper_27": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events270.dispatch",
+  "extra27.call_by_name_27",
+  "service272.TaskService.create",
+  "service272.TaskService.listing",
+  "service272.make_service",
+  "util271.core.cart_auditx",
+  "util271.extra.combo"
+ ],
+ "repo272": [],
+ "repo272.TaskRepo.__init__": [],
+ "repo272.TaskRepo.build": [],
+ "repo272.TaskRepo.check": [],
+ "service272": [],
+ "service272.TaskService.__init__": [
+  "repo272.TaskRepo.__init__"
+ ],
+ "service272.TaskService.create": [
+  "repo272.TaskRepo.check",
+  "service272.TaskService.validate"
+ ],
+ "service272.TaskService.listing": [
+  "repo272.TaskRepo.build"
+ ],
+ "service272.TaskService.validate": [],
+ "service272.make_service": [
+  "service272.TaskService.__init__"
+ ],
+ "util271": [],
+ "util271.core": [],
+ "util271.core.cart_auditx": [
+  "util271.core.inner"
+ ],
+ "util271.core.inner": [],
+ "util271.core.report_mergey": [],
+ "util271.extra": [],
+ "util271.extra.combo": [
+  "util271.core.report_mergey"
+ ]
+}

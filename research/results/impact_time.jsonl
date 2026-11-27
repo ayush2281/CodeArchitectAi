@@ -1,0 +1,20 @@
+{"repo": "requests", "engine": "v1", "target": "requests.compat", "ancestors": 14, "seconds": 0.009}
+{"repo": "requests", "engine": "v2", "target": "requests.compat", "ancestors": 15, "seconds": 0.01}
+{"repo": "flask", "engine": "v1", "target": "flask.json", "ancestors": 20, "seconds": 4.217}
+{"repo": "flask", "engine": "v2", "target": "flask.signals", "ancestors": 22, "seconds": 0.011}
+{"repo": "click", "engine": "v1", "target": "click._compat", "ancestors": 14, "seconds": 0.01}
+{"repo": "click", "engine": "v2", "target": "click._compat", "ancestors": 15, "seconds": 0.009}
+{"repo": "jinja", "engine": "v1", "target": "jinja2.constants", "ancestors": 22, "seconds": 0.659}
+{"repo": "jinja", "engine": "v2", "target": "jinja2.constants", "ancestors": 23, "seconds": 0.01}
+{"repo": "itsdangerous", "engine": "v1", "target": "itsdangerous.exc", "ancestors": 5, "seconds": 0.0}
+{"repo": "itsdangerous", "engine": "v2", "target": "itsdangerous.exc", "ancestors": 6, "seconds": 0.01}
+{"repo": "httpx", "engine": "v1", "target": "httpx._status_codes", "ancestors": 19, "seconds": 0.085}
+{"repo": "httpx", "engine": "v2", "target": "httpx._status_codes", "ancestors": 21, "seconds": 0.009}
+{"repo": "attrs", "engine": "v1", "target": "attr.exceptions", "ancestors": 15, "seconds": 0.001}
+{"repo": "attrs", "engine": "v2", "target": "attr.exceptions", "ancestors": 16, "seconds": 0.009}
+{"repo": "tqdm", "engine": "v1", "target": "tqdm.utils", "ancestors": 25, "seconds": 0.004}
+{"repo": "tqdm", "engine": "v2", "target": "tqdm.utils", "ancestors": 28, "seconds": 0.009}
+{"repo":"rich","engine":"v1","timeout_60s":true}
+{"repo": "rich", "engine": "v2", "target": "rich._unicode_data._versions", "ancestors": 84, "seconds": 0.016}
+{"repo": "python-dotenv", "engine": "v1", "target": "dotenv.parser", "ancestors": 4, "seconds": 0.002}
+{"repo": "python-dotenv", "engine": "v2", "target": "dotenv.parser", "ancestors": 5, "seconds": 0.011}

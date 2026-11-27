@@ -1,0 +1,73 @@
+{
+ "events381": [
+  "events381.register",
+  "events381.register.deco"
+ ],
+ "events381.dispatch": [
+  "events381.on_check0",
+  "events381.on_render1",
+  "events381.on_send2"
+ ],
+ "events381.on_check0": [],
+ "events381.on_render1": [],
+ "events381.on_send2": [],
+ "events381.register": [],
+ "events381.register.deco": [],
+ "extra38": [],
+ "extra38.Unused38.never_38": [],
+ "extra38.call_by_name_38": [
+  "extra38.hook_38"
+ ],
+ "extra38.hook_38": [],
+ "extra38.legacy_38": [],
+ "extra38.old_helper_38": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events381.dispatch",
+  "extra38.call_by_name_38",
+  "rec380.counter",
+  "rec380.counter.inc",
+  "rec380.even",
+  "rec380.fact",
+  "shapes382.EventBase.run"
+ ],
+ "rec380": [],
+ "rec380.bump": [],
+ "rec380.counter": [],
+ "rec380.counter.inc": [
+  "rec380.bump"
+ ],
+ "rec380.even": [
+  "rec380.odd"
+ ],
+ "rec380.fact": [
+  "rec380.fact"
+ ],
+ "rec380.odd": [
+  "rec380.even"
+ ],
+ "shapes382": [],
+ "shapes382.Event0.helper": [],
+ "shapes382.Event0.step": [
+  "shapes382.Event0.helper"
+ ],
+ "shapes382.EventBase.finish": [],
+ "shapes382.EventBase.prepare": [],
+ "shapes382.EventBase.run": [
+  "shapes382.Event0.step",
+  "shapes382.EventBase.finish",
+  "shapes382.EventBase.prepare",
+  "shapes382.User1.finish",
+  "shapes382.User1.step"
+ ],
+ "shapes382.EventBase.step": [],
+ "shapes382.User1.finish": [
+  "shapes382.EventBase.finish"
+ ],
+ "shapes382.User1.helper": [],
+ "shapes382.User1.step": [
+  "shapes382.User1.helper"
+ ]
+}

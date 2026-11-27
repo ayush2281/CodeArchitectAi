@@ -1,0 +1,47 @@
+{
+ "deco40": [
+  "deco40.logged"
+ ],
+ "deco40.logged": [],
+ "deco40.logged.wrapper": [
+  "deco40.note",
+  "deco40.order_load0",
+  "deco40.task_audit2",
+  "deco40.ticket_load1"
+ ],
+ "deco40.note": [],
+ "deco40.order_load0": [],
+ "deco40.pipeline": [
+  "deco40.logged.wrapper"
+ ],
+ "deco40.task_audit2": [],
+ "deco40.ticket_load1": [],
+ "extra4": [],
+ "extra4.Unused4.never_4": [],
+ "extra4.call_by_name_4": [
+  "extra4.hook_4"
+ ],
+ "extra4.hook_4": [],
+ "extra4.legacy_4": [],
+ "extra4.old_helper_4": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco40.pipeline",
+  "extra4.call_by_name_4",
+  "util41.core.report_renderx",
+  "util41.extra.combo"
+ ],
+ "util41": [],
+ "util41.core": [],
+ "util41.core.inner": [],
+ "util41.core.job_updatey": [],
+ "util41.core.report_renderx": [
+  "util41.core.inner"
+ ],
+ "util41.extra": [],
+ "util41.extra.combo": [
+  "util41.core.job_updatey"
+ ]
+}

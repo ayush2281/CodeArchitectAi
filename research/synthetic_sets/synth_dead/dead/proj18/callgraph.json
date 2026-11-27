@@ -1,0 +1,46 @@
+{
+ "extra18": [],
+ "extra18.Unused18.never_18": [],
+ "extra18.call_by_name_18": [
+  "extra18.hook_18"
+ ],
+ "extra18.hook_18": [],
+ "extra18.legacy_18": [],
+ "extra18.old_helper_18": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra18.call_by_name_18",
+  "res180.consume",
+  "strat181.Context.__init__",
+  "strat181.Context.execute"
+ ],
+ "res180": [],
+ "res180.Resource.__enter__": [
+  "res180.Resource.open"
+ ],
+ "res180.Resource.__exit__": [
+  "res180.Resource.close"
+ ],
+ "res180.Resource.close": [],
+ "res180.Resource.open": [],
+ "res180.consume": [
+  "res180.Resource.__enter__",
+  "res180.Resource.__exit__",
+  "res180.stream"
+ ],
+ "res180.stream": [
+  "res180.transform"
+ ],
+ "res180.transform": [],
+ "strat181": [],
+ "strat181.Context.__init__": [],
+ "strat181.Context.execute": [
+  "strat181.build_strategy1",
+  "strat181.render_strategy0"
+ ],
+ "strat181.build_strategy1": [],
+ "strat181.render_strategy0": [],
+ "strat181.update_strategy2": []
+}

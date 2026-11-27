@@ -1,0 +1,83 @@
+{
+ "extra23": [],
+ "extra23.Unused23.never_23": [],
+ "extra23.call_by_name_23": [
+  "extra23.hook_23"
+ ],
+ "extra23.hook_23": [],
+ "extra23.legacy_23": [],
+ "extra23.old_helper_23": [],
+ "func231": [],
+ "func231.apply_all": [
+  "func231.report_sendc",
+  "func231.user_checkb"
+ ],
+ "func231.order_synca": [],
+ "func231.report_sendc": [
+  "func231.order_synca"
+ ],
+ "func231.user_checkb": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra23.call_by_name_23",
+  "func231.apply_all",
+  "rec230.counter",
+  "rec230.counter.inc",
+  "rec230.even",
+  "rec230.fact",
+  "shapes232.MessageBase.run"
+ ],
+ "rec230": [],
+ "rec230.bump": [],
+ "rec230.counter": [],
+ "rec230.counter.inc": [
+  "rec230.bump"
+ ],
+ "rec230.even": [
+  "rec230.odd"
+ ],
+ "rec230.fact": [
+  "rec230.fact"
+ ],
+ "rec230.odd": [
+  "rec230.even"
+ ],
+ "shapes232": [],
+ "shapes232.Account2.helper": [],
+ "shapes232.Account2.step": [
+  "shapes232.Account2.helper"
+ ],
+ "shapes232.Item0.helper": [],
+ "shapes232.Item0.step": [
+  "shapes232.Item0.helper"
+ ],
+ "shapes232.MessageBase.finish": [],
+ "shapes232.MessageBase.prepare": [],
+ "shapes232.MessageBase.run": [
+  "shapes232.Account2.step",
+  "shapes232.Item0.step",
+  "shapes232.MessageBase.finish",
+  "shapes232.MessageBase.prepare",
+  "shapes232.User1.finish",
+  "shapes232.User1.step",
+  "shapes232.User3.finish",
+  "shapes232.User3.step"
+ ],
+ "shapes232.MessageBase.step": [],
+ "shapes232.User1.finish": [
+  "shapes232.MessageBase.finish"
+ ],
+ "shapes232.User1.helper": [],
+ "shapes232.User1.step": [
+  "shapes232.User1.helper"
+ ],
+ "shapes232.User3.finish": [
+  "shapes232.MessageBase.finish"
+ ],
+ "shapes232.User3.helper": [],
+ "shapes232.User3.step": [
+  "shapes232.User3.helper"
+ ]
+}

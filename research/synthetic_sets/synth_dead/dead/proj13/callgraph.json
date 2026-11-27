@@ -1,0 +1,46 @@
+{
+ "deco130": [
+  "deco130.logged"
+ ],
+ "deco130.invoice_merge0": [],
+ "deco130.job_sync1": [],
+ "deco130.logged": [],
+ "deco130.logged.wrapper": [
+  "deco130.invoice_merge0",
+  "deco130.job_sync1",
+  "deco130.note",
+  "deco130.ticket_check2"
+ ],
+ "deco130.note": [],
+ "deco130.pipeline": [
+  "deco130.logged.wrapper"
+ ],
+ "deco130.ticket_check2": [],
+ "extra13": [],
+ "extra13.Unused13.never_13": [],
+ "extra13.call_by_name_13": [
+  "extra13.hook_13"
+ ],
+ "extra13.hook_13": [],
+ "extra13.legacy_13": [],
+ "extra13.old_helper_13": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco130.pipeline",
+  "extra13.call_by_name_13",
+  "mix131.Model.__init__",
+  "mix131.Model.run"
+ ],
+ "mix131": [],
+ "mix131.LogMixin.log": [],
+ "mix131.Model.__init__": [],
+ "mix131.Model.run": [
+  "mix131.LogMixin.log",
+  "mix131.SaveMixin.save"
+ ],
+ "mix131.SaveMixin.save": [
+  "mix131.LogMixin.log"
+ ]
+}

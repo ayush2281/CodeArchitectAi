@@ -1,0 +1,177 @@
+{
+ "1": [
+  "requests.compat"
+ ],
+ "2": [],
+ "3": [
+  "flask.app",
+  "flask.cli",
+  "flask.sessions"
+ ],
+ "4": [
+  "flask.config",
+  "flask.ctx",
+  "flask.helpers",
+  "flask.json.provider",
+  "flask.logging",
+  "flask.sansio.blueprints",
+  "flask.sansio.scaffold",
+  "flask.templating",
+  "flask.testing",
+  "flask.typing"
+ ],
+ "5": [
+  "click.core",
+  "click.globals",
+  "click.utils"
+ ],
+ "6": [
+  "click._compat",
+  "click.core",
+  "click.globals",
+  "click.utils"
+ ],
+ "7": [
+  "jinja2.environment",
+  "jinja2.exceptions",
+  "jinja2.lexer",
+  "jinja2.nodes"
+ ],
+ "8": [],
+ "9": [
+  "itsdangerous._json",
+  "itsdangerous.encoding",
+  "itsdangerous.exc",
+  "itsdangerous.serializer",
+  "itsdangerous.timed"
+ ],
+ "10": [
+  "itsdangerous.encoding",
+  "itsdangerous.exc",
+  "itsdangerous.serializer",
+  "itsdangerous.signer"
+ ],
+ "11": [
+  "httpx._exceptions",
+  "httpx._models",
+  "httpx._utils"
+ ],
+ "12": [
+  "httpx._models",
+  "httpx._transports.base",
+  "httpx._types"
+ ],
+ "13": [
+  "attr._config",
+  "attr._make",
+  "attr.exceptions"
+ ],
+ "14": [
+  "attr._compat",
+  "attr._make"
+ ],
+ "15": [
+  "tqdm.notebook",
+  "tqdm.std"
+ ],
+ "16": [
+  "tqdm"
+ ],
+ "17": [
+  "rich._loop",
+  "rich.console",
+  "rich.jupyter",
+  "rich.markdown",
+  "rich.measure",
+  "rich.panel",
+  "rich.segment",
+  "rich.style",
+  "rich.styled",
+  "rich.syntax",
+  "rich.table"
+ ],
+ "18": [
+  "rich.align",
+  "rich.console",
+  "rich.constrain",
+  "rich.jupyter",
+  "rich.measure",
+  "rich.padding",
+  "rich.table",
+  "rich.text"
+ ],
+ "19": [
+  "dotenv.main"
+ ],
+ "20": [
+  "dotenv.main",
+  "dotenv.version"
+ ],
+ "21": [
+  "werkzeug.http"
+ ],
+ "22": [
+  "werkzeug.debug.repr",
+  "werkzeug.debug.tbtools"
+ ],
+ "23": [
+  "markupsafe._native"
+ ],
+ "24": [],
+ "25": [
+  "pluggy._execution"
+ ],
+ "26": [
+  "more_itertools.recipes"
+ ],
+ "27": [],
+ "28": [
+  "urllib3.exceptions",
+  "urllib3.util.util"
+ ],
+ "29": [],
+ "30": [
+  "starlette._utils",
+  "starlette.datastructures",
+  "starlette.exceptions",
+  "starlette.responses",
+  "starlette.types",
+  "starlette.websockets"
+ ],
+ "31": [
+  "starlette._utils",
+  "starlette.concurrency"
+ ],
+ "32": [
+  "jsonschema"
+ ],
+ "33": [
+  "jsonschema._utils"
+ ],
+ "34": [
+  "typer._click",
+  "typer.core",
+  "typer.models"
+ ],
+ "35": [
+  "typer._click.exceptions",
+  "typer._click.termui",
+  "typer._click.utils",
+  "typer.colors",
+  "typer.exceptions",
+  "typer.main",
+  "typer.models",
+  "typer.params"
+ ],
+ "36": [
+  "tomli._types"
+ ],
+ "37": [
+  "tomli._re",
+  "tomli._types"
+ ],
+ "38": [
+  "idna.core"
+ ],
+ "39": []
+}

@@ -1,0 +1,565 @@
+{
+ "rows": [
+  {
+   "repo": "requests",
+   "ref_old": 73,
+   "ref_strict": 73,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    59,
+    0,
+    14
+   ],
+   "v2_vs_old": [
+    73,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    73,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    73,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "flask",
+   "ref_old": 95,
+   "ref_strict": 95,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    74,
+    0,
+    21
+   ],
+   "v2_vs_old": [
+    95,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    95,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    95,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "click",
+   "ref_old": 61,
+   "ref_strict": 61,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    48,
+    0,
+    13
+   ],
+   "v2_vs_old": [
+    61,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    61,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    61,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "jinja",
+   "ref_old": 91,
+   "ref_strict": 91,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    78,
+    0,
+    13
+   ],
+   "v2_vs_old": [
+    91,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    91,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    91,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "itsdangerous",
+   "ref_old": 21,
+   "ref_strict": 21,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    15,
+    0,
+    6
+   ],
+   "v2_vs_old": [
+    21,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    21,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    21,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "httpx",
+   "ref_old": 87,
+   "ref_strict": 87,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    69,
+    0,
+    18
+   ],
+   "v2_vs_old": [
+    87,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    87,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    87,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "attrs",
+   "ref_old": 43,
+   "ref_strict": 43,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    28,
+    0,
+    15
+   ],
+   "v2_vs_old": [
+    43,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    43,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    43,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "tqdm",
+   "ref_old": 60,
+   "ref_strict": 60,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    50,
+    0,
+    10
+   ],
+   "v2_vs_old": [
+    60,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    60,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    60,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "rich",
+   "ref_old": 421,
+   "ref_strict": 421,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    405,
+    1,
+    16
+   ],
+   "v2_vs_old": [
+    421,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    421,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    421,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "python-dotenv",
+   "ref_old": 8,
+   "ref_strict": 8,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    6,
+    0,
+    2
+   ],
+   "v2_vs_old": [
+    8,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    8,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "werkzeug",
+   "ref_old": 208,
+   "ref_strict": 208,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    173,
+    3,
+    35
+   ],
+   "v2_vs_old": [
+    208,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    208,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    208,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "markupsafe",
+   "ref_old": 2,
+   "ref_strict": 1,
+   "ref_diff": 1,
+   "v1_vs_strict": [
+    0,
+    0,
+    1
+   ],
+   "v2_vs_old": [
+    2,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    1,
+    1,
+    0
+   ],
+   "v21_vs_strict": [
+    1,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "pluggy",
+   "ref_old": 24,
+   "ref_strict": 24,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    19,
+    0,
+    5
+   ],
+   "v2_vs_old": [
+    24,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    24,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    24,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "more-itertools",
+   "ref_old": 3,
+   "ref_strict": 3,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    1,
+    0,
+    2
+   ],
+   "v2_vs_old": [
+    3,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    3,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    3,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "urllib3",
+   "ref_old": 142,
+   "ref_strict": 140,
+   "ref_diff": 2,
+   "v1_vs_strict": [
+    111,
+    3,
+    29
+   ],
+   "v2_vs_old": [
+    142,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    140,
+    2,
+    0
+   ],
+   "v21_vs_strict": [
+    140,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "starlette",
+   "ref_old": 133,
+   "ref_strict": 133,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    132,
+    1,
+    1
+   ],
+   "v2_vs_old": [
+    133,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    133,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    133,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "jsonschema",
+   "ref_old": 71,
+   "ref_strict": 71,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    54,
+    4,
+    17
+   ],
+   "v2_vs_old": [
+    71,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    71,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    71,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "typer",
+   "ref_old": 139,
+   "ref_strict": 139,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    109,
+    3,
+    30
+   ],
+   "v2_vs_old": [
+    139,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    139,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    139,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "tomli",
+   "ref_old": 4,
+   "ref_strict": 4,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    3,
+    0,
+    1
+   ],
+   "v2_vs_old": [
+    4,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    4,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    4,
+    0,
+    0
+   ]
+  },
+  {
+   "repo": "idna",
+   "ref_old": 13,
+   "ref_strict": 13,
+   "ref_diff": 0,
+   "v1_vs_strict": [
+    7,
+    0,
+    6
+   ],
+   "v2_vs_old": [
+    13,
+    0,
+    0
+   ],
+   "v2_vs_strict": [
+    13,
+    0,
+    0
+   ],
+   "v21_vs_strict": [
+    13,
+    0,
+    0
+   ]
+  }
+ ],
+ "totals": {
+  "v1_vs_strict": {
+   "tp": 1441,
+   "fp": 15,
+   "fn": 255,
+   "P": 0.9897,
+   "R": 0.8496,
+   "F1": 0.9143
+  },
+  "v2_vs_old": {
+   "tp": 1699,
+   "fp": 0,
+   "fn": 0,
+   "P": 1.0,
+   "R": 1.0,
+   "F1": 1.0
+  },
+  "v2_vs_strict": {
+   "tp": 1696,
+   "fp": 3,
+   "fn": 0,
+   "P": 0.9982,
+   "R": 1.0,
+   "F1": 0.9991
+  },
+  "v21_vs_strict": {
+   "tp": 1696,
+   "fp": 0,
+   "fn": 0,
+   "P": 1.0,
+   "R": 1.0,
+   "F1": 1.0
+  },
+  "v21_vs_annotation": {
+   "tp": 103,
+   "fp": 0,
+   "fn": 0,
+   "P": 1.0,
+   "R": 1.0
+  }
+ }
+}

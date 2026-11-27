@@ -1,0 +1,665 @@
+[
+ {
+  "repo": "itsdangerous",
+  "model": "qwen/qwen3.8-27b",
+  "error": "",
+  "id_claims": 4,
+  "id_supported": 3,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__getattr__"
+  ],
+  "wrong_numbers": [
+   [
+    "7 Python modules",
+    8
+   ]
+  ],
+  "chars": 5242,
+  "report": "### 1. Architecture Overview\n\nThe `itsdangerous` module is a lightweight library for signing Python objects (like dictionaries) to prevent tampering. It follows a layered, composite design pattern where higher-level abstractions depend on lower-level primitives.\n\nThe repository consists of **7 Python modules** distributed across the `itsdangerous` package. The architecture is organized into three distinct layers:\n1.  **Core Utilities:** `encoding.py` and `_json.py` provide low-level data serialization and encoding/decoding helpers.\n2.  **Security Core:** `signer.py` contains the fundamental HMAC logic for signing and verifying, while `exc.py` defines custom exception hierarchies for error handling.\n3.  **High-Level API:** `timed.py` extends the signer with time-decay logic, `url_safe.py` wraps the signer for URL-safe strings, and `serializer.py` combines encoding, hashing, and signing to handle arbitrary Python objects.\n\n**Dependency Statistics:**\n*   **Total Modules:** 7\n*   **Estimated Functions:** Approximately 25\u201330 public/internal functions (e.g., `Signer`, `TimedSigner`, `URLSafeSigner`, `Serializer` classes and their methods).\n*   **Dependency Relationships:** The dependency graph is a **Directed Acyclic Graph (DAG)**, flowing from high-level wrappers (`serializer`) down to base primitives (`encoding`, `signer`).\n    *   `serializer` depends on `signer`, `timed`, `url_safe`, `_json`, and `exc`.\n    *   `timed` depends on `signer` and `exc`.\n    *   `url_safe` depends on `signer` and `encoding`.\n    *   `signer` depends on `encoding` and `exc`.\n    *   `encoding` and `_json` are leaf modules with no internal dependencies.\n*   **Circular Dependencies:** **0**. The architecture is strictly unidirectional, ensuring clean separation of concerns.\n*   **Most Connected Modules:**\n    *   **`itsdangerous/__init__.py`**: Central entry point importing and exposing all public classes.\n    *   **`itsdangerous/signer.py`**: Core base class inherited or used by `timed`, `url_safe`, and `serializer`.\n    *   **`itsdangerous/serializer.py`**: Top-level orchestrator depending on most other modules.\n\n### 2. Detected Problems\n\n1.  **Monolithic Entry Point (`__init__.py`):** The `__init__.py` file explicitly imports all internal modules. While standard for small packages, it creates a tight coupling at the import level, meaning importing *any* part of `itsdangerous` loads all modules, increasing startup time and memory footprint unnecessarily for users who only need basic signing.\n2.  **Lack of Type Hints:** The codebase appears to rely on legacy Python typing practices, with minimal or no PEP 484 type annotations. This reduces static analysis capability and developer onboarding speed.\n3.  **Hardcoded JSON Behavior:** `_json.py` is a private module that wraps `json` with custom handling. This tight coupling to the standard `json` library without abstraction makes it difficult to swap serializers (e.g., for `ujson` or `msgpack`) without modifying core code.\n4.  **Granularity of Exceptions:** While `exc.py` provides good exception hierarchy, some exception classes may be overly specific or rarely used, leading to potential bloat in error handling logic.\n5.  **No Configuration Layer:** The library uses default values for parameters like `salt` and `secret_key` in constructors, but lacks a centralized configuration object. This forces users to pass the same settings repeatedly if using multiple instances.\n\n### 3. Why They Matter\n\n1.  **Performance Impact (Monolithic Init):** In edge computing, serverless functions, or high-frequency trading scenarios, every millisecond of import time matters. Loading unused modules (like `timed` or `url_safe`) when only basic `signer` is needed wastes resources and can slow down cold starts.\n2.  **Maintainability & Safety (Lack of Type Hints):** Without type hints, refactoring is riskier. Static tools like `mypy` or `pyright` cannot catch type errors, leading to runtime bugs that are harder to debug in production.\n3.  **Extensibility (Hardcoded JSON):** Users who want to use alternative serialization formats (for performance or data size reduction) must monkey-patch or fork the library. This limits adoption in specialized environments where JSON is not optimal.\n4.  **Developer Experience (No Config):** Repeating configuration across multiple signer/serializer instances leads to verbose code and increased chance of inconsistency (e.g., using different salts by mistake), which can break signed artifacts unexpectedly.\n5.  **Test Complexity:** The lack of clean abstractions makes it harder to mock dependencies in unit tests, potentially leading to brittle test suites that rely on internal implementation details rather than public interfaces.\n\n### 4. Recommended Improvements\n\n1.  **Lazy Loading in `__init__.py`:**\n    *   Implement lazy imports for heavy or optional modules (`timed`, `url_safe`) using `__getattr__` at the module level. This ensures that only the modules actually accessed are loaded into memory.\n    ```python\n    # Example in __init__.py\n    def __getattr__(name):\n        if name == 'TimedSigner':\n            from .timed import TimedSigner\n            return TimedSigner\n        # ... other lazy imports\n    ```\n\n2.  **"
+ },
+ {
+  "repo": "itsdangerous",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 4,
+  "id_supported": 2,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 2,
+  "unsupported_ids": [
+   "url_decode",
+   "url_encode"
+  ],
+  "wrong_numbers": [
+   [
+    "5 per module",
+    8
+   ]
+  ],
+  "chars": 2437,
+  "report": "**1. Architecture Overview**  \nThe *itsdangerous* package consists of eight Python modules:\n\n| Module | Rough role | Key classes / functions |\n|--------|------------|------------------------|\n| `__init__.py` | Public API wrapper, re\u2011exports key symbols | `Serializer`, `Signer`, `TimedSerializer`, `URLSafeSerializer`, etc. |\n| `_json.py` | JSON serialisation helpers | `loads`, `dumps` |\n| `encoding.py` | Base64/URL\u2011safe encoding helpers | `base64_encode`, `base64_decode`, `url_encode`, `url_decode` |\n| `exc.py` | Custom exception hierarchy | `BadSignature`, `BadTimeSignature`, `BadData`, etc. |\n| `serializer.py` | High\u2011level serialization API | `Serializer`, `TimedSerializer` |\n| `signer.py` | Low\u2011level signing logic | `Signer`, `TimestampSigner` |\n| `timed.py` | Timestamp\u2011aware utilities | `TimedSerializer` (extends `Serializer`) |\n| `url_safe.py` | URL\u2011safe serialiser | `URLSafeSerializer` (extends `Serializer`) |\n\n**Dependency graph**  \n* `serializer.py` imports `signer.py` (for `Signer`), `timed.py` (for `TimedSerializer`) and `url_safe.py` (for `URLSafeSerializer`).  \n* `signer.py` imports `encoding.py` (base64 helpers) and `exc.py` (exceptions).  \n* `timed.py` imports `serializer.py`.  \n* `url_safe.py` imports `serializer.py`.  \n* `exc.py` is imported by `signer.py`, `serializer.py`, `timed.py`, and `url_safe.py`.  \n* `_json.py` is imported only by `serializer.py`.  \n* `encoding.py` is imported by `signer.py`.  \n\n**Metrics**  \n* **Modules:** 8  \n* **Functions / methods:** 38 (\u2248\u202f5 per module, excluding class methods)  \n* **Explicit imports (dependency relationships):** 12  \n* **Circular dependencies:** 0 \u2013 the dependency graph is acyclic.  \n* **Most connected modules:** `serializer.py` (4 outgoing imports) and `signer.py` (3 outgoing imports).\n\n---\n\n**2. Detected Problems**  \n1. **Tight coupling between high\u2011level (serializer) and low\u2011level (signer) modules** \u2013 the serializer directly depends on concrete signer implementations rather than an abstract interface.  \n2. **Redundant imports** \u2013 `serializer.py` imports both `timed.py` and `url_safe.py`, even though these modules only extend the base serializer.  \n3. **Missing type annotations** \u2013 almost all public functions and methods lack type hints, reducing static\u2011analysis support.  \n4. **Limited documentation** \u2013 module docstrings are sparse; internal helper functions have no docstrings.  \n5. **No test coverage indicator** \u2013 repository shows"
+ },
+ {
+  "repo": "itsdangerous",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 9,
+  "id_supported": 5,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 3,
+  "unsupported_ids": [
+   "_json.dumps",
+   "encoding.force_",
+   "force_bytes",
+   "force_text"
+  ],
+  "wrong_numbers": [
+   [
+    "2 functions",
+    54
+   ]
+  ],
+  "chars": 2500,
+  "report": "**1. Architecture Overview**  \n- **Modules:** 9 (`__init__.py`, `_json.py`, `encoding.py`, `exc.py`, `serializer.py`, `signer.py`, `timed.py`, `url_safe.py`)  \n- **Top\u2011level callables (functions & class methods) \u2248 32**  \n  - `_json.py` \u2013 2 functions (`dumps`, `loads`)  \n  - `encoding.py` \u2013 2 helpers (`force_bytes`, `force_text`)  \n  - `serializer.py` \u2013 ~12 methods (e.g., `dumps`, `loads`, `load_payload`, `dump_payload`, plus utility class methods)  \n  - `signer.py` \u2013 ~10 methods (e.g., `sign`, `unsign`, `get_signature`, `validate`)  \n  - `timed.py` \u2013 ~4 methods (timestamp handling)  \n  - `url_safe.py` \u2013 ~2 methods (URL\u2011safe encoding/decoding)  \n  - `exc.py` \u2013 only exception classes (no functions)  \n- **Dependency relationships:** 12 directed imports among the modules (e.g., `__init__` \u2192 all public sub\u2011modules; `signer` \u2192 `exc`, `encoding`, `serializer`; `timed` \u2192 `serializer`, `signer`; `url_safe` \u2192 `signer`, `serializer`).  \n- **Circular dependencies:** **None** detected. The import graph is a directed acyclic graph.  \n- **Most connected modules:**  \n  1. `itsdangerous/__init__.py` \u2013 imports every public sub\u2011module, acting as the central fa\u00e7ade.  \n  2. `itsdangerous/signer.py` \u2013 imports three other modules (`exc`, `encoding`, `serializer`) and is itself imported by `timed.py` and `url_safe.py`.  \n\n---\n\n**2. Detected Problems**  \n1. **Heavy coupling to `__init__`** \u2013 The package\u2019s public API is re\u2011exported from `__init__.py`, which pulls in all sub\u2011modules on every import, even when only a single component (e.g., `URLSafeSerializer`) is needed.  \n2. **Implicit import side\u2011effects** \u2013 Some sub\u2011modules perform imports at module load time (e.g., `signer` imports `serializer` for default implementations). This can increase start\u2011up time and complicates lazy loading.  \n3. **Lack of explicit interface contracts** \u2013 Exception classes are defined in `exc.py` but are used throughout the code base without a clear, documented contract, making it harder for downstream users to anticipate which errors to catch.  \n4. **Sparse documentation of internal helpers** \u2013 Functions such as `_json.dumps`/`loads` and `encoding.force_*` are tiny but are not documented in a central location, leading to potential misuse.  \n\n---\n\n**3. Why They Matter**  \n- **Performance & Resource Usage:** Pulling every sub\u2011module on each import can noticeably increase memory footprint and import latency for applications that only need a subset of the functionality (e.g., a microservice that only uses"
+ },
+ {
+  "repo": "python-dotenv",
+  "model": "qwen/qwen3.8-27b",
+  "error": "",
+  "id_claims": 5,
+  "id_supported": 5,
+  "num_claims": 4,
+  "num_correct": 1,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "7 modules",
+    8
+   ],
+   [
+    "5 primary internal dependency relationships",
+    8
+   ],
+   [
+    "0 circular dependencies",
+    8
+   ]
+  ],
+  "chars": 5129,
+  "report": "### 1. Architecture Overview\nThe system consists of **7 modules** forming a lightweight, single-package library for handling environment variables via `.env` files. The architecture is linear and heavily centralized around `dotenv/main.py`, which acts as the core orchestrator. Key dependency flows are:\n*   `dotenv/__init__.py` exposes the public API, primarily relying on `dotenv/main.py`.\n*   `dotenv/main.py` depends on `dotenv/parser.py` (for file parsing) and `dotenv/variables.py` (for value interpolation/expansion).\n*   `dotenv/cli.py` acts as an entry point for command-line interactions, depending on `dotenv/main.py` for functionality.\n*   `dotenv/ipython.py` provides a magic command for Jupyter/IPython, also depending on `dotenv/main.py`.\n*   `dotenv/version.py` is an isolated metadata module.\n*   `dotenv/parser.py` and `dotenv/variables.py` are leaf modules with no internal dependencies on other `dotenv` modules.\n\nThis results in approximately **5 primary internal dependency relationships** (counting direct module imports for core logic) and **0 circular dependencies**. The most connected module is **`dotenv/main.py`**, serving as the hub for the public API, CLI, and IPython integration.\n\n### 2. Detected Problems\n*   **God Module Tendency:** `dotenv/main.py` contains a disproportionate amount of logic, including the `find_dotenv` discovery mechanisms, `load_dotenv` execution, `dotenv_values` extraction, and `set_key`/`get_key` file modification logic. This violates the Single Responsibility Principle.\n*   **Tight Coupling in Entry Points:** Both `cli.py` and `ipython.py` depend directly on `main.py` rather than a narrower, well-defined interface. This means any change in `main.py`'s internal structure could potentially break the CLI or IPython integrations, even if the public API remains unchanged.\n*   **Hidden Discovery Logic:** The logic for locating the `.env` file (in `main.py`'s `find_dotenv` or related helpers) is buried within the main module rather than being a distinct, testable strategy component. This makes it difficult to customize file discovery rules without modifying core code.\n*   **Lack of Abstraction for Interpolation:** `variables.py` handles variable expansion, but it is tightly coupled to the parsing workflow in `main.py`. There is no clear interface separating the raw parsed data from the interpolated result, making it harder to test interpolation logic independently of the file loading process.\n\n### 3. Why They Matter\n*   **Maintainability:** By concentrating file I/O, parsing, interpolation, and environment modification in `main.py`, any change to one aspect (e.g., adding support for a new file format) risks introducing regressions in unrelated functionality (e.g., `set_key`). This increases the cognitive load on developers and the likelihood of bugs during refactoring.\n*   **Testability:** The tight coupling makes unit testing harder. For instance, testing the CLI or IPython magic requires mocking or loading the entire `main.py` context, rather than allowing focused tests on specific logic units. The hidden discovery logic in `main.py` also complicates testing edge cases in file location.\n*   **Extendability:** Users who need custom behavior for finding the `.env` file or handling variable interpolation are forced to monkey-patch `main.py` or duplicate code, rather than plugging into a clean, modular architecture.\n*   **Risk of Change:** With `main.py` as a central hub, any significant internal refactoring requires careful coordination across the CLI, IPython, and public API layers, slowing down development and increasing the risk of breaking external consumers.\n\n### 4. Recommended Improvements\n*   **Extract File Discovery Logic:** Move `find_dotenv` and related path resolution logic into a new `dotenv/discovery.py` module. This isolates the complexity of file location and allows for easy customization or strategy patterns for different discovery rules.\n*   **Separate Environment Modification:** Extract `set_key` and `get_key` (and any file-writing logic) into a `dotenv/file_ops.py` module. This decouples the act of *reading/interpolating* values from the act of *modifying* the `.env` file, allowing `main.py` to focus on orchestration.\n*   **Introduce a Core Service Layer:** Refactor `main.py` to be a thin facade. Create a `dotenv/core.py` module that takes a file dict and an environment variable dict, and returns interpolated results. This makes the interpolation logic in `variables.py` more explicitly testable and reusable.\n*   **Define Narrow Interfaces for Integers:** Instead of `cli.py` and `ipython.py` importing from `main.py`, they should import from a `dotenv/api.py` module that exposes only the stable, public-facing functions (like `load_dotenv`, `dotenv_values`). This reduces the impact of internal refactoring in `main.py` on the entry points.\n*   **Decouple Parser from Interpolation:** Ensure `parser.py` returns raw, uninterpolated key-value pairs. The interpolation should be a clear, separate step performed by `core.py` using `variables.py`, making the data flow explicit and easier to debug."
+ },
+ {
+  "repo": "python-dotenv",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 5,
+  "id_supported": 3,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "os.environ",
+   "requirements.txt"
+  ],
+  "wrong_numbers": [
+   [
+    "10 functions",
+    66
+   ]
+  ],
+  "chars": 3394,
+  "report": "**1. Architecture Overview**  \nThe repository implements a lightweight \u201cdotenv\u201d library that loads environment variables from `.env` files. It is organized into seven top\u2011level modules:\n\n| Module | Responsibility |\n|--------|----------------|\n| `dotenv/__init__` | Public API surface (e.g., `load_dotenv`, `set_key`). |\n| `dotenv/main` | Core loader logic \u2013 reads files, resolves variable expansion, and populates `os.environ`. |\n| `dotenv/parser` | Parses the syntax of `.env` files (key/value pairs, comments, quoting). |\n| `dotenv/variables` | Helper functions for manipulating the environment dictionary and performing look\u2011ups. |\n| `dotenv/cli` | Command\u2011line interface (argument parsing, sub\u2011commands). |\n| `dotenv/ipython` | Integration hooks for IPython notebooks. |\n| `dotenv/__main__` | Entrypoint for running the package as a script (`python -m dotenv`). |\n| `dotenv/version` | Static version string. |\n\nThe public API lives in `__init__` and delegates most work to `main`. The loader uses `parser` to turn raw text into key/value pairs and then hands the data to `variables` for final injection into `os.environ`. The CLI module simply wires the public API into an `argparse` interface.\n\n**2. Detected Problems**  \n- **High coupling** \u2013 `__init__`, `main`, and `variables` import each other, creating a tight dependency web.  \n- **Function count per module is uneven** \u2013 `variables` (~10 functions) handles many responsibilities (parsing, sanitization, injection) that could be split.  \n- **Sparse documentation** \u2013 many modules expose internal helper functions that are not documented or exported.  \n- **Potential for circular imports** \u2013 `__init__` pulls symbols from `main`, and `main` imports `__init__` for version information, which can lead to import cycles in some execution contexts.  \n- **No explicit dependency graph** \u2013 the project does not enforce or document its import graph, making maintenance harder.\n\n**3. Why They Matter**  \n- **Maintainability** \u2013 High coupling means a change in one module may ripple unexpectedly, raising the cost of adding new features or refactoring.  \n- **Testability** \u2013 Functions that reach across many modules are harder to unit\u2011test in isolation, leading to more integration tests.  \n- **Extensibility** \u2013 A tightly coupled core makes it difficult to swap out or extend parts (e.g., a different environment source).  \n- **Runtime stability** \u2013 Circular import patterns can cause `ImportError` or partially\u2011initialized modules at runtime, especially when the package is executed as a script or imported from another project.\n\n**4. Recommended Improvements**  \n1. **Introduce a lightweight dependency injection layer** \u2013 pass dependencies (e.g., `parser`, `variables`) explicitly to `main` rather than importing them globally.  \n2. **Refactor `variables` into sub\u2011modules** (`sanitizer.py`, `injector.py`) to reduce its function count and responsibilities.  \n3. **Remove implicit imports from `__init__`** \u2013 only expose the public API; let callers import internal modules directly when needed.  \n4. **Add a dependency graph annotation** (e.g., in `requirements.txt` or a comment block) to document import relationships and prevent future cycles.  \n5. **Unit\u2011test the public API in isolation** \u2013 write tests that mock the environment and the parser, ensuring that `main` correctly orchestrates the components.  \n6. **Consider packaging the"
+ },
+ {
+  "repo": "python-dotenv",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 14,
+  "id_supported": 10,
+  "num_claims": 3,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__",
+   "dotenv.api",
+   "parser._parse_line",
+   "variables._resolve"
+  ],
+  "wrong_numbers": [
+   [
+    "9 Python modules",
+    8
+   ],
+   [
+    "5 other modules",
+    8
+   ],
+   [
+    "4 other modules",
+    8
+   ]
+  ],
+  "chars": 4277,
+  "report": "**1. Architecture Overview**  \n- **Modules:** 9 Python modules (`dotenv/__init__.py`, `dotenv/__main__.py`, `dotenv/cli.py`, `dotenv/ipython.py`, `dotenv/main.py`, `dotenv/parser.py`, `dotenv/variables.py`, `dotenv/version.py`).  \n- **Functions/Classes (approx.):** ~45 public callables (functions and classes) across the package, e.g., `load_dotenv`, `set_key`, `get_key`, CLI entry\u2011point, parser helpers, IPython integration utilities, and version metadata.  \n- **Dependency Relationships:** The modules form a shallow, star\u2011shaped dependency graph: most modules import utilities from `dotenv.parser` and `dotenv.variables`, while `dotenv.__main__` and `dotenv.cli` import the public API from `dotenv.main`. `dotenv.ipython` imports only the core loader.  \n- **Circular Dependencies:** None detected; imports flow in a single direction from low\u2011level helpers (`parser`, `variables`) to higher\u2011level entry points (`main`, `cli`, `__main__`).  \n- **Most Connected Modules:**  \n  - `dotenv.parser` \u2013 imported by 5 other modules.  \n  - `dotenv.variables` \u2013 imported by 4 other modules.  \n  - `dotenv.main` \u2013 serves as the central API hub and is imported by `__main__`, `cli`, and `ipython`.  \n\n**2. Detected Problems**  \n- **Tight coupling to the parser and variable helpers:** Many modules import directly from `parser` and `variables`, making these helpers hard to replace or mock.  \n- **Monolithic public API:** `dotenv.main` re\u2011exports most functionality, which can mask the true source of a call and increase the surface area for accidental misuse.  \n- **Lack of explicit interface contracts:** Functions are exposed without type\u2011annotated signatures in several modules, reducing static analysis effectiveness.  \n- **Potential over\u2011exposure of internal helpers:** Some low\u2011level utilities (`parser._parse_line`, `variables._resolve`) are imported elsewhere despite being prefixed as \u201cprivate\u201d, indicating unclear module boundaries.  \n\n**3. Why They Matter**  \n- **Maintainability:** Tight coupling makes future refactoring (e.g., swapping the parser for a more robust implementation) risky and time\u2011consuming.  \n- **Testability:** When low\u2011level helpers are directly imported, unit tests must mock internal details rather than the public API, leading to brittle test suites.  \n- **Extensibility:** A monolithic API discourages users from extending specific behaviours (e.g., custom variable resolution) because the entry point hides implementation details.  \n- **Reliability:** Implicit contracts and missing type hints can allow subtle bugs to slip through, especially when the library is used in larger applications that rely on static type checking.  \n\n**4. Recommended Improvements**  \n1. **Introduce Clear Layering:**  \n   - Define a thin *public fa\u00e7ade* module (e.g., `dotenv.api`) that only re\u2011exports the intended public functions (`load_dotenv`, `set_key`, etc.).  \n   - Restrict all other modules to import exclusively from this fa\u00e7ade, eliminating direct imports of internal helpers.  \n\n2. **Decouple Parser & Variable Logic:**  \n   - Extract the parsing and variable\u2011resolution logic into separate, well\u2011documented interfaces (`ParserInterface`, `VariableResolver`).  \n   - Inject these via dependency injection in `dotenv.main` and the CLI, allowing alternative implementations without code changes.  \n\n3. **Add Type Annotations & Export Controls:**  \n   - Annotate all public functions and classes with precise type hints.  \n   - Use `__all__` in each module to explicitly declare the public surface and prevent accidental exposure of private helpers.  \n\n4. **Modularize the CLI:**  \n   - Separate command\u2011line argument handling (`argparse` setup) from the core execution logic.  \n   - This enables reuse of the core logic in other entry points (e.g., programmatic usage, GUI wrappers) without pulling in CLI\u2011specific code.  \n\n5. **Implement Automated Dependency Checks:**  \n   - Add a lightweight static analysis step (e.g., using `flake8` with the `flake8-dependencies` plugin) in the CI pipeline to detect any accidental circular imports or unintended coupling in the future.  \n\nBy applying these changes, the repository will gain a cleaner separation of concerns, become easier to test and extend, and reduce the risk of regressions as the project evolves."
+ },
+ {
+  "repo": "markupsafe",
+  "model": "qwen/qwen3.8-27b",
+  "error": "",
+  "id_claims": 3,
+  "id_supported": 1,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "_speedups",
+   "soft_escape"
+  ],
+  "wrong_numbers": [
+   [
+    "3 core public functions",
+    53
+   ]
+  ],
+  "chars": 4033,
+  "report": "# Architecture Report: Markupsafe\n\n### 1. Architecture Overview\nThe Markupsafe repository consists of a minimal, two-module Python package structure designed for efficient string escaping and rendering in web templates. The architecture is centered around a \"dual-mode\" design where the primary interface (`markupsafe`) delegates work to either a pure-Python implementation or an optimized C-extension implementation if available.\n\n*   **Number of Modules**: 2 (`markupsafe/__init__.py`, `markupsafe/_native.py`)\n*   **Number of Functions**:\n    *   `_native.py`: Contains the core logic (e.g., `escape`, `soft_str`, `Markup`). It typically exposes 1-3 core public functions/classes.\n    *   `__init__.py`: Acts as a dispatcher/facade. It contains minimal logic (importing and re-exporting symbols).\n    *   *Total public API functions/classes*: ~5\u20137 (depending on version specifics, usually `Markup`, `escape`, `soft_escape`, etc.).\n*   **Dependency Relationships**: \n    *   `markupsafe/__init__.py` **depends on** `markupsafe/_native.py`.\n    *   Total explicit internal dependencies: 1.\n*   **Circular Dependencies**: 0.\n*   **Most Connected Module**: `markupsafe/__init__.py` (it is the sole entry point that fans out to the internal module and imports external optimization attempts).\n\n### 2. Detected Problems\n*   **Hidden Complexity in Dispatch**: The `__init__.py` likely contains try/except blocks to import from a C-extension (`_speedups`) falling back to `_native.py`. This makes the dependency graph implementation-dependent and harder to trace statically.\n*   **Lack of Abstraction**: There is no clear interface/protocol separating the \"renderer\" from the \"API.\" The two modules are tightly coupled despite being separate files.\n*   **Duplication Risk**: If the C-extension and Python-native implementations diverge in behavior (edge cases), testing must cover both paths, but the static structure does not enforce parity.\n*   **Minimal Test Surface Visibility**: With only two modules, there is no separate testing utility module, suggesting tests may be external or the library is assumed so simple as to not need internal test helpers.\n\n### 3. Why They Matter\n*   **Maintainability**: The hidden dispatch logic in `__init__.py` can introduce subtle bugs if the C-extension is missing or incompatible. Developers may not realize that `escape()` behaves differently at the C vs. Python level.\n*   **Portability**: The dual-path design increases the risk of platform-specific inconsistencies. A bug in one path may go undetected if only the other is exercised in a particular environment.\n*   **Scalability**: While irrelevant for a small library like Markupsafe, the lack of clear separation of concerns hinders adding new features (e.g., custom escape converters) without modifying the core dispatch logic.\n*   **Onboarding Difficulty**: New contributors must understand both the Python and C-extension paths to contribute safely, despite the small file count.\n\n### 4. Recommended Improvements\n*   **Explicit Strategy Pattern**: Introduce a clear factory function or configuration module that selects the backend (C vs. Python) explicitly. Replace implicit try/except imports with a registry or configurable flag.\n*   **Unified Interface Definition**: Define a simple `Protocol` or abstract base class for the escaping backend. Both `CBackend` and `PythonBackend` should implement this, ensuring type-checkers and tests can verify behavioral parity.\n*   **Behavioral Parity Tests**: Add a dedicated test module that runs the same test suite against both the native and optimized backends (when available) to ensure identical output for all edge cases.\n*   **Documentation of Dispatch Logic**: Clearly document in `__init__.py` or a `README` how the backend is selected, and add a debug mode that forces the Python-native implementation for diagnostics.\n*   **Dependency Injection**: Allow users (or advanced packages) to inject a custom escaping backend, enhancing extensibility beyond the built-in C/Python options."
+ },
+ {
+  "repo": "markupsafe",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 6,
+  "id_supported": 2,
+  "num_claims": 2,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "Markup.__html__",
+   "Markup.__str__",
+   "__all__",
+   "escape_html"
+  ],
+  "wrong_numbers": [
+   [
+    "12 public functions",
+    53
+   ],
+   [
+    "3 dependency relationships",
+    1
+   ]
+  ],
+  "chars": 2459,
+  "report": "**1. Architecture Overview**  \nThe library is split into two modules:  \n* `markupsafe/__init__.py` \u2013 the public API that defines the `Markup` type, a handful of convenience helpers and re\u2011exports the \u201cnative\u201d implementation.  \n* `markupsafe/_native.py` \u2013 a small wrapper that provides the actual escaping logic (originally written in C, now a pure\u2011Python fallback).  \n\nThe modules together expose roughly **12 public functions** (e.g., `escape`, `escape_html`, `Markup.__str__`, `Markup.__html__`, etc.).  \nThere are **3 dependency relationships**: `__init__` imports `_native`, `_native` imports `re`, and `html`. No circular imports exist.  \nThe most connected module is `markupsafe/__init__.py` because it pulls everything together.\n\n---\n\n**2. Detected Problems**  \n| Problem | What it is | Likely impact |\n|---------|------------|---------------|\n| *Duplicate logic* | `__init__` contains helper code that largely mirrors what `_native` implements. | Increases maintenance cost; changes must be mirrored in two places. |\n| *Eager imports* | `__init__` imports `_native` at module import time even when only a small part of the API is needed. | Unnecessary startup cost, especially on CPython where the fallback is used. |\n| *Lack of type annotations* | None of the public functions have type hints. | Harder for static analysis, IDEs, and documentation generation. |\n| *No explicit public surface* | `__all__` is missing or incomplete. | Exposes internal helpers inadvertently, making the public API ambiguous. |\n| *Missing documentation & tests* | Functions lack docstrings and the package has no unit test suite. | Reduces confidence in correctness and hinders onboarding. |\n\n---\n\n**3. Why They Matter**  \n* **Maintainability** \u2013 Duplicated code and lack of documentation create a higher risk of bugs when refactoring.  \n* **Performance** \u2013 Eager imports add import\u2011time overhead and may trigger the slower pure\u2011Python path even when a compiled extension is available.  \n* **Developer Experience** \u2013 Without type hints or a clear `__all__`, consumers may accidentally depend on internal implementation details.  \n* **Reliability** \u2013 Absence of tests and documentation makes it harder to guarantee behavior across Python versions and future releases.  \n\n---\n\n**4. Recommended Improvements**  \n1. **Consolidate logic** \u2013 Move shared escaping code into a single module (`_native` or a new `_utils.py`) and have `__init__` simply re\u2011export the functions.  \n"
+ },
+ {
+  "repo": "markupsafe",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 3,
+  "id_supported": 1,
+  "num_claims": 0,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__",
+   "soft_unicode"
+  ],
+  "wrong_numbers": [],
+  "chars": 1838,
+  "report": "**1. Architecture Overview**  \n- **Modules:** 2 (`markupsafe/__init__.py`, `markupsafe/_native.py`)  \n- **Functions / classes:** ~8 total (e.g., `escape`, `soft_unicode`, `Markup`, plus helper utilities) distributed across the two modules.  \n- **Dependency relationships:** 1 direct import (`markupsafe/__init__.py` imports symbols from `markupsafe/_native.py`).  \n- **Circular dependencies:** 0.  \n- **Most\u2011connected module:** `markupsafe/__init__.py` (it both imports from `_native` and re\u2011exports the public API).\n\n**2. Detected Problems**  \n- The package relies on a single import direction, but the public API is exposed only through `__init__.py`, making that module a *single point of failure*.  \n- Low granularity in module separation: most functionality lives in `__init__.py`, while `_native.py` contains only low\u2011level helpers.  \n\n**3. Why They Matter**  \n- **Single point of failure:** If `__init__.py` becomes corrupted or its import logic breaks, the entire package becomes unusable, affecting every downstream consumer.  \n- **Maintainability:** Concentrating many functions in `__init__.py` hampers readability, testing, and future extension, as changes to the core API may unintentionally impact the import logic.  \n\n**4. Recommended Improvements**  \n1. **Introduce a dedicated core module** (e.g., `markupsafe/_core.py`) to house the main classes and functions (`Markup`, `escape`, etc.).  \n2. Keep `__init__.py` lightweight: only import and re\u2011export public symbols from `_core.py` and `_native.py`.  \n3. Add explicit `__all__` definitions in each module to clarify the public interface and avoid accidental exposure.  \n4. Write unit tests for each module independently to ensure that failures in one layer do not cascade.  \n5. Document the import hierarchy in the project README to aid new contributors and maintainers."
+ },
+ {
+  "repo": "pluggy",
+  "model": "qwen/qwen3.8-27b",
+  "error": "Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m668tgxkek5sa3x92sqc6mg6` service tier "
+ },
+ {
+  "repo": "pluggy",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 10,
+  "id_supported": 10,
+  "num_claims": 0,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 2325,
+  "report": "**1. Architecture Overview**  \n-\u202f`pluggy` is a lightweight plugin\u2011manager package.  \n-\u202fThe public API lives in `pluggy/__init__.py`; core concepts (hooks, managers, callers, results) are split into eleven private modules (`_caller.py`, `_callers.py`, `_compat.py`, `_config.py`, `_decorators.py`, `_execution.py`, `_hooks.py`, `_impl.py`, `_manager.py`, `_result.py`, `_tracing.py`, `_warnings.py`).  \n-\u202fModules form a layered stack: configuration \u2192 hook registration \u2192 execution \u2192 result handling \u2192 tracing.  \n-\u202fCross\u2011module imports follow a roughly top\u2011down flow, but some back\u2011references create tight coupling.\n\n**2. Detected Problems**  \n| # | Problem | Impacted Modules | Observed Symptom |\n|---|---------|------------------|------------------|\n| 1 | **High inter\u2011module coupling** \u2013 e.g., `_manager` imports `_impl` and vice\u2011versa. | `_manager`, `_impl`, `_caller`, `_callers` | Hard to unit\u2011test components in isolation. |\n| 2 | **Circular dependencies** \u2013 `_caller` \u2194 `_callers`, `_manager` \u2194 `_impl`. | `_caller`, `_callers`, `_manager`, `_impl` | Import cycles break static analysis and some IDEs. |\n| 3 | **Duplicate responsibilities** \u2013 hook registration logic in both `_hooks` and `_manager`. | `_hooks`, `_manager` | Inconsistent API surface, increased maintenance burden. |\n| 4 | **Lack of explicit abstraction layers** \u2013 configuration, compatibility, and tracing are scattered. | `_config`, `_compat`, `_tracing` | Hard to replace or extend individual concerns. |\n| 5 | **Limited test coverage for edge\u2011case paths** (e.g., error handling in `_execution`). | `_execution`, `_result` | Hidden bugs surface only in production. |\n\n**3. Why They Matter**  \n-\u202fTight coupling and circular imports make refactoring risky and slow down CI pipelines.  \n-\u202fDuplicate logic inflates the code base and raises the probability of regressions when changes are made in one place but not the other.  \n-\u202fMissing abstraction hampers the addition of new back\u2011ends (e.g., async support) or custom tracing implementations.  \n-\u202fWeak testability increases the risk of subtle bugs in plugin interactions, undermining plug\u2011in ecosystem reliability.\n\n**4. Recommended Improvements**  \n1. **Extract a dedicated \u201cHook Registry\u201d module** to centralise registration and avoid duplication between `_hooks` and `_manager`.  \n2. **Break circular"
+ },
+ {
+  "repo": "pluggy",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 11,
+  "id_supported": 11,
+  "num_claims": 1,
+  "num_correct": 1,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 3697,
+  "report": "**1. Architecture Overview**  \n- **Modules:** 13 Python modules (one per file).  \n- **Functions/Classes:** Roughly 85 top\u2011level callables (functions, classes, and decorators) are defined across the modules.  \n- **Dependency relationships:** The modules form a dense directed graph. Every module imports at least one other, with the core \u201cpluggy\u201d package (`__init__.py`) re\u2011exporting symbols from the internal modules. The most frequent import patterns are:  \n  - `_manager` \u2192 `_impl`, `_hooks`, `_config`, `_execution`  \n  - `_impl` \u2192 `_manager`, `_hooks`, `_result`  \n  - `_hooks` \u2192 `_impl`, `_decorators`, `_tracing`  \n- **Circular dependencies:** Two small cycles are present:  \n  1. `_caller` \u2194 `_callers` (mutual import for shared helper utilities)  \n  2. `_impl` \u2194 `_manager` (each needs types defined in the other).  \n  No larger cycles were detected.  \n- **Most connected modules:** `_manager`, `_impl`, and `_hooks` have the highest indegree/outdegree, acting as the central coordination hub for plugin registration, hook execution, and result handling.\n\n---\n\n**2. Detected Problems**  \n- **Circular imports** between `_caller/_callers` and `_impl/_manager`.  \n- **High coupling** of `_manager`, `_impl`, and `_hooks` (each imports many other internal modules).  \n- **Monolithic `__init__.py`** that re\u2011exports a large surface area, making the public API tightly bound to internal layout.  \n- **Lack of explicit interface boundaries** (e.g., no abstract base classes separating \u201chook definition\u201d from \u201chook execution\u201d).\n\n---\n\n**3. Why They Matter**  \n- **Circular imports** can cause partially initialised modules, leading to `AttributeError` at runtime and complicating test isolation.  \n- **High coupling** reduces modularity, makes refactoring risky, and increases the impact radius of changes (a change in one low\u2011level module may ripple through many others).  \n- **Monolithic `__init__`** forces consumers to import the entire package even when only a subset is needed, hurting import\u2011time performance and obscuring which symbols are stable.  \n- **Missing interface segregation** limits the ability to swap implementations (e.g., alternative hook executors) and hampers static analysis tools.\n\n---\n\n**4. Recommended Improvements**  \n1. **Break circular imports**  \n   - Extract shared types/utilities into a new lightweight module (e.g., `pluggy/_common.py`) and have both sides import from it.  \n   - For `_caller`/`_callers`, consider merging them or using lazy imports (`import importlib`) inside functions that need the counterpart.  \n\n2. **Reduce coupling of core modules**  \n   - Introduce thin fa\u00e7ade modules (`pluggy/_core.py`) that expose only the minimal API needed by other components.  \n   - Move pure\u2011data structures (result objects, configuration dataclasses) into dedicated modules that have no side\u2011effects.  \n\n3. **Streamline the public API**  \n   - Keep `__init__.py` limited to stable, high\u2011level symbols (e.g., `PluginManager`, `HookimplMarker`).  \n   - Provide a separate \u201cexperimental\u201d subpackage for internal utilities that may change.  \n\n4. **Add explicit interfaces**  \n   - Define abstract base classes for hook specifications and execution (`HookSpec`, `HookCaller`).  \n   - Make `_impl` and `_manager` depend on these abstractions rather than concrete implementations, enabling future plug\u2011in of alternative strategies.  \n\n5. **Automated architectural checks**  \n   - Integrate a static analysis tool (e.g., `flake8-import-order` + `snakefood` or `pydeps`) in CI to monitor new circular dependencies and coupling metrics.  \n\nImplementing these steps will make the codebase more maintainable, safer to evolve, and easier for downstream projects to consume."
+ },
+ {
+  "repo": "tomli",
+  "model": "qwen/qwen3.8-27b",
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 0,
+  "num_claims": 4,
+  "num_correct": 1,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__",
+   "v1.0"
+  ],
+  "wrong_numbers": [
+   [
+    "0\n\nMost Connected Modules",
+    4
+   ],
+   [
+    "3\nCircular Dependencies",
+    4
+   ],
+   [
+    "3\nCircular Dependencies",
+    0
+   ]
+  ],
+  "chars": 3947,
+  "report": "### 1. Architecture Overview\n\nThe `tomli` repository is a lightweight, pure-Python implementation of the TOML (Tom's Obvious Minimal Language) specification. It consists of **4 modules**:\n\n1.  **`tomli/__init__.py`**: The public entry point exposing the `load` and `loads` functions.\n2.  **`tomli/_types.py`**: Defines type aliases and constants used throughout the package.\n3.  **`tomli/_re.py`**: Contains regular expression patterns for lexical analysis of TOML syntax.\n4.  **`tomli/_parser.py`**: The core parser module responsible for tokenization and syntax tree construction.\n\n**Dependency Relationships:**\n*   `__init__.py` depends on `_parser.py` (and indirectly on `_re.py` and `_types.py`).\n*   `_parser.py` depends on `_re.py` and `_types.py`.\n*   `_re.py` depends on `_types.py`.\n*   `_types.py` has **no internal dependencies** (leaf module).\n\n**Total Direct Internal Dependency Edges:** 3\n**Circular Dependencies:** 0\n\n**Most Connected Modules:**\n*   **`tomli/_parser.py`**: It has an in-degree of 1 (used by `__init__.py`) and an out-degree of 2 (imports `_re.py` and `_types.py`), making it the central hub of the logic.\n*   **`tomli/_types.py`**: While simple, it has an in-degree of 2 (imported by `_parser.py` and `_re.py`), making it the most depended-upon leaf.\n\n---\n\n### 2. Detected Problems\n\n1.  **Tight Coupling Between Parser and Regexes**: The `_parser.py` module directly imports and uses regex patterns from `_re.py`. This mixes lexical patterns (what looks like a token) with parsing logic (how tokens form valid TOML). If regex patterns need refinement, the parser module must be modified, increasing regression risk.\n2.  **Lack of Abstraction in Type Handling**: `_types.py` likely contains basic type definitions. If complex types or runtime validation logic are embedded here or in `_parser.py`, it becomes difficult to extend TOML support (e.g., for custom datatypes) without modifying core logic.\n3.  **No Separation of Lexer and Parser**: While not fully separate modules, the lexing and parsing steps are likely intertwined within `_parser.py`. This makes the code harder to test independently for lexical edge cases vs. syntactic validity.\n\n---\n\n### 3. Why They Matter\n\n1.  **Maintenance Friction**: Changing a single regex pattern in `_re.py` could inadvertently break parsing logic in `_parser.py` due to implicit contracts. This tight coupling slows down development and increases bug surface area.\n2.  **Extensibility Limitations**: TOML v1.0 is fixed, but future standards or community extensions may require more complex type handling. The current flat structure makes it difficult to plug in custom type parsers or validators.\n3.  **Testing Complexity**: Without a clear lexer phase, it is harder to write isolated unit tests for token generation vs. syntax tree construction. Developers must test the entire pipeline to verify lexical correctness, increasing test runtime and complexity.\n\n---\n\n### 4. Recommended Improvements\n\n1.  **Introduce a Dedicated Lexer Module**: Create `tomli/_lexer.py` that encapsulates all regex usage from `_re.py` and produces a stream of tokens. `_parser.py` should then consume tokens, not raw strings. This decouples pattern matching from syntax rules.\n2.  **Enhance Type Abstraction**: Move type-checking logic into a dedicated `tomli/_types.py` or a new `tomli/_validators.py` module. Ensure `_parser.py` delegates type construction to this module rather than constructing types inline.\n3.  **Add Internal API Boundaries**: Clearly define which parts of `_parser.py` are public within the package vs. internal. Consider using `__all__` in `__init__.py` to strictly control the public API, preventing users from importing internal modules directly.\n4.  **Improve Test Structure**: Align the test suite with the suggested modular split: `test_lexer.py` for tokenization and `test_parser.py` for syntax tree generation, improving maintainability and debugging clarity."
+ },
+ {
+  "repo": "tomli",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 6,
+  "id_supported": 4,
+  "num_claims": 0,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__",
+   "tomli.re"
+  ],
+  "wrong_numbers": [],
+  "chars": 3928,
+  "report": "**Architecture Overview**  \nThe repository consists of four Python modules:  \n* `tomli/__init__.py` \u2013 the public fa\u00e7ade that re\u2011exports the core API.  \n* `tomli/_parser.py` \u2013 the main parser that turns a TOML string into Python objects.  \n* `tomli/_re.py` \u2013 a small module that stores compiled regular\u2011expression patterns used by the parser.  \n* `tomli/_types.py` \u2013 type\u2011alias definitions and light\u2011weight container classes used by the parser.\n\nAcross these modules there are roughly **15\u201320 top\u2011level functions** (`loads`, `load`, `parse`, `read`, helper functions inside `_parser`, pattern helpers in `_re`, etc.). The dependency graph is linear:  \n\n* `__init__` imports and re\u2011exports names from `_parser`.  \n* `_parser` imports `re` and the compiled patterns from `_re`, and imports type aliases from `_types`.  \n* `_re` imports `re` and defines constants; it does not import anything else.  \n* `_types` contains only type declarations and does not import any of the other modules.\n\nNo circular dependencies exist. The module with the highest fan\u2011in/out is **`tomli._parser`**, which is the single point of integration for the rest of the package.\n\n---\n\n**Detected Problems**  \n\n1. **Missing type hints and incomplete documentation** \u2013 Only a handful of functions are type annotated; many helpers lack docstrings.  \n2. **Hard\u2011coded regular\u2011expression compilation** \u2013 Patterns are compiled at import time without any guard or caching strategy, and are exposed via module attributes rather than a clean API.  \n3. **No explicit public interface** \u2013 `__init__` re\u2011exports everything without an `__all__`, making it unclear what constitutes the stable API.  \n4. **Limited test coverage (implied)** \u2013 The absence of a `tests/` package and the minimal surface area of the modules suggest potential hidden bugs in edge cases.  \n5. **Tight coupling between parser and regex module** \u2013 The parser imports all compiled patterns, creating a single point of failure if the regex module changes.\n\n---\n\n**Why They Matter**  \n\n* **Maintainability** \u2013 Without type hints and documentation, new contributors struggle to understand the intended usage, increasing the likelihood of regressions.  \n* **Extensibility** \u2013 Exposing internal regex objects and lacking a clear public API hampers future extensions (e.g., supporting TOML v2).  \n* **Robustness** \u2013 Compiling regular expressions at import time can delay startup and may mask compilation errors; a lazy or cached approach would be safer.  \n* **Testability** \u2013 A weak interface makes it hard to isolate components for unit tests, which in turn can allow subtle bugs to slip through.  \n* **Coupling** \u2013 High coupling between modules reduces modularity; a change in regex patterns forces a re\u2011build of the parser even when the API remains unchanged.\n\n---\n\n**Recommended Improvements**  \n\n| Area | Action |\n|------|--------|\n| **Type Annotations** | Add PEP\u202f484 annotations to all public functions and data classes; run `mypy` as part of CI. |\n| **Documentation** | Write concise module\u2011level and function\u2011level docstrings; generate Sphinx docs from reST or Markdown. |\n| **Public API** | Define `__all__` in `__init__` to expose only `loads`, `load`, and any other stable helpers; remove accidental re\u2011exports. |\n| **Regex Module** | Move compiled patterns into a `patterns` sub\u2011module, expose them via a clean `tomli.re` namespace, and lazily compile if needed. |\n| **Testing** | Add a `tests/` package with unit tests covering normal parsing, edge cases, and error handling; use property\u2011based testing (hypothesis). |\n| **Dependency Graph** | Keep the current linear graph but document the rationale; avoid adding new dependencies that would create cycles. |\n| **Refactor for Modularity** | Extract small helper functions (e.g., tokenizers) into separate modules to reduce the size of `_parser.py`. |\n\nImplementing these changes will clarify the public contract, reduce coupling, and make"
+ },
+ {
+  "repo": "tomli",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 10,
+  "id_supported": 6,
+  "num_claims": 0,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__",
+   "tomli.__init__",
+   "tomli.api",
+   "typing.Protocol"
+  ],
+  "wrong_numbers": [],
+  "chars": 2554,
+  "report": "**1. Architecture Overview**  \n- **Modules:** 4 (`tomli.__init__`, `tomli._parser`, `tomli._re`, `tomli._types`)  \n- **Functions (estimated):** ~12 total across the package (e.g., `load`, `loads` in `__init__`; parsing helpers in `_parser`; regex utilities in `_re`; type definitions in `_types`).  \n- **Dependency relationships:** 5 directed imports  \n  - `__init__` \u2192 `_parser`, `_re`, `_types`  \n  - `_parser` \u2192 `_re`, `_types`  \n- **Circular dependencies:** 0 (the import graph is acyclic).  \n- **Most connected modules:** `tomli.__init__` (imports three sub\u2011modules) and `tomli._parser` (imports two sub\u2011modules).  \n\n**2. Detected Problems**  \n- The top\u2011level `__init__` re\u2011exports many internal symbols, creating a \u201cgod module\u201d that knows about every sub\u2011module.  \n- `_parser` tightly couples to both `_re` and `_types`; any change in regex patterns or type definitions forces a rebuild of the parser.  \n- No explicit public API surface is documented in code, relying on import\u2011side effects for exposure.  \n\n**3. Why They Matter**  \n- **Maintainability:** A highly connected `__init__` makes it harder to modify or replace internal modules without risking breakage of the public API.  \n- **Testability:** Tight coupling between `_parser` and its helpers reduces the ability to unit\u2011test parsing logic in isolation.  \n- **Extensibility:** Future features (e.g., alternative parsing strategies) will be impeded by the current monolithic import structure.  \n\n**4. Recommended Improvements**  \n1. **Introduce an explicit public API module** (`tomli.api` or similar) that only re\u2011exports the stable functions (`load`, `loads`, etc.). Keep `__init__` lightweight by importing from this API module.  \n2. **Decouple `_parser` from `_re`** by injecting the regex engine or by moving simple pattern definitions to a dedicated constants module. This lowers the number of direct import edges.  \n3. **Add type\u2011only imports** (`from __future__ import annotations`) and use `typing.Protocol` in `_types` to define contracts, enabling alternative implementations without altering `_parser`.  \n4. **Document the public interface** directly in `__init__` (or the new API module) with `__all__` and docstrings, clarifying which symbols are stable.  \n5. **Implement unit\u2011test hooks** (e.g., a factory function for the parser) to allow isolated testing of parsing logic without pulling in regex or type modules.  \n\nThese steps will reduce coupling, improve clarity of the public surface, and make the library easier to evolve while preserving its current functionality."
+ },
+ {
+  "repo": "click",
+  "model": "qwen/qwen3.8-27b",
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 0,
+  "num_claims": 7,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "echo_func",
+   "progressbar_factory"
+  ],
+  "wrong_numbers": [
+   [
+    "16 primary Python modules",
+    17
+   ],
+   [
+    "12 other modules",
+    17
+   ],
+   [
+    "10 modules",
+    17
+   ],
+   [
+    "4 major circular dependencies",
+    61
+   ],
+   [
+    "4 explicit circular dependencies",
+    61
+   ],
+   [
+    "4 major circular dependencies",
+    2
+   ]
+  ],
+  "chars": 3759,
+  "report": "1. Architecture Overview\nThe Click library is structured as a modular command-line interface framework with **16 primary Python modules**. The architectural core revolves around `click/core.py`, which defines the main `BaseCommand` and `Command` classes, serving as the primary integration point for user-defined CLI applications. `click/decorators.py` acts as the high-level API entry point, exposing functional wrappers that instantiate objects from `core.py`. Supporting modules include `click/parser.py` for argument parsing, `click/types.py` for data type coercion, and `click/termui.py` for user interaction methods. Lower-level concerns such as platform compatibility (`click/_compat.py`), utility functions (`click/utils.py`), and exception handling (`click/exceptions.py`) form the foundation. The **4 major circular dependencies** primarily involve `core.py` \u2194 `termui.py` and `core.py` \u2194 `shell_completion.py`, which are resolved through type hints or lazy imports to maintain runtime stability. The most connected modules are `click/core.py` (imported by ~12 other modules) and `click/exceptions.py` (imported by ~10 modules), reflecting their central role in command execution and error management.\n\n2. Detected Problems\n1.  **Circular Imports:** There are 4 explicit circular dependencies between `core.py`, `termui.py`, and `shell_completion.py`. While mitigated, they create fragile initialization orders and complicate testing and static analysis.\n2.  **God Module Anti-pattern:** `click/core.py` contains over 1,200 lines of code and defines too many responsibilities (command parsing, group management, invocation logic, context management), leading to a high coupling rate.\n3.  **Leaky Abstractions:** `click/_compat.py` and `click/_winconsole.py` expose platform-specific implementation details directly to higher-level modules, reducing portability and making cross-platform testing brittle.\n4.  **Missing Dependency Injection:** `core.py` and `termui.py` instantiate auxiliary objects (e.g., `echo`, `progressbar`) directly rather than accepting them via constructors, hindering unit testability and dependency inversion.\n\n3. Why They Matter\nCircular dependencies increase technical debt by making the module structure difficult to refactor or extend; any change in `core.py` risk breaking `termui.py` or vice versa. The \"God Module\" in `core.py` reduces code reuse, as developers cannot isolate command handling logic from context management without importing the entire heavy module. Leaky platform abstractions cause test failures on non-Windows systems if mocking is not precisely aligned with `_winconsole.py` internals. The lack of dependency injection forces developers to use Monkey Patching or heavy mocking for unit tests, slowing down development and reducing test reliability.\n\n4. Recommended Improvements\n1.  **Decouple `core.py`:** Split `core.py` into `command.py` (BaseCommand/Command), `context.py` (Context), and `group.py` (Group) to reduce coupling and improve readability.\n2.  **Break Circular Dependencies:** Introduce dependency injection for `termui.py` functions into `core.py` and move shell completion logic into a separate `completion/` subpackage that imports from `core.py` rather than being imported by it.\n3.  **Abstract Platform Layers:** Create a `platform/` package with an interface (e.g., `TerminalAPI`) and platform-specific implementations (`WindowsTerminal`, `PosixTerminal`) to encapsulate `_compat.py` and `_winconsole.py` logic behind a clean API.\n4.  **Enforce Dependency Injection:** Refactor `core.py` and `termui.py` to accept callable objects (e.g., `echo_func`, `progressbar_factory`) via constructor parameters, enabling easy mocking and adherence to the Inversion of Control principle."
+ },
+ {
+  "repo": "click",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 0,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 1,
+  "unsupported_ids": [
+   "click.command",
+   "click.option"
+  ],
+  "wrong_numbers": [
+   [
+    "16 modules",
+    17
+   ]
+  ],
+  "chars": 942,
+  "report": "**1. Architecture Overview**  \nThe Click package is organized as a flat set of 16 modules that together provide a command\u2011line interface toolkit. The core of the system lives in `core.py`, which defines the `Command`, `Group`, and related execution logic. `decorators.py` supplies user\u2011facing decorators such as `@click.command` and `@click.option` that build on the core API. Parsing of arguments and options is handled by `parser.py`, while `termui.py` (and its platform\u2011specific helpers `_termui_impl.py` and `_winconsole.py`) implements terminal input, output and styling. Help text and formatting are in `formatting.py` and `_textwrap.py`. Utility helpers are split between `utils.py` (public helpers) and `_utils.py` (private helpers). `globals.py` holds a small global context for the current command, and `testing.py` offers fixtures for unit tests. The `shell_completion.py` module adds support for auto\u2011completion. The top\u2011level `__"
+ },
+ {
+  "repo": "click",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 13,
+  "id_supported": 11,
+  "num_claims": 1,
+  "num_correct": 1,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__",
+   "importlib.import_module"
+  ],
+  "wrong_numbers": [],
+  "chars": 4141,
+  "report": "**1. Architecture Overview**  \n- **Modules:** 17 Python modules (the files listed).  \n- **Functions / classes:** Roughly\u202f\u2248\u202f210 public callables (functions, classes, and decorators) across the code\u2011base \u2013 the core API (`click.core`, `click.decorators`), utilities (`click.utils`, `click._utils`), terminal handling (`click._termui_impl`, `click.termui`), parsing (`click.parser`), and testing (`click.testing`).  \n- **Dependency relationships:** Approximately\u202f120 direct import relationships (e.g., `click.core` imports `click.exceptions`, `click.utils`, `click.globals`; `click.decorators` imports `click.core`; `click.termui` imports `click._termui_impl`, `click._winconsole`, etc.).  \n- **Circular dependencies:** None detected in the static import graph; the package is deliberately layered to avoid cycles.  \n- **Most connected modules:**  \n  1. **`click/core.py`** \u2013 central hub, imports most other modules and is imported by many (decorators, testing, globals).  \n  2. **`click/utils.py`** (and its private counterpart `click/_utils.py`) \u2013 utility functions are used throughout the package.  \n  3. **`click/formatting.py`** \u2013 provides helpers for help\u2011text generation and is referenced by core, decorators, and globals.  \n  4. **`click/globals.py`** \u2013 holds the context stack and is imported by core, testing, and decorators.\n\n---\n\n**2. Detected Problems**  \n- **High coupling of core module:** `click/core.py` has a large number of imports, making it a \u201cgod\u201d module.  \n- **Duplicate utility layers:** Both `click/_utils.py` and `click/utils.py` expose overlapping functionality, causing maintenance friction.  \n- **Broad import side\u2011effects:** Several modules (`click/_termui_impl.py`, `click/_winconsole.py`) import platform\u2011specific code at module load time, which can slow import and hinder test isolation.  \n- **Lack of explicit public API surface:** The package relies on `__all__` in many files, but several modules expose internal helpers unintentionally, increasing the risk of accidental usage.\n\n---\n\n**3. Why They Matter**  \n- **Maintainability:** High coupling makes any change to `click/core.py` ripple across the code\u2011base, increasing regression risk and slowing development.  \n- **Testability & Performance:** Import\u2011time side\u2011effects load OS\u2011specific code even when it isn\u2019t needed (e.g., when running pure\u2011Python tests on non\u2011Windows platforms), leading to slower start\u2011up and harder test mocks.  \n- **Clarity of API:** Over\u2011exposed internals blur the contract with library users, leading to misuse and breaking changes in minor releases.  \n- **Duplication:** Two utility modules that serve similar purposes duplicate effort and can diverge, causing subtle bugs when one is updated but the other is not.\n\n---\n\n**4. Recommended Improvements**  \n1. **Modularise the core:** Extract distinct responsibilities (command registration, parameter handling, error handling) into sub\u2011modules (e.g., `click/core/commands.py`, `click/core/params.py`) and have `click/core.py` act only as a fa\u00e7ade that re\u2011exports the public symbols.  \n2. **Consolidate utilities:** Merge `click/_utils.py` into `click/utils.py` (or vice\u2011versa), keep a single source of truth, and clearly mark internal helpers with a leading underscore. Update imports accordingly.  \n3. **Lazy\u2011load platform\u2011specific code:** Replace eager imports in `_termui_impl.py` and `_winconsole.py` with conditional imports inside functions or use `importlib.import_module` only when the relevant functionality is invoked.  \n4. **Define a strict public API:** Add an explicit `__all__` list in each module and run a static\u2011analysis check (e.g., `flake8` with `flake8-builtins` or a custom script) to ensure only intended symbols are exported. Document the API in `click/__init__.py`.  \n5. **Introduce dependency\u2011graph tooling:** Automate generation of the import graph (e.g., using `snakefood` or `pydeps`) as part of CI to monitor coupling and quickly detect any accidental circular imports in future changes.  \n\nImplementing these steps will reduce coupling, clarify the package\u2019s public surface, improve import performance, and make the code\u2011base easier to evolve safely."
+ },
+ {
+  "repo": "jinja",
+  "model": "qwen/qwen3.8-27b",
+  "error": "Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m668tgxkek5sa3x92sqc6mg6` service tier "
+ },
+ {
+  "repo": "jinja",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 3,
+  "id_supported": 1,
+  "num_claims": 5,
+  "num_correct": 0,
+  "sections_present": 3,
+  "unsupported_ids": [
+   "jinja2.environment.Environment",
+   "snake_case"
+  ],
+  "wrong_numbers": [
+   [
+    "70 per module",
+    25
+   ],
+   [
+    "200 import edges",
+    91
+   ],
+   [
+    "17 import edges",
+    91
+   ],
+   [
+    "14 import edges",
+    91
+   ],
+   [
+    "12 import edges",
+    91
+   ]
+  ],
+  "chars": 3617,
+  "report": "**1. Architecture Overview**  \nThe Jinja2 package is organized as 23 top\u2011level Python modules, each focused on a distinct responsibility: lexical analysis, parsing, node representation, compilation, runtime execution, sandboxing, filtering, and utilities. The public API is exposed mainly through `jinja2.environment.Environment`, which wires together the lexer, parser, compiler, and runtime components. Modules communicate through a dense import graph: nearly every module imports at least two others (e.g., `environment.py` imports `lexer`, `parser`, `runtime`, `nodes`, `compiler`, `filters`, etc.).  \n\n* **Modules** \u2013 23 total.  \n* **Functions** \u2013 Roughly 1\u202f400 public and internal helper functions spread across the codebase (approx. 60\u201370 per module on average).  \n* **Dependency Relationships** \u2013 About 200 import edges in total, with an average in\u2011degree of ~8 and out\u2011degree of ~8.  \n* **Circular Dependencies** \u2013 Several exist, most notably between:  \n  * `environment.py` \u2194 `parser.py`  \n  * `environment.py` \u2194 `compiler.py`  \n  * `parser.py` \u2194 `nodes.py` (indirectly via `environment`)  \n  * `runtime.py` \u2194 `environment.py` (through globals handling).  \n* **Most Connected Modules** \u2013  \n  * **`environment.py`** \u2013 17 import edges (highest in\u2011degree).  \n  * **`nodes.py`** \u2013 14 import edges.  \n  * **`compiler.py`** \u2013 12 import edges.  \n\nThese modules form the core of the runtime and are responsible for a large portion of the public API surface.\n\n---\n\n**2. Detected Problems**  \n\n| Issue | Symptom | Example |\n|-------|---------|---------|\n| **High Coupling** | Tight interdependence makes unit\u2011testing difficult and hampers reuse. | `environment.py` imports `parser`, `lexer`, `compiler`, `runtime`, `filters`, `sandbox`, etc., all in a single module. |\n| **Circular Imports** | Runtime import errors on certain execution paths, fragile module reloading. | `environment.py` imports `parser.py`, while `parser.py` imports `environment.py` for the `Environment` class during compilation. |\n| **Large Modules** | Code churn, long compile times, harder navigation. | `environment.py` contains >300 lines of logic, mixing configuration, template loading, and runtime state management. |\n| **Sparse Documentation per Module** | Hard to understand public vs private responsibilities. | Many helper functions are defined in `utils.py` but used across modules without clear grouping. |\n| **Redundant Re\u2011exports** | Duplication of names in `__init__.py` increases maintenance burden. | `__init__.py` imports and re\u2011exports `Environment`, `Template`, `FileSystemLoader`, etc., from many submodules. |\n| **Inconsistent Naming Conventions** | Slightly confusing API for new developers. | Some modules use `camelCase` (e.g., `async_utils`) while others use `snake_case` (`bccache`). |\n\n---\n\n**3. Why They Matter**  \n\n* **Maintainability** \u2013 High coupling and large modules mean that a small change can ripple across the entire package, increasing the risk of regressions.  \n* **Testability** \u2013 Circular dependencies force test fixtures to import the full package, making isolated unit tests expensive to run.  \n* **Extensibility** \u2013 New plug\u2011ins (e.g., custom loaders or filters) often require modifications to the core `environment.py`, discouraging community contributions.  \n* **Performance** \u2013 The dense import graph can increase import time, and large modules lead to longer compile/compile\u2011time checks during development.  \n* **Reliability** \u2013 Circular imports can surface only under specific runtime paths (e.g., when a template is loaded during environment initialization), making bugs harder to reproduce.\n\n"
+ },
+ {
+  "repo": "jinja",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 1,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__"
+  ],
+  "wrong_numbers": [
+   [
+    "2 notable cycles",
+    1
+   ]
+  ],
+  "chars": 3802,
+  "report": "**1. Architecture Overview**  \n- **Modules**: 25 Python files (e.g., `environment.py`, `parser.py`, `lexer.py`, \u2026).  \n- **Functions / classes**: Roughly **320 public callables** (functions, class methods and decorators) are defined across the code\u2011base.  \n- **Dependency relationships**: Approximately **85 import links** connect the modules (e.g., `environment` \u2192 `filters`, `parser` \u2192 `lexer`, `compiler` \u2192 `nodes`).  \n- **Circular dependencies**: **2** notable cycles have been identified (e.g., `environment \u2194 filters` and `parser \u2194 nodes`).  \n- **Most\u2011connected modules** (by inbound + outbound imports):  \n  1. `environment.py`  \n  2. `lexer.py`  \n  3. `parser.py`  \n  4. `nodes.py`  \n  5. `compiler.py`  \n\nThese modules act as the core \u201cglue\u201d of the Jinja2 engine, handling template loading, tokenisation, AST construction and code generation.\n\n---\n\n**2. Detected Problems**  \n- **Circular import cycles** between core modules (`environment`, `filters`, `parser`, `nodes`).  \n- **High coupling** of the `environment` module; it imports many utilities (filters, loaders, sandbox, etc.), making it a single point of failure.  \n- **Monolithic responsibility**: `compiler.py` and `optimizer.py` contain large, multi\u2011concern functions that mix parsing, code generation and runtime optimisation.  \n- **Lack of explicit public API**: `__all__` is missing in several modules, exposing internal helpers unintentionally.  \n- **Implicit runtime dependencies**: Some modules import heavy optional components (e.g., `sandbox` imports `async_utils`) at import time, increasing start\u2011up cost.\n\n---\n\n**3. Why They Matter**  \n- **Circular imports** can cause partially initialised modules, leading to `AttributeError` at runtime and complicating test isolation.  \n- **High coupling** hampers maintainability; a change in one peripheral module (e.g., a new filter) forces a reload of `environment`, increasing the risk of regressions.  \n- **Monolithic functions** reduce readability, hinder unit\u2011testing, and make performance\u2011critical paths harder to optimise.  \n- **Missing `__all__`** exposes internals, breaking encapsulation and making future refactors risky for downstream users.  \n- **Eager heavy imports** inflate memory usage and slow down CLI tools that only need a subset of Jinja2 (e.g., the sandbox for security\u2011critical contexts).\n\n---\n\n**4. Recommended Improvements**  \n1. **Break circular dependencies**  \n   - Introduce thin \u201cinterface\u201d modules (e.g., `jinja2/_core.py`) that contain shared type definitions and constants.  \n   - Refactor `environment` and `filters` to import each other lazily (inside functions) or via the new interface.  \n\n2. **Reduce coupling of `environment`**  \n   - Extract loader\u2011related logic into a dedicated `jinja2/loading.py` that `environment` imports lazily.  \n   - Move filter registration to a pluggable registry (`jinja2/registry.py`) that `environment` can query at runtime.  \n\n3. **Decompose large modules**  \n   - Split `compiler.py` into `codegen.py` (AST \u2192 Python code) and `bytecode.py` (optimisation utilities).  \n   - Separate `optimizer.py` concerns into `optimizers/` package with one file per optimisation pass.  \n\n4. **Define explicit public APIs**  \n   - Add `__all__` lists to each module to hide internal helpers.  \n   - Create a top\u2011level `jinja2/__init__.py` that re\u2011exports only the intended public symbols.  \n\n5. **Lazy optional imports**  \n   - Guard heavy optional imports (e.g., `sandbox`, `async_utils`) with `try/except ImportError` and expose them through factory functions.  \n\n6. **Automated architecture validation**  \n   - Integrate a static analysis step (e.g., `pydeps` or `snakefood`) into CI to monitor import graph size, coupling metrics and detect new cycles.  \n\nImplementing these changes will improve modularity, reduce start\u2011"
+ },
+ {
+  "repo": "requests",
+  "model": "qwen/qwen3.8-27b",
+  "error": "",
+  "id_claims": 5,
+  "id_supported": 3,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__",
+   "pyproject.toml"
+  ],
+  "wrong_numbers": [
+   [
+    "18 modules",
+    19
+   ]
+  ],
+  "chars": 3752,
+  "report": "Here is the architecture report for the `requests` repository based on the provided file list.\n\n### 1. Architecture Overview\nThe `requests` library exhibits a **layered modular architecture** centered around core abstractions for HTTP communication. The system comprised **18 modules** (Python files). While the exact count of functions and dependency edges requires static code analysis, the architecture is defined by clear semantic layers:\n*   **Public API Layer**: `api.py`, `__init__.py`\n*   **Core Logic Layer**: `sessions.py`, `adapters.py`, `models.py`\n*   **Utility/Infrastructure Layer**: `utils.py`, `exceptions.py`, `structures.py`, `_internal_utils.py`\n\nThe **most connected module** is `sessions.py`, as it orchestrates requests, manages cookies, auth, and hooks, and tightly couples with `adapters.py` and `models.py`. The next most connected are `models.py` (Request/Response objects) and `adapters.py` (connection handling).\n\n### 2. Detected Problems\n*   **Deprecated/Stub Modules**: `packages.py` and `compat.py` contain legacy code. `requests.packages` was deprecated in favor of `urllib3` and other direct dependencies, and `compat.py` contains Python 2/3 shims that are obsolete in modern Python versions.\n*   **Tight Coupling in Session Layer**: `sessions.py` acts as a God object, managing state for cookies, authentication, hooks, and adapters. This creates high cognitive load and makes testing individual concerns difficult.\n*   **Internal vs. Public API Boundary**: Modules like `_internal_utils.py` and `_types.py` are marked as internal, but the lack of strict enforcement (e.g., via `__all__` or packaging strategies) could lead to accidental coupling with private modules.\n*   **Implicit Dependency on `urllib3`**: `adapters.py` heavily wraps `urllib3`, but this dependency is not evident from the file list alone, creating a hidden coupling layer.\n\n### 3. Why They Matter\n*   **Maintenance Burden**: Legacy code in `packages.py` and `compat.py` increases the surface area for bugs and security vulnerabilities, as it is less likely to be actively maintained or tested with modern Python standards.\n*   **Testability & Refactoring**: The tight coupling in `sessions.py` makes it difficult to isolate and test individual functionalities (e.g., cookie handling) without mocking multiple other components.\n*   **Breakage Risk**: If users of the library import from `_internal_utils` or `packages`, they risk breakage in minor updates because these modules are not part of the stable public API.\n*   **Complexity**: The overlap between `utils.py` and `_internal_utils.py` can lead to code duplication and inconsistent behavior if both are used interchangeably.\n\n### 4. Recommended Improvements\n*   **Remove Deprecated Modules**: Delete `packages.py` and `compat.py` (or fully isolate them as deprecated stubs that raise warnings) to simplify the codebase.\n*   **Decouple `sessions.py`**: Extract specific concerns (e.g., `ReCookieJar`, `AuthHandler`, `HookRegistry`) into separate, composable classes. `Session` should act as a facade that delegates to these specialized components.\n*   **Clarify Public API**: Ensure `__init__.py` explicitly exports only public classes/functions (`send`, `get`, `Session`, `Request`, `Response`, exceptions). Document that `_internal_utils`, `_types`, and `hooks` are for internal use only.\n*   **Consolidate Utilities**: Merge `utils.py` and `_internal_utils.py` if they share similar purposes, or clearly define the boundary between general-purpose utilities and internal-only helpers.\n*   **Explicit Dependency Management**: Ensure `pyproject.toml` or `setup.py` clearly states `urllib3` as a direct dependency, and consider adding type hints to improve static analysis of `adapters.py`."
+ },
+ {
+  "repo": "requests",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 6,
+  "id_supported": 5,
+  "num_claims": 2,
+  "num_correct": 2,
+  "sections_present": 2,
+  "unsupported_ids": [
+   "Response.from_urllib3"
+  ],
+  "wrong_numbers": [],
+  "chars": 3404,
+  "report": "**1. Architecture Overview**  \nThe repository consists of **19 Python modules** that together implement a lightweight HTTP\u2011client library similar to the well\u2011known `requests` package. The core of the system is split into:\n\n| Module | Typical Responsibility |\n|--------|------------------------|\n| `__init__` | Public API fa\u00e7ade, re\u2011exports key symbols |\n| `__version__` | Version string |\n| `_internal_utils` | Private helper functions that are used internally but not exposed publicly |\n| `_types` | Type\u2011annotation helpers |\n| `adapters` | Transport adapters (e.g., `HTTPAdapter`) that wrap the urllib3 connection pool |\n| `api` | Convenience functions (`get`, `post`, \u2026) that create a session, perform a request and return a response |\n| `auth` | Authentication back\u2011ends (`AuthBase`, HTTPBasicAuth, \u2026) |\n| `certs` | Certificate handling utilities |\n| `compat` | Compatibility shims for Python\u00a02/3 (kept for legacy support) |\n| `cookies` | Cookie handling and storage |\n| `exceptions` | Custom exception classes |\n| `help` | Help text for command\u2011line use |\n| `hooks` | Request/response hook infrastructure |\n| `models` | Core data structures (`Request`, `Response`, `PreparedRequest`) |\n| `packages` | Helper to locate bundled packages (e.g., bundled certs) |\n| `sessions` | Session management \u2013 persistent headers, cookies, adapters |\n| `status_codes` | HTTP status\u2011code constants |\n| `structures` | Simple container types (`CaseInsensitiveDict`, `OrderedDict`, \u2026) |\n| `utils` | General utilities used by the rest of the package (encoding, URL manipulation, etc.) |\n\nA typical flow is:\n\n1. The public API (`api.py`) creates a `Session` instance.  \n2. The session prepares a `Request` object (via `models.py`), optionally applying hooks.  \n3. The request is sent through a chosen `Adapter` (from `adapters.py`) which in turn uses urllib3.  \n4. The raw HTTP response is wrapped back into a `Response` object (`models.py`).  \n5. The API returns this response to the caller.\n\n**Dependency Graph Snapshot**  \n- `__init__` imports almost every public symbol.  \n- `api` imports `sessions`, `models`, `hooks`.  \n- `sessions` imports `adapters`, `models`, `cookies`, `utils`.  \n- `adapters` imports `models`, `utils`, and urllib3.  \n- `models` imports `utils`, `structures`, and `exceptions`.  \n- `utils` imports `compat`, `structures`, `packages`.  \n- `auth`, `certs`, `cookies`, `hooks`, `exceptions`, and `status_codes` are largely self\u2011contained but import `utils` or `structures`.\n\nThis yields **roughly 30 explicit import relationships** across the 19 modules.\n\n**Most Connected Modules**  \n- **`models`**: 6 inbound/outbound edges (used by `api`, `sessions`, `adapters`, `utils`, `hooks`, `cookies`).  \n- **`utils`**: 5 edges (used by almost every module).  \n- **`sessions`**: 4 edges (core of request orchestration).\n\n---\n\n**2. Detected Problems**  \n\n| Category | Issue | Evidence (from the dependency snapshot) |\n|----------|-------|----------------------------------------|\n| **Tight Coupling** | `models` is imported by nearly every other module, creating a single point of failure and making unit\u2011test isolation harder. | `api`, `sessions`, `adapters`, `utils`, `hooks`, `cookies` all import `models`. |\n| **Circular Dependency Risk** | `adapters` imports `models` (to create `PreparedRequest`), while `models` imports `adapters` for certain convenience methods (`Response.from_urllib3`), forming"
+ },
+ {
+  "repo": "requests",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 14,
+  "id_supported": 6,
+  "num_claims": 2,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__",
+   "importlib.reload",
+   "importlib.util.find_spec",
+   "requests.adapters.base",
+   "requests.core",
+   "requests.errors",
+   "requests.utils._helpers",
+   "typing.TYPE_CHECKING"
+  ],
+  "wrong_numbers": [
+   [
+    "15 public functions",
+    248
+   ],
+   [
+    "42 import edges",
+    73
+   ]
+  ],
+  "chars": 4302,
+  "report": "**1. Architecture Overview**  \n- **Modules (files):** 21 (`__init__`, `__version__`, `_internal_utils`, `_types`, `adapters`, `api`, `auth`, `certs`, `compat`, `cookies`, `exceptions`, `help`, `hooks`, `models`, `packages`, `sessions`, `status_codes`, `structures`, `utils`).  \n- **Estimated functions / classes:** ~260\u202f+\u202fcallables (the core *requests* library contains roughly 12\u202f\u2013\u202f15 public functions per module on average, plus a handful of internal helpers).  \n- **Dependency relationships:** ~42 import edges (e.g., `sessions` imports `adapters`, `cookies`, `auth`, `utils`; `utils` imports `exceptions`, `compat`, etc.).  \n- **Circular dependencies:** 1 confirmed pair (`sessions` \u2194 `adapters`) and a minor three\u2011module cycle (`utils` \u2192 `exceptions` \u2192 `models` \u2192 `utils`).  \n- **Most\u2011connected modules (highest fan\u2011in / fan\u2011out):**  \n  1. **`utils`** \u2013 used by almost every other module (helpers, error handling, URL/encoding logic).  \n  2. **`sessions`** \u2013 orchestrates adapters, cookies, auth, and request building.  \n  3. **`models`** \u2013 defines `Request`, `Response`, `PreparedRequest` and is imported widely.  \n  4. **`exceptions`** \u2013 central for error propagation; many modules raise or catch its subclasses.  \n\n---\n\n**2. Detected Problems**  \n- **Tight coupling / high fan\u2011in:** `utils`, `sessions`, and `models` are imported by >\u202f70\u202f% of the codebase, making them single points of change.  \n- **Circular import between `sessions` and `adapters`:** The two modules reference each other at import time, requiring lazy imports or refactoring.  \n- **Hidden third\u2011module cycle (`utils` \u2192 `exceptions` \u2192 `models` \u2192 `utils`):** This can cause partially\u2011initialized objects during test collection.  \n- **Large monolithic modules:** `utils.py` and `sessions.py` each exceed 1000 lines, mixing low\u2011level helpers with high\u2011level orchestration logic.  \n- **Inconsistent public API exposure:** Some modules expose symbols via `__all__`, others rely on implicit imports, leading to ambiguous namespace behavior for downstream users.  \n\n---\n\n**3. Why They Matter**  \n- **Maintainability:** High coupling means a change in a central module (e.g., adding a new utility function) triggers wide\u2011scale retesting and risk of regressions.  \n- **Testability:** Circular imports force tests to import modules in a specific order or use `importlib.reload`, which hampers isolation and slows CI pipelines.  \n- **Extensibility:** Plug\u2011in adapters or custom authentication schemes must navigate through tightly\u2011coupled layers, raising the barrier for third\u2011party extensions.  \n- **Performance & Load Time:** Importing a massive `utils` module at interpreter start adds unnecessary overhead for use\u2011cases that only need a subset (e.g., just `status_codes`).  \n- **API Stability:** Inconsistent `__all__` definitions make it hard for users to discover the supported public surface, increasing accidental reliance on internal objects.  \n\n---\n\n**4. Recommended Improvements**  \n1. **Introduce a thin \u201ccore\u201d package:**  \n   - Extract pure data structures (`Request`, `Response`, status codes) into `requests.core` to decouple them from heavy utilities.  \n   - Keep `utils` as `requests.utils._helpers` and expose a small, stable facade (`requests.utils`) that re\u2011exports only the public helpers.  \n\n2. **Break circular imports:**  \n   - Refactor the `sessions` \u2194 `adapters` relationship by introducing an abstract `AdapterBase` interface in a new `requests.adapters.base` module. Both sides import the interface, eliminating direct mutual imports.  \n   - Move the few functions that cause the `utils` \u2192 `exceptions` \u2192 `models` cycle into a dedicated `requests.errors` module, imported only where needed.  \n\n3. **Modularize large files:**  \n   - Split `utils.py` into logical sub\u2011modules (`encoding.py`, `cookies.py`, `url.py`, `ssl.py`).  \n   - Partition `sessions.py` into `session_manager.py` (high\u2011level API) and `session_impl.py` (internal state handling).  \n\n4. **Define a clear public API:**  \n   - Add explicit `__all__` lists to every top\u2011level module.  \n   - Create a single entry point (`requests/__init__.py`) that imports only the intended public symbols, shielding internal helpers.  \n\n5. **Add lightweight import guards / lazy loading:**  \n   - Use `importlib.util.find_spec` or `typing.TYPE_CHECKING` blocks"
+ },
+ {
+  "repo": "flask",
+  "model": "qwen/qwen3.8-27b",
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 2,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "25 Python modules",
+    24
+   ]
+  ],
+  "chars": 5099,
+  "report": "# Software Architecture Report: Flask Core\n\n**Date**: 2023\n**Subject**: Core Flask Framework (`flask/` package)\n\n### 1. Architecture Overview\n\nThe analyzed repository contains **25** Python modules within the `flask` package. The architecture follows a layered design pattern, separating high-level application logic from low-level, stateless (sans-io) components and utilities.\n\n*   **Core Application Layer**: `app.py` serves as the central component, delegating state management to `flask/sansio/app.py` and lifecycle logic to `ctx.py`.\n*   **Stateless Foundation**: The `flask/sansio/` subpackage (`scaffold.py`, `app.py`, `blueprints.py`) isolates logic independent of WSGI implementation, allowing easier testing and extension.\n*   **Component Modules**: Distinct modules handle specific concerns: `config.py` (configuration), `sessions.py` (session serialization), `templating.py` (Jinja2 integration), `views.py` (dispatching), and `wrappers.py` (request/response extensions).\n*   **Utility & Integration**: `helpers.py` provides general utility functions, `cli.py` handles command-line interactions, `testing.py` offers test client utilities, and `json/` handles JSON serialization providers.\n\n**Dependency Metrics**:\n*   **Total Modules**: 25\n*   **Estimated Functions**: ~150\u2013180 public/private functions across core modules (exact count requires static analysis tooling, but density is high in `app.py` and `helpers.py`).\n*   **Dependency Relationships**: ~45\u201350 significant inter-module imports.\n*   **Circular Dependencies**: **0** detected in the static import graph of the listed files (Flask is carefully designed to avoid circular imports via late binding and delegation).\n*   **Most Connected Modules**:\n    1.  `flask/app.py`: Imports from `sansio/app.py`, `ctx.py`, `globals.py`, `helpers.py`, `sessions.py`, `templating.py`, `views.py`, `wrappers.py`, `config.py`, `blueprints.py`.\n    2.  `flask/sansio/app.py`: Imports from `scaffold.py`, `helpers.py`, and `blueprints.py`.\n    3.  `flask/ctx.py`: Imports from `app.py` (via lazy evaluation/protocol), `globals.py`, and `sessions.py`.\n\n### 2. Detected Problems\n\n*   **God Class Antipattern**: `flask/app.py` contains a large amount of logic, acting as a facade for many subsystems. While it delegates to `sansio`, it still holds numerous methods for routing, error handling, and lifecycle management.\n*   **Hidden Coupling via Globals**: Heavy reliance on `flask/globals.py` (context-local objects) creates implicit dependencies. Functions in `helpers.py`, `views.py`, and `templating.py` depend on the active application context, making them hard to unit test in isolation without extensive mocking.\n*   **Large Utility Module**: `flask/helpers.py` contains a heterogeneous mix of functions (file downloads, redirect logic, URL handling), suggesting a potential for better categorization or splitting into domain-specific modules (e.g., `flask/files.py`, `flask/redirects.py`).\n*   **Deprecated/Backward Compatibility Logic**: Modules like `flask/json/provider.py` retain complex abstraction layers to support older Flask versions, increasing cognitive load.\n\n### 3. Why They Matter\n\n*   **Maintainability**: The god class nature of `app.py` makes it difficult to isolate changes. A bug in one routing feature could inadvertently affect session handling or template rendering.\n*   **Testability**: Implicit coupling through context globals leads to brittle unit tests. Developers must carefully set up and tear down context locals, increasing test complexity and runtime.\n*   **Onboarding Difficulty**: New contributors face a high barrier to entry due to the opacity of context-local state and the large surface area of `app.py` and `helpers.py`.\n*   **Performance Overhead**: While context locals are efficient, the indirection required to access them adds slight overhead compared to explicit parameter passing, and the complexity of the JSON provider can mask performance issues in serialization.\n\n### 4. Recommended Improvements\n\n*   **Refactor `helpers.py`**: Split `helpers.py` into more specific modules (e.g., `flask/files.py` for `send_file`, `send_from_directory`; `flask/redirects.py` for `redirect`). This improves discoverability and reduces module size.\n*   **Explicit Context Passing (Partial)**: In non-critical paths, consider refactoring some functions in `views.py` and `templating.py` to accept the application context as an explicit parameter where feasible, reducing reliance on implicit globals for testing.\n*   **Break Down `app.py`**: Move specific responsibilities (e.g., error handling, URL map management) into dedicated mixins or helper classes within the `flask/sansio/` package, keeping `flask/app.py` as a thin composition layer.\n*   **Deprecate Legacy JSON Providers**: Accelerate the removal of deprecated JSON serialization patterns in `flask/json/provider.py` to simplify the abstraction layer.\n*   **Improve Type Hints**: Ensure full type coverage in `flask/typing.py` and core modules to facilitate static analysis (e.g., `mypy`, `pyright`) and detect implicit coupling issues earlier."
+ },
+ {
+  "repo": "flask",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 1,
+  "num_claims": 3,
+  "num_correct": 0,
+  "sections_present": 3,
+  "unsupported_ids": [
+   "app.cli"
+  ],
+  "wrong_numbers": [
+   [
+    "20 modules",
+    24
+   ],
+   [
+    "220 distinct functions",
+    363
+   ],
+   [
+    "38 unique import dependencies",
+    95
+   ]
+  ],
+  "chars": 2542,
+  "report": "**1. Architecture Overview**  \nThe repository is organized around the classic *Flask* monolith split into logical packages:\n\n- **core** (`flask/app.py`, `flask/blueprints.py`, `flask/views.py`, `flask/wrappers.py`) \u2013 request handling, routing and view dispatch.  \n- **environment & context** (`flask/ctx.py`, `flask/globals.py`, `flask/sansio/*.py`) \u2013 request\u2011, session\u2011 and application\u2011context machinery.  \n- **utility & helpers** (`flask/helpers.py`, `flask/debughelpers.py`, `flask/json/*.py`, `flask/templating.py`, `flask/sessions.py`) \u2013 serialization, templating, and session back\u2011ends.  \n- **CLI & configuration** (`flask/cli.py`, `flask/config.py`, `flask/__main__.py`) \u2013 command line support and settings.  \n- **signals, logging and testing** (`flask/signals.py`, `flask/logging.py`, `flask/testing.py`) \u2013 infrastructure for application events, diagnostics and test helpers.\n\nIn total the code base consists of **20 modules** with roughly **220 distinct functions** and **38 unique import dependencies** between them.\n\n**2. Detected Problems**  \n| Problem | Description | Evidence |\n|---------|-------------|----------|\n| **High coupling** | Core modules (app, views, blueprints) import almost all other modules, creating a tightly coupled system. | `app.py` imports `cli`, `config`, `templating`, `sessions`, `signals`; `views.py` imports `wrappers`, `helpers`, `debughelpers`. |\n| **Potential circular imports** | Two small but fragile cycles exist: *(app \u2194 cli)* and *(blueprints \u2194 sansio/blueprints)*. | `cli.py` imports `app` for the `FlaskGroup`; `app.py` imports `cli` for the `app.cli` property. Similarly, `blueprints.py` imports `sansio/blueprints` for compatibility helpers, and `sansio/blueprints.py` imports the core `blueprints`. |\n| **Redundant responsibilities** | The `__init__` package file pulls in many sub\u2011modules to expose a single namespace, inflating the import graph. | `flask/__init__.py` imports `app`, `cli`, `globals`, `helpers`, `json`, `sessions`, `signals`, `templating`, `testing`, `typing`, `views`, `wrappers`. |\n| **Inconsistent naming and paths** | Mixing `flask` and `flask/sansio` modules creates a subtle namespace confusion. | Both `flask/blueprints.py` and `flask/sansio/blueprints.py` expose similar APIs. |\n\n**3. Why They Matter**  \n- **Maintainability** \u2013 Tight coupling means that a change in one area (e.g. adding a new config option) forces recompilation of dozens of modules.  \n- **Testability** \u2013 Circular imports prevent isolated unit tests; tests must load the whole package, which"
+ },
+ {
+  "repo": "flask",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 1,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "dependencies.svg"
+  ],
+  "wrong_numbers": [
+   [
+    "2 small cycles",
+    1
+   ]
+  ],
+  "chars": 4370,
+  "report": "**1. Architecture Overview**  \n- **Modules:** 27 Python files (each file is treated as a module).  \n- **Functions / classes:** Roughly 190 top\u2011level callables (functions, classes, and dataclasses) are defined across the code base \u2013 the larger modules (e.g., `app.py`, `helpers.py`, `globals.py`, `templating.py`) contribute the bulk of them.  \n- **Dependency relationships:** Static analysis shows about **44** import\u2011to\u2011import edges between modules (e.g., `app.py \u2192 config.py`, `helpers.py \u2192 json.provider`, `blueprints.py \u2192 app.py`, etc.).  \n- **Circular dependencies:** **2** small cycles were detected:  \n  1. `flask/app.py \u2192 flask/ctx.py \u2192 flask/app.py`  \n  2. `flask/helpers.py \u2192 flask/json/provider.py \u2192 flask/helpers.py`  \n- **Most connected modules (by degree):**  \n  - `flask/app.py` \u2013 central hub for the application object and imports many subsystems.  \n  - `flask/helpers.py` \u2013 utilities used throughout the framework.  \n  - `flask/globals.py` \u2013 provides request\u2011local proxies accessed by many modules.  \n\n**2. Detected Problems**  \n- **Circular import cycles** (2 occurrences) can cause import\u2011time `ImportError` or partially initialized objects.  \n- **High coupling** of the three most\u2011connected modules (`app.py`, `helpers.py`, `globals.py`) leads to a \u201cgod\u2011module\u201d effect, making isolated testing and independent evolution difficult.  \n- **Lack of explicit layer boundaries:** presentation\u2011related code (`templating.py`, `views.py`) directly imports low\u2011level utilities (`helpers.py`, `globals.py`), blurring the intended separation between core framework logic and higher\u2011level APIs.  \n- **Sparse documentation of internal dependencies** \u2013 the import graph is not visualised or codified, which hampers onboarding and impact analysis for changes.\n\n**3. Why They Matter**  \n- **Circular imports** can break the import process in certain Python versions or under alternative import strategies (e.g., lazy loading), leading to runtime failures that are hard to debug.  \n- **High coupling** increases the risk that a change in a central module ripples across the code base, causing regressions and making refactoring expensive. It also limits the ability to replace or mock these modules in unit tests, reducing test reliability.  \n- **Absence of clear layering** makes it harder to enforce architectural rules, leading to accidental misuse of low\u2011level APIs in high\u2011level code and vice\u2011versa, which can degrade performance and increase maintenance overhead.  \n- **Undocumented dependencies** impede impact analysis, making contributors more likely to introduce breaking changes inadvertently.\n\n**4. Recommended Improvements**  \n1. **Break the circular dependencies**  \n   - Extract the shared functionality between the paired modules into a new, low\u2011level utility module (e.g., `flask/_internal.py`) and have both original modules import from there.  \n   - Use lazy imports (`import importlib`) inside functions that only need the counterpart at runtime, reducing import\u2011time coupling.  \n\n2. **Introduce a thin fa\u00e7ade layer**  \n   - Create a `flask/core/` package that houses fundamental objects (`App`, `RequestContext`, `GlobalProxy`).  \n   - Move helper utilities that are widely used but not core to `flask/helpers.py` into a `flask/utils/` package, and have high\u2011level modules import from `flask/utils` instead of directly from `helpers.py`.  \n\n3. **Enforce a dependency direction**  \n   - Adopt a rule: **core \u2192 utils \u2192 high\u2011level** (no upward imports).  \n   - Add a lightweight static\u2011analysis script (or integrate `flake8-import-order`) into CI to flag violations.  \n\n4. **Document the import graph**  \n   - Generate a visual diagram (e.g., with `pydeps` or `graphviz`) and store it in the repository (`docs/architecture/dependencies.svg`).  \n   - Keep the diagram up\u2011to\u2011date via a pre\u2011commit hook that runs the generation script.  \n\n5. **Add unit\u2011test boundaries**  \n   - Increase test coverage for the newly extracted utility modules and for the fa\u00e7ade boundaries to ensure that the refactor does not alter public behavior.  \n   - Use dependency injection or mocking for the central modules in tests of higher\u2011level components to reduce test fragility.  \n\nImplementing these steps will eliminate the current import cycles, lower coupling, clarify architectural layers, and improve long\u2011term maintainability and testability of the Flask code base."
+ },
+ {
+  "repo": "httpx",
+  "model": "qwen/qwen3.8-27b",
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 1,
+  "num_claims": 3,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "Auth.handle_request"
+  ],
+  "wrong_numbers": [
+   [
+    "15 internal modules",
+    23
+   ],
+   [
+    "95 direct import edges",
+    87
+   ],
+   [
+    "1 Major Cycle",
+    2
+   ]
+  ],
+  "chars": 4950,
+  "report": "# Architecture Report: httpx\n\n## 1. Architecture Overview\n\nThe `httpx` library follows a modular, layer-based architecture designed to separate high-level HTTP client abstractions from low-level transport mechanisms.\n\n*   **Module Count**: 22 Python files/modules.\n*   **Core Layers**:\n    *   **Public API Layer**: `httpx/__init__.py`, `httpx/_api.py`, `httpx/_models.py`. These define the user-facing interface (`Client`, `Request`, `Response`, shortcut functions).\n    *   **Core Logic Layer**: `httpx/_client.py`, `httpx/_auth.py`, `httpx/_config.py`, `httpx/_content.py`, `httpx/_decoders.py`, `httpx/_multipart.py`. These handle request preparation, authentication, content parsing, and response decoding.\n    *   **Transport Layer**: `httpx/_transports/*`. This encapsulates network I/O via specific interface implementations (`ASGITransport`, `WSGITransport`, `DefaultTransport`, `MockTransport`).\n    *   **Utility/Support Layer**: `httpx/_types.py`, `httpx/_utils.py`, `httpx/_exceptions.py`, `httpx/_status_codes.py`, `httpx/_urlparse.py`.\n*   **Dependency Relationships**:\n    *   **Estimated Direct Dependency Relationships**: ~85\u201395 direct import edges.\n        *   `httpx/_client.py` is the primary hub, importing from ~15 internal modules.\n        *   `httpx/_models.py` imports from `_content.py`, `_decoders.py`, `_exceptions.py`, `_types.py`, `_utils.py`.\n        *   `httpx/_auth.py` imports from `_client.py` (often circular in runtime usage, but structurally weak) and `_models.py`.\n        *   `httpx/_transports/*` modules primarily import from `_models.py` and `_exceptions.py`.\n*   **Circular Dependencies**:\n    *   **Detected Circular Dependencies**: **1 Major Cycle** (Runtime/Design-level).\n        *   `httpx/_client.py` \u2194 `httpx/_auth.py`: `_client` uses `Auth` classes, and `Auth.handle_request` often references `Client`/`Request`/`Response` types. While Python can handle this via lazy imports or type hints, it creates a tight coupling.\n        *   `httpx/_models.py` \u2194 `httpx/_client.py`: Less direct, but `Request`/`Response` objects are tightly embedded in the client lifecycle.\n    *   *Note: Static analysis may report 0 strict circular imports if all imports are lazy/inside functions, but architectural coupling is high.*\n*   **Most Connected Modules**:\n    1.  **`httpx/_client.py`**: Highest degree (18+ outgoing edges). Central coordinator.\n    2.  **`httpx/_models.py`**: High in-degree (imported by almost every other module).\n    3.  **`httpx/_exceptions.py`** and **`httpx/_types.py`**: High in-degree due to universal use of exceptions and type definitions.\n\n## 2. Detected Problems\n\n1.  **God Module (`_client.py`)**: `httpx/_client.py` is excessively large and complex. It orchestrates transport, auth, redirects, retries, client pooling, and request/response lifecycle. This violates the Single Responsibility Principle (SRP).\n2.  **Tight Coupling in Transport Layer**: `httpx/_transports/default.py` depends on specific implementation details of `_client.py` and `_models.py`. The boundary between \"Client\" and \"Transport\" is blurred.\n3.  **Hardcoded Status Codes**: `httpx/_status_codes.py` is a static module, but `httpx/_models.py` and `_client.py` often check status codes directly instead of using a unified semantic helper, leading to duplicated logic.\n4.  **Asynchronous Pattern Propagation**: Methods like `send` and `stream` in `_client.py` and transports handle both sync and async paths via internal recursion or dual method implementations, increasing the surface area for bugs.\n5.  **Lack of Clear Event Hooks**: Extension points for request/response transformation are limited to `Auth` and `Transport`, making it difficult to plug in middleware-style logging or modification without subclassing `Client`.\n\n## 3. Why They Matter\n\n*   **Maintainability**: The size of `_client.py` makes it difficult to understand, test, and modify. Small changes (e.g., adding a new retry policy) require modifying a 1000+ line file, increasing regression risk.\n*   **Testability**: Tight coupling between `Client` and `Transport` makes it hard to unit test client logic in isolation without mocking extensive parts of the transport or using the `MockTransport`, which may not fully simulate real-world behavior (e.g., timeouts, connection resets).\n*   **Extensibility**: Developers cannot easily insert cross-cutting concerns (logging, metrics, tracing) into the request pipeline without overriding the entire `send` method, leading to code duplication and fragility.\n*   **Security & Stability**: Complexity in `_client.py` increases the likelihood of subtle security flaws (e.g., improper handling of redirects with credentials, cookie handling, or connection reuse) that are hard to audit.\n*   **Performance**: The dual sync/async implementation patterns may introduce overhead due to redundant checks and code paths.\n\n## 4. Recommended Improvements\n\n1.  **Decompose `httpx/_client.py`**:\n    *"
+ },
+ {
+  "repo": "httpx",
+  "model": "openai/gpt-oss-20b",
+  "error": "",
+  "id_claims": 4,
+  "id_supported": 4,
+  "num_claims": 0,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 2627,
+  "report": "**1. Architecture Overview**  \nThe `httpx` package is a fully\u2011featured HTTP client library written in pure Python. It is organized into a central namespace (`httpx`) containing core modules (`_client`, `_api`, `_auth`, etc.) and a dedicated subpackage (`_transports`) that implements several transport backends (default, ASGI, WSGI, mock). The public interface is re\u2011exported from `__init__.py`, while private helpers are prefixed with an underscore. The design follows a layered approach: configuration, authentication, request building, transport selection, and response handling.\n\n**2. Detected Problems**  \n- **Number of modules:** 23.  \n- **Number of functions:** \u2248\u202f200 (including public APIs, helpers, and transport methods).  \n- **Dependency relationships:** ~\u202f90 internal import statements.  \n- **Circular dependencies:** Two notable cycles exist:  \n  1. `_client.py` imports `_api.py` for request building while `_api.py` imports `_client.py` for session handling.  \n  2. `_client.py` imports `_main.py` for command\u2011line entry points, and `_main.py` imports `_client.py` to create default client instances.  \n- **Most connected modules:** `_client.py` (\u2248\u202f20 imports), `_api.py` (\u2248\u202f18 imports), `_transports/default.py` (\u2248\u202f15 imports), `_utils.py` (\u2248\u202f12 imports), and `_config.py` (\u2248\u202f10 imports).  \n\n**3. Why They Matter**  \n- **Circular imports** delay module initialization, can raise `ImportError` at runtime, and make unit testing fragile.  \n- **High coupling** among the core modules increases maintenance effort: changes to one module often ripple through many others.  \n- **Large import graph** makes the package heavier to load and hampers lazy\u2011loading opportunities, impacting startup performance in constrained environments.\n\n**4. Recommended Improvements**  \n1. **Break cycles** by refactoring shared functionality into a new module (`_session.py`) that both `_client.py` and `_api.py` import, removing direct mutual imports.  \n2. **Introduce lazy imports** for optional components (e.g., ASGI/WSGI backends) to reduce startup cost and avoid unnecessary imports.  \n3. **Apply a dependency injection pattern** for transports and authentication so that modules only depend on abstract interfaces instead of concrete classes.  \n4. **Document import relationships** in a diagram and enforce via CI tests (e.g., `flake8-import-order`).  \n5. **Reduce module coupling** by moving utility functions into `_utils.py` and ensuring that core modules import only from the public API surface.  \n\nThese steps will lower the risk of import\u2011time failures, improve testability, and make future extensions easier to implement."
+ },
+ {
+  "repo": "httpx",
+  "model": "openai/gpt-oss-120b",
+  "error": "",
+  "id_claims": 8,
+  "id_supported": 6,
+  "num_claims": 1,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [
+   "__all__",
+   "abc.ABC"
+  ],
+  "wrong_numbers": [
+   [
+    "45 import edges",
+    87
+   ]
+  ],
+  "chars": 4031,
+  "report": "**1. Architecture Overview**  \n- **Modules:** 27 Python files (each\u202f`.py` file listed is a separate module).  \n- **Functions / classes:** Roughly **180\u202f+** top\u2011level callables (functions\u202f+\u202fclass definitions) are spread across the modules (e.g., request helpers in `_api.py`, authentication classes in `_auth.py`, transport abstractions in `_transports/*.py`, URL utilities in `_urls.py`, etc.).  \n- **Dependency relationships:** Approximately **45** import edges were identified (e.g., `_client` imports `_api`, `_config`, `_exceptions`, and the transport package; `_api` imports `_client`, `_models`, `_exceptions`; each transport module imports the base transport and utility modules).  \n- **Circular dependencies:** **None** detected in the static import graph; the package is deliberately layered to avoid cycles.  \n- **Most\u2011connected modules:**  \n  1. **`httpx/_client.py`** \u2013 central hub, imports the majority of internal modules and re\u2011exports public APIs.  \n  2. **`httpx/_api.py`** \u2013 closely linked to `_client`, `_models`, `_exceptions`, and the URL utilities.  \n  3. **`httpx/_transports/base.py`** \u2013 the abstract transport layer, imported by all concrete transport implementations.  \n  4. **`httpx/_urls.py`** \u2013 used by request building, redirects, and authentication helpers.  \n\n**2. Detected Problems**  \n- **High coupling of `_client.py`**: it directly imports many low\u2011level modules, making it a \u201cgod\u201d module.  \n- **Broad public re\u2011exports**: several internal symbols are re\u2011exported via `__all__` in `__init__.py`, which blurs the public\u2011private boundary.  \n- **Redundant import paths**: some modules (e.g., `_utils.py` and `_decoders.py`) are imported both directly and through other helpers, inflating the import graph without functional need.  \n- **Lack of explicit interface contracts**: transport classes inherit from `BaseTransport` but rely on duck\u2011typed method signatures without abstract\u2011base\u2011class enforcement or type\u2011checking at runtime.  \n\n**3. Why They Matter**  \n- **Maintainability:** Tight coupling around `_client.py` means that any change (e.g., refactoring authentication) risks breaking many unrelated features, increasing the regression surface.  \n- **API stability:** Over\u2011exposing internal helpers can lead to downstream projects depending on non\u2011public APIs, making future refactors risky.  \n- **Startup performance:** Redundant imports cause unnecessary module loading, marginally increasing interpreter start\u2011up time, especially in constrained environments.  \n- **Extensibility:** Weak contracts for transports hinder third\u2011party transport implementations and static analysis tools, limiting the library\u2019s adaptability to new protocols or custom backends.  \n\n**4. Recommended Improvements**  \n1. **Introduce a thin fa\u00e7ade layer** \u2013 create a new `httpx/_core.py` that isolates core request/response logic. Move most imports out of `_client.py` into this fa\u00e7ade so `_client` becomes a thin wrapper around the core API.  \n2. **Explicitly define public API** \u2013 tighten `__all__` in `httpx/__init__.py` to expose only high\u2011level objects (`Client`, `AsyncClient`, request helpers). Move internal utilities to a private sub\u2011package (e.g., `httpx/_internal/`).  \n3. **Deduplicate imports** \u2013 audit `_utils.py`, `_decoders.py`, and related helpers; centralize common utilities in a single module and have other modules import from there, eliminating repeated import chains.  \n4. **Formalize transport contracts** \u2013 convert `BaseTransport` into an `abc.ABC` with clearly typed abstract methods (`handle_request`, `close`, etc.). Add runtime validation (e.g., `isinstance` checks) and update type stubs to improve IDE support and static analysis.  \n5. **Add dependency\u2011graph tests** \u2013 incorporate a CI test that builds the import graph and fails on newly introduced cycles or excessive coupling metrics (e.g., >\u202f8 inbound imports for a module).  \n\nImplementing these steps will reduce coupling, clarify the public surface, improve performance, and make the codebase more resilient to future changes."
+ }
+]

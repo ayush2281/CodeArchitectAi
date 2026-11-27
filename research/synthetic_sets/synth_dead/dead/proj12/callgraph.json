@@ -1,0 +1,64 @@
+{
+ "extra12": [],
+ "extra12.Unused12.never_12": [],
+ "extra12.call_by_name_12": [
+  "extra12.hook_12"
+ ],
+ "extra12.hook_12": [],
+ "extra12.legacy_12": [],
+ "extra12.old_helper_12": [],
+ "func121": [],
+ "func121.apply_all": [
+  "func121.event_formatb",
+  "func121.report_buildc"
+ ],
+ "func121.event_formatb": [],
+ "func121.report_buildc": [
+  "func121.user_mergea"
+ ],
+ "func121.user_mergea": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra12.call_by_name_12",
+  "func121.apply_all",
+  "shapes120.EventBase.run"
+ ],
+ "shapes120": [],
+ "shapes120.Account3.finish": [
+  "shapes120.EventBase.finish"
+ ],
+ "shapes120.Account3.helper": [],
+ "shapes120.Account3.step": [
+  "shapes120.Account3.helper"
+ ],
+ "shapes120.EventBase.finish": [],
+ "shapes120.EventBase.prepare": [],
+ "shapes120.EventBase.run": [
+  "shapes120.Account3.finish",
+  "shapes120.Account3.step",
+  "shapes120.EventBase.finish",
+  "shapes120.EventBase.prepare",
+  "shapes120.Invoice1.finish",
+  "shapes120.Invoice1.step",
+  "shapes120.Order0.step",
+  "shapes120.Ticket2.step"
+ ],
+ "shapes120.EventBase.step": [],
+ "shapes120.Invoice1.finish": [
+  "shapes120.EventBase.finish"
+ ],
+ "shapes120.Invoice1.helper": [],
+ "shapes120.Invoice1.step": [
+  "shapes120.Invoice1.helper"
+ ],
+ "shapes120.Order0.helper": [],
+ "shapes120.Order0.step": [
+  "shapes120.Order0.helper"
+ ],
+ "shapes120.Ticket2.helper": [],
+ "shapes120.Ticket2.step": [
+  "shapes120.Ticket2.helper"
+ ]
+}

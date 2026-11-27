@@ -1,0 +1,46 @@
+{
+ "extra5": [],
+ "extra5.Unused5.never_5": [],
+ "extra5.call_by_name_5": [
+  "extra5.hook_5"
+ ],
+ "extra5.hook_5": [],
+ "extra5.legacy_5": [],
+ "extra5.old_helper_5": [],
+ "func51": [],
+ "func51.apply_all": [
+  "func51.cart_sendc",
+  "func51.job_syncb"
+ ],
+ "func51.cart_sendc": [
+  "func51.message_savea"
+ ],
+ "func51.job_syncb": [],
+ "func51.message_savea": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra5.call_by_name_5",
+  "func51.apply_all",
+  "res50.consume"
+ ],
+ "res50": [],
+ "res50.Resource.__enter__": [
+  "res50.Resource.open"
+ ],
+ "res50.Resource.__exit__": [
+  "res50.Resource.close"
+ ],
+ "res50.Resource.close": [],
+ "res50.Resource.open": [],
+ "res50.consume": [
+  "res50.Resource.__enter__",
+  "res50.Resource.__exit__",
+  "res50.stream"
+ ],
+ "res50.stream": [
+  "res50.transform"
+ ],
+ "res50.transform": []
+}

@@ -1,0 +1,50 @@
+{
+ "events311": [
+  "events311.register",
+  "events311.register.deco"
+ ],
+ "events311.dispatch": [
+  "events311.on_merge1",
+  "events311.on_send2",
+  "events311.on_sync0"
+ ],
+ "events311.on_merge1": [],
+ "events311.on_send2": [],
+ "events311.on_sync0": [],
+ "events311.register": [],
+ "events311.register.deco": [],
+ "extra31": [],
+ "extra31.Unused31.never_31": [],
+ "extra31.call_by_name_31": [
+  "extra31.hook_31"
+ ],
+ "extra31.hook_31": [],
+ "extra31.legacy_31": [],
+ "extra31.old_helper_31": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events311.dispatch",
+  "extra31.call_by_name_31",
+  "rec310.counter",
+  "rec310.counter.inc",
+  "rec310.even",
+  "rec310.fact"
+ ],
+ "rec310": [],
+ "rec310.bump": [],
+ "rec310.counter": [],
+ "rec310.counter.inc": [
+  "rec310.bump"
+ ],
+ "rec310.even": [
+  "rec310.odd"
+ ],
+ "rec310.fact": [
+  "rec310.fact"
+ ],
+ "rec310.odd": [
+  "rec310.even"
+ ]
+}

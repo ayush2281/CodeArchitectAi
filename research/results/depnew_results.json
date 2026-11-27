@@ -1,0 +1,926 @@
+{
+ "original": {
+  "rows": [
+   {
+    "repo": "requests",
+    "files": 19,
+    "ref_edges": 73,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      59,
+      0,
+      14
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      73,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "flask",
+    "files": 24,
+    "ref_edges": 95,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      74,
+      0,
+      21
+     ],
+     "cycles": [
+      0,
+      1,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      95,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "click",
+    "files": 17,
+    "ref_edges": 61,
+    "ref_cycles": 2,
+    "deployed": {
+     "edges": [
+      48,
+      0,
+      13
+     ],
+     "cycles": [
+      2,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      61,
+      0,
+      0
+     ],
+     "cycles": [
+      2,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "jinja",
+    "files": 25,
+    "ref_edges": 91,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      78,
+      0,
+      13
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      91,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "itsdangerous",
+    "files": 8,
+    "ref_edges": 21,
+    "ref_cycles": 0,
+    "deployed": {
+     "edges": [
+      15,
+      0,
+      6
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      21,
+      0,
+      0
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "httpx",
+    "files": 23,
+    "ref_edges": 87,
+    "ref_cycles": 2,
+    "deployed": {
+     "edges": [
+      69,
+      0,
+      18
+     ],
+     "cycles": [
+      1,
+      0,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      87,
+      0,
+      0
+     ],
+     "cycles": [
+      2,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "attrs",
+    "files": 19,
+    "ref_edges": 43,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      28,
+      0,
+      15
+     ],
+     "cycles": [
+      0,
+      0,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      43,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "tqdm",
+    "files": 31,
+    "ref_edges": 60,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      50,
+      0,
+      10
+     ],
+     "cycles": [
+      0,
+      0,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      60,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "rich",
+    "files": 100,
+    "ref_edges": 421,
+    "ref_cycles": 2,
+    "deployed": {
+     "edges": [
+      405,
+      1,
+      16
+     ],
+     "cycles": [
+      1,
+      1,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      421,
+      0,
+      0
+     ],
+     "cycles": [
+      2,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "python-dotenv",
+    "files": 8,
+    "ref_edges": 8,
+    "ref_cycles": 0,
+    "deployed": {
+     "edges": [
+      6,
+      0,
+      2
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      8,
+      0,
+      0
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "werkzeug",
+    "files": 54,
+    "ref_edges": 208,
+    "ref_cycles": 3,
+    "deployed": {
+     "edges": [
+      173,
+      3,
+      35
+     ],
+     "cycles": [
+      2,
+      1,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      208,
+      0,
+      0
+     ],
+     "cycles": [
+      3,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "markupsafe",
+    "files": 2,
+    "ref_edges": 1,
+    "ref_cycles": 0,
+    "deployed": {
+     "edges": [
+      0,
+      0,
+      1
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      1,
+      0,
+      0
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "pluggy",
+    "files": 13,
+    "ref_edges": 24,
+    "ref_cycles": 0,
+    "deployed": {
+     "edges": [
+      19,
+      0,
+      5
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      24,
+      0,
+      0
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "more-itertools",
+    "files": 3,
+    "ref_edges": 3,
+    "ref_cycles": 0,
+    "deployed": {
+     "edges": [
+      1,
+      0,
+      2
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      3,
+      0,
+      0
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "urllib3",
+    "files": 35,
+    "ref_edges": 140,
+    "ref_cycles": 2,
+    "deployed": {
+     "edges": [
+      111,
+      3,
+      29
+     ],
+     "cycles": [
+      1,
+      1,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      140,
+      0,
+      0
+     ],
+     "cycles": [
+      2,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "starlette",
+    "files": 36,
+    "ref_edges": 133,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      132,
+      1,
+      1
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      133,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "jsonschema",
+    "files": 37,
+    "ref_edges": 71,
+    "ref_cycles": 2,
+    "deployed": {
+     "edges": [
+      54,
+      4,
+      17
+     ],
+     "cycles": [
+      0,
+      1,
+      2
+     ]
+    },
+    "proposed": {
+     "edges": [
+      71,
+      0,
+      0
+     ],
+     "cycles": [
+      2,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "typer",
+    "files": 34,
+    "ref_edges": 139,
+    "ref_cycles": 2,
+    "deployed": {
+     "edges": [
+      109,
+      3,
+      30
+     ],
+     "cycles": [
+      1,
+      1,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      139,
+      0,
+      0
+     ],
+     "cycles": [
+      2,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "tomli",
+    "files": 4,
+    "ref_edges": 4,
+    "ref_cycles": 0,
+    "deployed": {
+     "edges": [
+      3,
+      0,
+      1
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      4,
+      0,
+      0
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "idna",
+    "files": 10,
+    "ref_edges": 13,
+    "ref_cycles": 0,
+    "deployed": {
+     "edges": [
+      7,
+      0,
+      6
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    },
+    "proposed": {
+     "edges": [
+      13,
+      0,
+      0
+     ],
+     "cycles": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  ],
+  "total": {
+   "deployed_edges": {
+    "tp": 1441,
+    "fp": 15,
+    "fn": 255,
+    "P": 0.9896978021978022,
+    "R": 0.8496462264150944,
+    "F1": 0.9143401015228427,
+    "repos": 20
+   },
+   "deployed_cycles": {
+    "tp": 11,
+    "fp": 6,
+    "fn": 10,
+    "P": 0.6470588235294118,
+    "R": 0.5238095238095238,
+    "F1": 0.5789473684210527,
+    "repos": 20
+   },
+   "proposed_edges": {
+    "tp": 1696,
+    "fp": 0,
+    "fn": 0,
+    "P": 1.0,
+    "R": 1.0,
+    "F1": 1.0,
+    "repos": 20
+   },
+   "proposed_cycles": {
+    "tp": 21,
+    "fp": 0,
+    "fn": 0,
+    "P": 1.0,
+    "R": 1.0,
+    "F1": 1.0,
+    "repos": 20
+   }
+  }
+ },
+ "new": {
+  "rows": [
+   {
+    "repo": "imbalanced-learn",
+    "files": 117,
+    "ref_edges": 247,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      234,
+      0,
+      13
+     ],
+     "cycles": [
+      0,
+      0,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      247,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "optuna",
+    "files": 220,
+    "ref_edges": 946,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      864,
+      41,
+      82
+     ],
+     "cycles": [
+      0,
+      6,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      946,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "seaborn",
+    "files": 54,
+    "ref_edges": 152,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      127,
+      4,
+      25
+     ],
+     "cycles": [
+      0,
+      1,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      152,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "networkx",
+    "files": 585,
+    "ref_edges": 1260,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      1142,
+      42,
+      118
+     ],
+     "cycles": [
+      0,
+      3,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      1260,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "pint",
+    "files": 118,
+    "ref_edges": 454,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      339,
+      18,
+      115
+     ],
+     "cycles": [
+      0,
+      1,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      454,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "httpie",
+    "files": 78,
+    "ref_edges": 208,
+    "ref_cycles": 3,
+    "deployed": {
+     "edges": [
+      194,
+      3,
+      14
+     ],
+     "cycles": [
+      1,
+      1,
+      2
+     ]
+    },
+    "proposed": {
+     "edges": [
+      208,
+      0,
+      0
+     ],
+     "cycles": [
+      3,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "mkdocs",
+    "files": 61,
+    "ref_edges": 176,
+    "ref_cycles": 1,
+    "deployed": {
+     "edges": [
+      130,
+      29,
+      46
+     ],
+     "cycles": [
+      0,
+      1,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      176,
+      0,
+      0
+     ],
+     "cycles": [
+      1,
+      0,
+      0
+     ]
+    }
+   },
+   {
+    "repo": "black",
+    "files": 40,
+    "ref_edges": 121,
+    "ref_cycles": 3,
+    "deployed": {
+     "edges": [
+      97,
+      15,
+      24
+     ],
+     "cycles": [
+      2,
+      0,
+      1
+     ]
+    },
+    "proposed": {
+     "edges": [
+      121,
+      0,
+      0
+     ],
+     "cycles": [
+      3,
+      0,
+      0
+     ]
+    }
+   }
+  ],
+  "total": {
+   "deployed_edges": {
+    "tp": 3127,
+    "fp": 152,
+    "fn": 437,
+    "P": 0.9536444037816407,
+    "R": 0.8773849607182941,
+    "F1": 0.9139266403624141,
+    "repos": 8
+   },
+   "deployed_cycles": {
+    "tp": 3,
+    "fp": 13,
+    "fn": 9,
+    "P": 0.1875,
+    "R": 0.25,
+    "F1": 0.21428571428571427,
+    "repos": 8
+   },
+   "proposed_edges": {
+    "tp": 3564,
+    "fp": 0,
+    "fn": 0,
+    "P": 1.0,
+    "R": 1.0,
+    "F1": 1.0,
+    "repos": 8
+   },
+   "proposed_cycles": {
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "P": 1.0,
+    "R": 1.0,
+    "F1": 1.0,
+    "repos": 8
+   }
+  }
+ }
+}

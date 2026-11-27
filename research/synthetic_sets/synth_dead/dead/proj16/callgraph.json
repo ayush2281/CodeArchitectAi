@@ -1,0 +1,48 @@
+{
+ "extra16": [],
+ "extra16.Unused16.never_16": [],
+ "extra16.call_by_name_16": [
+  "extra16.hook_16"
+ ],
+ "extra16.hook_16": [],
+ "extra16.legacy_16": [],
+ "extra16.old_helper_16": [],
+ "fmt160": [],
+ "fmt160.CartFmt2.render": [],
+ "fmt160.OrderFmt1.render": [],
+ "fmt160.UserFmt0.render": [],
+ "fmt160.get_formatter": [],
+ "func161": [],
+ "func161.apply_all": [
+  "func161.report_updatec",
+  "func161.task_renderb"
+ ],
+ "func161.order_senda": [],
+ "func161.report_updatec": [
+  "func161.order_senda"
+ ],
+ "func161.task_renderb": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra16.call_by_name_16",
+  "fmt160.OrderFmt1.render",
+  "fmt160.UserFmt0.render",
+  "fmt160.get_formatter",
+  "func161.apply_all",
+  "util162.core.report_syncx",
+  "util162.extra.combo"
+ ],
+ "util162": [],
+ "util162.core": [],
+ "util162.core.inner": [],
+ "util162.core.report_sendy": [],
+ "util162.core.report_syncx": [
+  "util162.core.inner"
+ ],
+ "util162.extra": [],
+ "util162.extra.combo": [
+  "util162.core.report_sendy"
+ ]
+}

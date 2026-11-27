@@ -1,0 +1,46 @@
+{
+ "deco10": [
+  "deco10.logged"
+ ],
+ "deco10.event_send2": [],
+ "deco10.invoice_format0": [],
+ "deco10.logged": [],
+ "deco10.logged.wrapper": [
+  "deco10.event_send2",
+  "deco10.invoice_format0",
+  "deco10.note",
+  "deco10.user_format1"
+ ],
+ "deco10.note": [],
+ "deco10.pipeline": [
+  "deco10.logged.wrapper"
+ ],
+ "deco10.user_format1": [],
+ "extra1": [],
+ "extra1.Unused1.never_1": [],
+ "extra1.call_by_name_1": [
+  "extra1.hook_1"
+ ],
+ "extra1.hook_1": [],
+ "extra1.legacy_1": [],
+ "extra1.old_helper_1": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco10.pipeline",
+  "extra1.call_by_name_1",
+  "mix11.Model.__init__",
+  "mix11.Model.run"
+ ],
+ "mix11": [],
+ "mix11.LogMixin.log": [],
+ "mix11.Model.__init__": [],
+ "mix11.Model.run": [
+  "mix11.LogMixin.log",
+  "mix11.SaveMixin.save"
+ ],
+ "mix11.SaveMixin.save": [
+  "mix11.LogMixin.log"
+ ]
+}

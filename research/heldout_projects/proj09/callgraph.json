@@ -1,0 +1,34 @@
+{
+ "main": [
+  "res91.consume",
+  "strat90.Context.__init__",
+  "strat90.Context.execute"
+ ],
+ "res91": [],
+ "res91.Resource.__enter__": [
+  "res91.Resource.open"
+ ],
+ "res91.Resource.__exit__": [
+  "res91.Resource.close"
+ ],
+ "res91.Resource.close": [],
+ "res91.Resource.open": [],
+ "res91.consume": [
+  "res91.Resource.__enter__",
+  "res91.Resource.__exit__",
+  "res91.stream"
+ ],
+ "res91.stream": [
+  "res91.transform"
+ ],
+ "res91.transform": [],
+ "strat90": [],
+ "strat90.Context.__init__": [],
+ "strat90.Context.execute": [
+  "strat90.format_strategy0",
+  "strat90.render_strategy1"
+ ],
+ "strat90.build_strategy2": [],
+ "strat90.format_strategy0": [],
+ "strat90.render_strategy1": []
+}

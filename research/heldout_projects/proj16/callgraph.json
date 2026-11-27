@@ -1,0 +1,34 @@
+{
+ "main": [
+  "res161.consume",
+  "strat160.Context.__init__",
+  "strat160.Context.execute"
+ ],
+ "res161": [],
+ "res161.Resource.__enter__": [
+  "res161.Resource.open"
+ ],
+ "res161.Resource.__exit__": [
+  "res161.Resource.close"
+ ],
+ "res161.Resource.close": [],
+ "res161.Resource.open": [],
+ "res161.consume": [
+  "res161.Resource.__enter__",
+  "res161.Resource.__exit__",
+  "res161.stream"
+ ],
+ "res161.stream": [
+  "res161.transform"
+ ],
+ "res161.transform": [],
+ "strat160": [],
+ "strat160.Context.__init__": [],
+ "strat160.Context.execute": [
+  "strat160.format_strategy1",
+  "strat160.sync_strategy0"
+ ],
+ "strat160.format_strategy1": [],
+ "strat160.merge_strategy2": [],
+ "strat160.sync_strategy0": []
+}

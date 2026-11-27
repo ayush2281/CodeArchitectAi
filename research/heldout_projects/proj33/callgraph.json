@@ -1,0 +1,44 @@
+{
+ "fmt332": [],
+ "fmt332.EventFmt0.render": [],
+ "fmt332.MessageFmt2.render": [],
+ "fmt332.ReportFmt1.render": [],
+ "fmt332.get_formatter": [],
+ "main": [
+  "fmt332.EventFmt0.render",
+  "fmt332.ReportFmt1.render",
+  "fmt332.get_formatter",
+  "rec330.counter",
+  "rec330.counter.inc",
+  "rec330.even",
+  "rec330.fact",
+  "util331.core.invoice_syncx",
+  "util331.extra.combo"
+ ],
+ "rec330": [],
+ "rec330.bump": [],
+ "rec330.counter": [],
+ "rec330.counter.inc": [
+  "rec330.bump"
+ ],
+ "rec330.even": [
+  "rec330.odd"
+ ],
+ "rec330.fact": [
+  "rec330.fact"
+ ],
+ "rec330.odd": [
+  "rec330.even"
+ ],
+ "util331": [],
+ "util331.core": [],
+ "util331.core.cart_savey": [],
+ "util331.core.inner": [],
+ "util331.core.invoice_syncx": [
+  "util331.core.inner"
+ ],
+ "util331.extra": [],
+ "util331.extra.combo": [
+  "util331.core.cart_savey"
+ ]
+}

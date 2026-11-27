@@ -1,0 +1,49 @@
+{
+ "events51": [
+  "events51.register",
+  "events51.register.deco"
+ ],
+ "events51.dispatch": [
+  "events51.on_merge2",
+  "events51.on_sync1",
+  "events51.on_update0"
+ ],
+ "events51.on_merge2": [],
+ "events51.on_sync1": [],
+ "events51.on_update0": [],
+ "events51.register": [],
+ "events51.register.deco": [],
+ "fmt50": [],
+ "fmt50.AccountFmt1.render": [],
+ "fmt50.CartFmt0.render": [],
+ "fmt50.EventFmt2.render": [],
+ "fmt50.get_formatter": [],
+ "main": [
+  "events51.dispatch",
+  "fmt50.AccountFmt1.render",
+  "fmt50.CartFmt0.render",
+  "fmt50.get_formatter",
+  "service52.ReportService.create",
+  "service52.ReportService.listing",
+  "service52.make_service"
+ ],
+ "repo52": [],
+ "repo52.ReportRepo.__init__": [],
+ "repo52.ReportRepo.check": [],
+ "repo52.ReportRepo.load": [],
+ "service52": [],
+ "service52.ReportService.__init__": [
+  "repo52.ReportRepo.__init__"
+ ],
+ "service52.ReportService.create": [
+  "repo52.ReportRepo.check",
+  "service52.ReportService.validate"
+ ],
+ "service52.ReportService.listing": [
+  "repo52.ReportRepo.load"
+ ],
+ "service52.ReportService.validate": [],
+ "service52.make_service": [
+  "service52.ReportService.__init__"
+ ]
+}

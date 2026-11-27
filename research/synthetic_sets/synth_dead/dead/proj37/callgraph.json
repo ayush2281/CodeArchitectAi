@@ -1,0 +1,59 @@
+{
+ "deco371": [
+  "deco371.logged"
+ ],
+ "deco371.account_send1": [],
+ "deco371.invoice_send2": [],
+ "deco371.job_send0": [],
+ "deco371.logged": [],
+ "deco371.logged.wrapper": [
+  "deco371.account_send1",
+  "deco371.invoice_send2",
+  "deco371.job_send0",
+  "deco371.note"
+ ],
+ "deco371.note": [],
+ "deco371.pipeline": [
+  "deco371.logged.wrapper"
+ ],
+ "extra37": [],
+ "extra37.Unused37.never_37": [],
+ "extra37.call_by_name_37": [
+  "extra37.hook_37"
+ ],
+ "extra37.hook_37": [],
+ "extra37.legacy_37": [],
+ "extra37.old_helper_37": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco371.pipeline",
+  "extra37.call_by_name_37",
+  "mix372.Model.__init__",
+  "mix372.Model.run",
+  "util370.core.task_parsex",
+  "util370.extra.combo"
+ ],
+ "mix372": [],
+ "mix372.LogMixin.log": [],
+ "mix372.Model.__init__": [],
+ "mix372.Model.run": [
+  "mix372.LogMixin.log",
+  "mix372.SaveMixin.save"
+ ],
+ "mix372.SaveMixin.save": [
+  "mix372.LogMixin.log"
+ ],
+ "util370": [],
+ "util370.core": [],
+ "util370.core.inner": [],
+ "util370.core.order_mergey": [],
+ "util370.core.task_parsex": [
+  "util370.core.inner"
+ ],
+ "util370.extra": [],
+ "util370.extra.combo": [
+  "util370.core.order_mergey"
+ ]
+}

@@ -1,0 +1,605 @@
+[
+ {
+  "repo": "itsdangerous",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 4.9,
+  "error": "",
+  "id_claims": 5,
+  "id_supported": 5,
+  "num_claims": 5,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "7 modules",
+    8
+   ],
+   [
+    "1 module",
+    8
+   ],
+   [
+    "7 highly connected modules",
+    8
+   ]
+  ],
+  "chars": 1373,
+  "report": "1. Architecture Overview\nThe codebase consists of 8 modules with 21 directed dependency edges, resulting in a graph density of 0.375. The top connected modules by total connections are `itsdangerous.encoding`, `itsdangerous.exc`, `itsdangerous.serializer`, `itsdangerous.timed`, `itsdangerous.url_safe`, and `itsdangerous`.\n\n2. Detected Problems\nAnalysis identified 7 modules with high connectivity and 1 module (`itsdangerous.serializer`) with high coupling, all classified as medium severity. There are no unreferenced functions detected, and the change impact summary indicates no direct or indirect module impacts for the analyzed changes.\n\n3. Why They Matter\nThe supplied analysis flags these dependencies as issues due to their high connectivity and coupling metrics, but it does not establish specific architectural violations, failure propagation, or runtime impacts. The detection of these modules relies solely on the configured thresholds for fan-in and fan-out values.\n\n4. Recommended Improvements\nInspect the dependency relationships of the 7 highly connected modules and the high-coupling module `itsdangerous.serializer` to verify they align with intended architecture. No further structural changes are recommended based on the provided metrics, as the analysis does not establish that current dependencies require rebalancing or unidirectional enforcement."
+ },
+ {
+  "repo": "itsdangerous",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 2.4,
+  "error": "",
+  "id_claims": 6,
+  "id_supported": 6,
+  "num_claims": 2,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 765,
+  "report": "**Architecture Overview**  \nThe static\u2011analysis examined 8 modules, 54 functions, and 21 directed edges, identifying 8 medium\u2011severity architecture issues.  \n\n**Detected Problems**  \nSeven modules (itsdangerous.encoding, itsdangerous.exc, itsdangerous.serializer, itsdangerous.signer, itsdangerous.timed, itsdangerous.url_safe, itsdangerous) exhibit high connectivity, and itsdangerous.serializer also shows high coupling.  \n\n**Why They Matter**  \nHigh connectivity and coupling indicate areas where many modules interact, which may complicate future modifications within the codebase.  \n\n**Recommended Improvements**  \nInspect the listed modules to verify that each dependency is necessary, and refactor the serializer module to reduce its coupling where feasible."
+ },
+ {
+  "repo": "itsdangerous",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 3.1,
+  "error": "",
+  "id_claims": 6,
+  "id_supported": 6,
+  "num_claims": 0,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 1162,
+  "report": "**Architecture Overview**  \nThe codebase contains eight modules with a dependency\u2011graph density of 0.375; seven modules are flagged as highly connected, each having six or more total fan\u2011in/fan\u2011out connections.\n\n**Detected Problems**  \nMedium\u2011severity highly connected module warnings are reported for `itsdangerous.encoding`, `itsdangerous.exc`, `itsdangerous.serializer`, `itsdangerous.signer`, `itsdangerous.timed`, `itsdangerous.url_safe`, and the top\u2011level `itsdangerous` package, and a medium\u2011severity high\u2011coupling issue is reported for `itsdangerous.serializer`.\n\n**Why They Matter**  \nHigh connectivity indicates that these modules are involved in many incoming or outgoing dependency relationships, and high coupling shows that `itsdangerous.serializer` both depends on and is depended upon by multiple modules, expanding the potential impact of changes across the codebase.\n\n**Recommended Improvements**  \nInspect the dependency links of the highly connected modules\u2014particularly the serializer module\u2014to identify opportunities for isolating responsibilities, reducing unnecessary imports, or introducing clearer separation of concerns where feasible."
+ },
+ {
+  "repo": "python-dotenv",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 1.6,
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 2,
+  "num_claims": 4,
+  "num_correct": 4,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 1258,
+  "report": "1. Architecture Overview\nThe codebase consists of 8 modules with 8 direct dependency edges, creating a directed graph with a density of approximately 0.143.\nConnectivity is concentrated in `dotenv.main` and `dotenv.cli`, which exhibit the highest total connections among the analyzed modules.\n\n2. Detected Problems\nTwo modules, `dotenv.main` and `dotenv.cli`, were flagged as highly connected with a medium severity.\n`dotenv.main` has a fan-in of 3 and a fan-out of 2, while `dotenv.cli` has a fan-in of 1 and a fan-out of 2.\n\n3. Why They Matter\nThese high-connectivity metrics indicate that these specific modules maintain a higher number of dependency relationships compared to the rest of the codebase.\nThe analysis does not identify any potentially unreferenced functions or severe architectural violations, confirming that the issues are limited to structural connectivity within these two modules.\n\n4. Recommended Improvements\nInspect the dependency relationships within `dotenv.main` and `dotenv.cli` to verify that all connections are necessary for their designated functionality.\nConsider restructuring the internal imports of these modules to reduce the total number of direct dependencies if the current connectivity hinders clarity or navigation."
+ },
+ {
+  "repo": "python-dotenv",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 4.4,
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 2,
+  "num_claims": 3,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "66 function call relationships",
+    65
+   ]
+  ],
+  "chars": 900,
+  "report": "**Architecture Overview:**  \nThe static analysis examined 8 modules in the dotenv package, generating 66 function call relationships across 65 edges and yielding a directed graph density of 0.143. Two modules\u2014dotenv.cli and dotenv.main\u2014were flagged as medium\u2011severity highly connected modules.\n\n**Detected Problems:**  \ndotenv.cli has 1 fan\u2011in and 2 fan\u2011out (3 connections); dotenv.main has 3 fan\u2011in and 2 fan\u2011out (5 connections). Both are listed as medium\u2011severity highly connected modules.\n\n**Why They Matter:**  \nThese modules exhibit higher fan\u2011in and fan\u2011out counts compared to the other modules, indicating they are more tightly linked within the module network.\n\n**Recommended Improvements:**  \nInspect the dependency relationships involving dotenv.cli and dotenv.main to confirm they are intentional, and consider refactoring or isolating dependencies if a more balanced structure is desired."
+ },
+ {
+  "repo": "python-dotenv",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 3.8,
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 2,
+  "num_claims": 1,
+  "num_correct": 1,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 826,
+  "report": "**1. Architecture Overview**  \nThe codebase contains 8 modules with a directed dependency graph of 8 edges (density\u202f\u2248\u202f0.14); two modules are identified as highly connected.\n\n**2. Detected Problems**  \n`dotenv.main` (fan\u2011in\u202f=\u202f3, fan\u2011out\u202f=\u202f2) and `dotenv.cli` (fan\u2011in\u202f=\u202f1, fan\u2011out\u202f=\u202f2) are reported as medium\u2011severity highly\u2011connected modules.\n\n**3. Why They Matter**  \nHigh connectivity indicates that each of these modules both relies on multiple other modules and is relied upon by several modules, so modifications in them can propagate to multiple places.\n\n**4. Recommended Improvements**  \nReview the import relationships of `dotenv.main` and `dotenv.cli` to confirm that all outgoing dependencies are necessary and consider extracting shared functionality or adding intermediate abstractions to reduce direct connections."
+ },
+ {
+  "repo": "markupsafe",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 5.3,
+  "error": "",
+  "id_claims": 1,
+  "id_supported": 1,
+  "num_claims": 1,
+  "num_correct": 1,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 1230,
+  "report": "1. Architecture Overview\nThe analyzed codebase is a small system consisting of two modules, `markupsafe` and `markupsafe._native`, connected by two direct links in a directed graph. The module `markupsafe` exhibits a fan-in of 1 and a fan-out of 2, while `markupsafe._native` has a fan-in of 1 and a fan-out of 0.\n\n2. Detected Problems\nThe analysis identified a high-severity circular dependency involving the `markupsafe` module. Additionally, `markupsafe` was flagged as a highly connected module due to its connectivity metrics, which triggered a medium-severity alert.\n\n3. Why They Matter\nThe circular dependency within `markupsafe` represents a structural cycle that the analysis explicitly detects as a high-severity issue. The high connectivity of `markupsafe` is noted as a medium-severity observation based on its specific fan-in and fan-out values relative to the configured thresholds.\n\n4. Recommended Improvements\nReview the explicitly detected circular dependency within `markupsafe` to restructure the module's internal references or import order. Inspect the dependency relationships causing the high connectivity score for `markupsafe` to ensure the module's interactions align with the intended project structure."
+ },
+ {
+  "repo": "markupsafe",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 2.0,
+  "error": "",
+  "id_claims": 0,
+  "id_supported": 0,
+  "num_claims": 0,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 982,
+  "report": "**Architecture Overview**  \nThe analysis covered two modules, with \u201cmarkupsafe\u201d identified as the most connected module (fan\u2011in\u202f=\u202f1, fan\u2011out\u202f=\u202f2, total connections\u202f=\u202f3).  \n\n**Detected Problems**  \nA high\u2011severity circular dependency was reported for the module \u201cmarkupsafe.\u201d Additionally, a medium\u2011severity highly\u2011connected status was assigned to \u201cmarkupsafe,\u201d noting its fan\u2011in of 1 and fan\u2011out of 2.  \n\n**Why They Matter**  \nThe circular dependency indicates that \u201cmarkupsafe\u201d is involved in a dependency cycle that could complicate module resolution. The high connectivity reflects a relatively dense relationship between \u201cmarkupsafe\u201d and other modules in the project.  \n\n**Recommended Improvements**  \nInspect and document the direct dependencies that create the cycle for \u201cmarkupsafe\u201d; if appropriate, refactor to remove the circular link. Verify that \u201cmarkupsafe\u201d\u2019s fan\u2011out dependencies are intentional and consider decoupling if future analysis suggests unnecessary coupling."
+ },
+ {
+  "repo": "markupsafe",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 5.4,
+  "error": "",
+  "id_claims": 0,
+  "id_supported": 0,
+  "num_claims": 3,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "1 module",
+    2
+   ]
+  ],
+  "chars": 900,
+  "report": "**1. Architecture Overview**  \nThe analysis covered 2 modules with 53 functions, a fully connected directed graph (2 nodes, 2 edges, density\u202f=\u202f1.0), and identified 1 module (markupsafe) as highly connected (fan\u2011in\u202f=\u202f1, fan\u2011out\u202f=\u202f2).\n\n**2. Detected Problems**  \nA high\u2011severity circular dependency involving the project modules was reported, and the module *markupsafe* was flagged as a medium\u2011severity highly connected module.\n\n**3. Why They Matter**  \nCircular dependencies can prevent reliable module import order, while a module with multiple inbound and outbound links may be a point of concentrated change propagation.\n\n**4. Recommended Improvements**  \nInspect the import relationships that create the circular dependency and restructure them to break the cycle; review *markupsafe*\u2019s dependencies and dependents to determine if any can be reorganized or extracted to reduce its fan\u2011in/fan\u2011out."
+ },
+ {
+  "repo": "pluggy",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 1.7,
+  "error": "",
+  "id_claims": 3,
+  "id_supported": 3,
+  "num_claims": 1,
+  "num_correct": 1,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 865,
+  "report": "1. Architecture Overview\nThe codebase under analysis consists of a directed dependency graph containing 13 modules and 24 inter-module edges, resulting in a structural density of approximately 0.15.\n\n2. Detected Problems\nStatic analysis identified nine modules exhibiting high connectivity and one module (`pluggy._impl`) flagged for high coupling, with all ten issues categorized as medium severity.\n\n3. Why They Matter\nThe specific modules `pluggy._hooks`, `pluggy._impl`, and `pluggy._manager` each maintain six direct or indirect connections, representing the highest connectivity counts within the inspected graph.\n\n4. Recommended Improvements\nStructural inspectors should focus on the dependency relationships of `pluggy._impl` and the three most connected modules to verify that the current inter-module connections align with the intended design boundaries."
+ },
+ {
+  "repo": "pluggy",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 1.9,
+  "error": "",
+  "id_claims": 3,
+  "id_supported": 3,
+  "num_claims": 4,
+  "num_correct": 4,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 941,
+  "report": "**Architecture Overview**  \nThe static analysis examined 13 modules, forming a directed graph of 24 dependency edges with a density of 0.15. The call graph contains 101 functions linked by 86 call relationships.  \n\n**Detected Problems**  \nTen medium\u2011severity issues were identified: nine highly_connected_module alerts across pluggy submodules and one high_coupling alert in pluggy._impl.  \n\n**Why They Matter**  \nModules such as pluggy._hooks, pluggy._impl, and pluggy._manager each have six total connections, indicating repeated dependencies that may complicate module interactions.  \n\n**Recommended Improvements**  \nReview the dependency links for pluggy._hooks, pluggy._impl, and pluggy._manager to confirm that their current connections are intentional; consider decomposing responsibilities or extracting shared utilities to reduce fan\u2011in/fan\u2011out relationships, and examine pluggy._impl for possible refactoring to lower its coupling."
+ },
+ {
+  "repo": "pluggy",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 2.7,
+  "error": "",
+  "id_claims": 8,
+  "id_supported": 8,
+  "num_claims": 2,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 1218,
+  "report": "**Architecture Overview**  \nThe codebase consists of 13 modules with 24 directed dependency edges, yielding a graph density of\u202f0.154; nine modules are flagged for high connectivity and one module for high coupling, all at medium severity.\n\n**Detected Problems**  \nMedium\u2011severity issues include highly connected modules: `pluggy._caller`, `pluggy._config`, `pluggy._decorators`, `pluggy._execution`, `pluggy._hooks`, `pluggy._impl`, `pluggy._manager`, `pluggy._result`, and the package `pluggy`; additionally, `pluggy._impl` is reported as a high\u2011coupling module.\n\n**Why They Matter**  \nThese findings show that several modules both depend on many others (high fan\u2011out) and are depended upon by multiple modules (high fan\u2011in), while `pluggy._impl` exhibits balanced but extensive bidirectional dependencies, indicating points where changes could propagate through many parts of the system.\n\n**Recommended Improvements**  \nReview the dependency relationships of the listed modules, especially `pluggy._impl`, to determine if responsibilities can be separated or interfaces introduced to reduce unnecessary connections, and consider refactoring to lower the number of inbound and outbound module links where appropriate."
+ },
+ {
+  "repo": "tomli",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 1.8,
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 2,
+  "num_claims": 2,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 1079,
+  "report": "1. Architecture Overview\nThe codebase comprises four modules with a directed dependency graph featuring four edges and a density of 0.33. The module `tomli` serves as a top-level entry point with one outgoing dependency, while `tomli._types` is depended upon by two other modules.\n\n2. Detected Problems\nA single medium-severity issue was identified where the `tomli._parser` module exhibits high connectivity with a fan-in of 1 and a fan-out of 2. All other modules in the analysis show lower connectivity scores relative to this detected threshold.\n\n3. Why They Matter\nThe `tomli._parser` module is the only component flagged for high connectivity in this analysis, indicating a specific concentration of dependencies. This is the sole architectural deviation reported by the static analysis tool.\n\n4. Recommended Improvements\nInspect the dependency relationships of `tomli._parser` to verify if its fan-out of 2 aligns with intended structural boundaries. Review the module's imports and dependents to determine if the connection count is appropriate for the codebase's design."
+ },
+ {
+  "repo": "tomli",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 2.3,
+  "error": "",
+  "id_claims": 1,
+  "id_supported": 1,
+  "num_claims": 0,
+  "num_correct": 0,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 557,
+  "report": "**Architecture Overview**  \nThe codebase consists of four modules with a directed dependency graph of density 0.33.\n\n**Detected Problems**  \nA medium\u2011severity highly connected module, `tomli._parser`, has fan\u2011in 1 and fan\u2011out 2, totaling three connections.\n\n**Why They Matter**  \n`tomli._parser` is the most connected module in the graph, and its fan\u2011out may increase effort to modify or test it.\n\n**Recommended Improvements**  \nInspect `tomli._parser`\u2019s import statements and consider decomposing or reorganizing its responsibilities to reduce its fan\u2011out."
+ },
+ {
+  "repo": "tomli",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 2.8,
+  "error": "",
+  "id_claims": 1,
+  "id_supported": 1,
+  "num_claims": 4,
+  "num_correct": 4,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 816,
+  "report": "**Architecture Overview**  \nThe codebase contains 4 modules with 4 directed dependency edges, yielding a graph density of\u202f0.33; 40 functions participate in 80 call relationships.\n\n**Detected Problems**  \nA medium\u2011severity issue is reported for `tomli._parser`, which is flagged as a highly connected module (fan\u2011in\u202f=\u202f1, fan\u2011out\u202f=\u202f2, total connections\u202f=\u202f3).\n\n**Why They Matter**  \nThe high\u2011connectivity flag shows that `tomli._parser` both consumes functionality from two other modules and is consumed by one module, making it a notable point in the dependency structure.\n\n**Recommended Improvements**  \nInspect the two outgoing dependencies of `tomli._parser` to confirm they are required, and verify that its single incoming dependency is intentional; consider refactoring if any unnecessary coupling is identified."
+ },
+ {
+  "repo": "click",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 2.6,
+  "error": "",
+  "id_claims": 10,
+  "id_supported": 10,
+  "num_claims": 8,
+  "num_correct": 4,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "11 modules",
+    17
+   ],
+   [
+    "14 modules",
+    17
+   ],
+   [
+    "6 specific modules",
+    17
+   ],
+   [
+    "6 modules",
+    17
+   ]
+  ],
+  "chars": 1501,
+  "report": "1. Architecture Overview\nThe analyzed codebase consists of 17 modules with a graph density of 0.224, indicating a moderate density of inter-module relationships. `click.core` exhibits the highest total connectivity with a fan-in of 8 and a fan-out of 10.\n\n2. Detected Problems\nTwo high-severity circular dependencies were identified, one spanning 11 modules including `click.core`, `click.decorators`, and `click.utils`, and another between `click._compat` and `click._winconsole`. Additionally, 14 modules are flagged as highly connected, and 6 specific modules\u2014`click.core`, `click.exceptions`, `click.formatting`, `click.parser`, `click.termui`, `click.types`, and `click.utils`\u2014are explicitly identified as having high coupling.\n\n3. Why They Matter\nThe 11-module circular dependency creates a closed loop where these modules are interconnected through direct or transitive paths, complicating the isolation of individual components. The high coupling in `click.core` (fan-out 10) and `click.utils` (fan-in 9) indicates significant bidirectional or star-topology dependencies that limit modularity.\n\n4. Recommended Improvements\nInspect the import statements in the 11-module circular dependency group to identify and break specific dependency paths between `click.core`, `click.decorators`, `click.utils`, and related modules. Review the 6 modules flagged for high coupling to reduce their fan-in or fan-out by refactoring explicit import relationships within the established dependency thresholds."
+ },
+ {
+  "repo": "click",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 3.0,
+  "error": "",
+  "id_claims": 13,
+  "id_supported": 13,
+  "num_claims": 5,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "21 modules",
+    17
+   ],
+   [
+    "14 modules",
+    17
+   ],
+   [
+    "224, 541 functions",
+    541
+   ]
+  ],
+  "chars": 1408,
+  "report": "**Architecture Overview**  \nThe codebase contains 17 modules, a directed dependency graph of 61 edges with a density of 0.224, 541 functions, and 525 call relationships. Top modules by connections are `click.core`, `click.utils`, `click.exceptions`, `click._compat`, and `click.termui`.\n\n**Detected Problems**  \nThere are two high\u2011severity circular dependencies: one between `click._compat` and `click._winconsole`, and a larger cycle involving `click._termui_impl`, `click.core`, `click.decorators`, `click.exceptions`, `click.formatting`, `click.globals`, `click.parser`, `click.shell_completion`, `click.termui`, `click.types`, and `click.utils`. Additionally, 21 modules are flagged as high\u2011coupling, and 14 modules are highly connected.\n\n**Why They Matter**  \nCircular dependencies create cycles that may affect module initialization order and complicate maintenance. High\u2011coupling modules exhibit numerous incoming and outgoing dependencies, indicating complex inter\u2011module relationships that can increase the effort required to modify or extend those modules.\n\n**Recommended Improvements**  \nInvestigate and refactor the two detected circular dependencies to break the dependency loops, possibly by extracting shared functionality or redefining module interfaces. Examine the high\u2011coupling modules and assess whether any dependencies can be reorganized to reduce the number of inter\u2011module references."
+ },
+ {
+  "repo": "click",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 3.4,
+  "error": "",
+  "id_claims": 13,
+  "id_supported": 13,
+  "num_claims": 2,
+  "num_correct": 1,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "14 modules",
+    17
+   ]
+  ],
+  "chars": 1403,
+  "report": "**Architecture Overview**  \nThe codebase consists of 17 modules with a directed dependency graph density of\u202f0.22; 14 modules are flagged as highly connected (medium severity).\n\n**Detected Problems**  \nTwo high\u2011severity circular\u2011dependency cycles are present: one between `click._compat` and `click._winconsole`, and a larger cycle involving ten modules (`click._termui_impl`, `click.core`, `click.decorators`, `click.exceptions`, `click.formatting`, `click.globals`, `click.parser`, `click.shell_completion`, `click.termui`, `click.types`, `click.utils`). Additionally, seven modules are reported with medium\u2011severity high coupling (`click.core`, `click.exceptions`, `click.formatting`, `click.parser`, `click.termui`, `click.types`, `click.utils`).\n\n**Why They Matter**  \nCircular dependencies create mutual reliance that can hinder independent modification and increase the risk of entangled changes, while high\u2011coupling modules depend on many others and are depended upon by many, indicating tightly coupled code that may be harder to understand and evolve.\n\n**Recommended Improvements**  \nInspect the two circular\u2011dependency groups and consider refactoring to break the cycles (e.g., introduce abstraction layers or reorganize imports); for the high\u2011coupling modules, evaluate the necessity of each inbound and outbound dependency and refactor where possible to reduce direct module interdependence."
+ },
+ {
+  "repo": "jinja",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 2.8,
+  "error": "",
+  "id_claims": 0,
+  "id_supported": 0,
+  "num_claims": 4,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "20 jinja2 modules",
+    25
+   ],
+   [
+    "23 modules",
+    25
+   ]
+  ],
+  "chars": 987,
+  "report": "1. Architecture Overview\nThe analyzed codebase consists of 25 modules connected by 91 directed dependency edges, maintaining a graph density of approximately 0.15.\n\n2. Detected Problems\nA high-severity circular dependency exists among 20 jinja2 modules, while 23 modules are flagged as highly connected and 6 are identified as having high coupling.\n\n3. Why They Matter\nThe presence of a circular dependency indicates that the involved modules depend on each other through direct paths, violating standard unidirectional dependency structures. High connectivity and coupling metrics in specific modules reflect dense inter-module relationships within the project structure.\n\n4. Recommended Improvements\nInspections should focus on breaking the detected circular dependency among the listed jinja2 modules by restructuring their explicit import relationships. Developers should review the specific modules flagged for high coupling and connectivity to assess their direct dependency edges."
+ },
+ {
+  "repo": "jinja",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 3.3,
+  "error": "",
+  "id_claims": 6,
+  "id_supported": 6,
+  "num_claims": 6,
+  "num_correct": 3,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "23 modules",
+    25
+   ],
+   [
+    "19 Jinja2 modules",
+    25
+   ],
+   [
+    "23 modules",
+    25
+   ]
+  ],
+  "chars": 1120,
+  "report": "**Architecture Overview**  \nThe codebase contains 25 modules with 91 directed dependencies (density\u202f\u2248\u202f0.152). 30 architecture issues were detected, one of high severity (circular dependency) and 29 medium severity, with 23 modules flagged as highly connected.  \n\n**Detected Problems**  \nA circular dependency cycle exists among 19 Jinja2 modules. 23 modules have high connectivity (fan\u2011in\u202f\u2265\u202f1, fan\u2011out\u202f\u2265\u202f1). Six modules\u2014`jinja2.compiler`, `jinja2.environment`, `jinja2.lexer`, `jinja2.nodes`, `jinja2.runtime`, `jinja2.utils`\u2014were flagged for high coupling (fan\u2011in\u202f\u2265\u202f4, fan\u2011out\u202f\u2265\u202f3).  \n\n**Why They Matter**  \nThe identified circular dependency introduces non\u2011trivial reachability among the involved modules, while high\u2011coupled modules exhibit many incoming and outgoing references, potentially increasing the complexity of dependency management.  \n\n**Recommended Improvements**  \nInspect the dependency paths forming the circular cycle and consider refactoring to eliminate reachability between the involved modules; examine the high\u2011coupled modules to identify and possibly reduce the number of cross\u2011module references."
+ },
+ {
+  "repo": "jinja",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 4.1,
+  "error": "",
+  "id_claims": 6,
+  "id_supported": 6,
+  "num_claims": 6,
+  "num_correct": 4,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "20 listed Jinja2 modules",
+    25
+   ],
+   [
+    "23 modules",
+    25
+   ]
+  ],
+  "chars": 1122,
+  "report": "**Architecture Overview**  \nThe analysis covered 25 Jinja2 modules with 91 directed import edges (graph density\u202f\u2248\u202f0.15); the call graph comprises 759 functions and 967 call relationships.  \n\n**Detected Problems**  \nA high\u2011severity circular dependency spans the 20 listed Jinja2 modules, and medium\u2011severity issues include 23 modules flagged as highly connected and six modules (jinja2.compiler, jinja2.environment, jinja2.lexer, jinja2.nodes, jinja2.runtime, jinja2.utils) flagged for high coupling.  \n\n**Why They Matter**  \nCircular dependencies create bidirectional reachability that can obstruct independent modification of the involved modules, while high connectivity and coupling increase the number of import relationships that must be understood when working on those modules.  \n\n**Recommended Improvements**  \nExamine the import graph among the affected modules to locate and break the circular path, potentially by extracting shared code into a separate module; for the highly connected and high\u2011coupling modules, review and refactor import relationships to remove unnecessary dependencies and separate concerns."
+ },
+ {
+  "repo": "requests",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 2.3,
+  "error": "",
+  "id_claims": 3,
+  "id_supported": 3,
+  "num_claims": 4,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "16 modules",
+    19
+   ],
+   [
+    "5 specific modules",
+    19
+   ]
+  ],
+  "chars": 1119,
+  "report": "1. Architecture Overview\nThe analyzed codebase contains 19 modules with 73 dependency edges, resulting in a directed graph density of approximately 0.213.\n\n2. Detected Problems\nA high-severity circular dependency was identified involving eight modules, including `requests.models`, `requests.utils`, and `requests.adapters`. Additionally, 16 modules were flagged as highly connected, and 5 specific modules exhibited high coupling based on their fan-in and fan-out metrics.\n\n3. Why They Matter\nThe presence of a circular dependency among the identified modules indicates a cyclic import structure within the project. The high connectivity and coupling in specific modules reflect a dense network of dependencies that complicates the isolation of these components from one another.\n\n4. Recommended Improvements\nInspect the import statements between the modules listed in the circular dependency to identify and refactor the specific code paths causing the cycle. Review the highly connected modules to determine if their dependency relationships can be simplified or separated to reduce the number of inter-module links."
+ },
+ {
+  "repo": "requests",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 15.9,
+  "error": "",
+  "id_claims": 8,
+  "id_supported": 8,
+  "num_claims": 4,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "16 modules",
+    19
+   ],
+   [
+    "16 modules",
+    19
+   ]
+  ],
+  "chars": 1229,
+  "report": "**Architecture Overview**  \nThe codebase contains 19 modules and 73 dependency edges, with a graph density of 0.213. 16 modules exhibit high connectivity and 21 medium\u2011severity problems were reported, plus a single high\u2011severity circular dependency.\n\n**Detected Problems**  \nA high\u2011severity circular dependency exists among requests._types, requests.adapters, requests.auth, requests.cookies, requests.exceptions, requests.hooks, requests.models, and requests.utils. Additionally, 16 modules have high fan\u2011in/fan\u2011out counts and five modules (requests.auth, requests.cookies, requests.models, requests.utils, requests._types) are flagged for high coupling.\n\n**Why They Matter**  \nMultiple connections and coupling flags mean that changing one module may require reviewing several others, as shown by the fan\u2011in and fan\u2011out values. The circular dependency indicates a cycle of reachability that could complicate dependency resolution.\n\n**Recommended Improvements**  \nInspect the dependency paths among the eight modules in the circular dependency and refactor to eliminate the cycle. For the modules flagged with high coupling, examine whether shared functionality could be moved to a separate module to reduce direct interactions."
+ },
+ {
+  "repo": "requests",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 3.3,
+  "error": "",
+  "id_claims": 10,
+  "id_supported": 10,
+  "num_claims": 2,
+  "num_correct": 1,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "16 modules",
+    19
+   ]
+  ],
+  "chars": 1446,
+  "report": "**Architecture Overview** \u2013 The analysis covered 19 modules with 73 directed edges (density\u202f\u2248\u202f0.21) and identified 16 modules as highly connected; a single high\u2011severity circular dependency involves eight modules.\n\n**Detected Problems** \u2013 A circular dependency exists among `requests._types`, `requests.adapters`, `requests.auth`, `requests.cookies`, `requests.exceptions`, `requests.hooks`, `requests.models`, and `requests.utils` (high severity). Additionally, medium\u2011severity highly connected modules include `requests.models`, `requests.sessions`, `requests.utils`, `requests._types`, `requests.adapters`, `requests.compat`, `requests.cookies`, `requests.auth`, among others, and high\u2011coupling modules are `requests.auth`, `requests.cookies`, `requests.models`, `requests.utils`, and `requests._types`.\n\n**Why They Matter** \u2013 Circular dependencies can prevent proper module initialization, while modules with many inbound and outbound links (high connectivity and coupling) increase the number of inter\u2011module relationships that must be understood and maintained.\n\n**Recommended Improvements** \u2013 Refactor the circular chain by extracting shared functionality into a separate module or redefining import relationships to break the cycle; examine the listed highly connected and high\u2011coupling modules and consider restructuring their dependencies (e.g., introducing thin fa\u00e7ade layers or moving shared code) to reduce the total number of edges."
+ },
+ {
+  "repo": "flask",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 5.5,
+  "error": "",
+  "id_claims": 4,
+  "id_supported": 4,
+  "num_claims": 5,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "20 modules",
+    24
+   ],
+   [
+    "21 modules",
+    24
+   ],
+   [
+    "20 listed modules",
+    24
+   ]
+  ],
+  "chars": 1254,
+  "report": "1. Architecture Overview\nThe analyzed codebase comprises 24 project modules with a directed dependency graph containing 95 edges and a density of 0.172. The structural analysis identifies a single high-severity circular dependency involving 20 modules and 21 modules flagged for high connectivity.\n\n2. Detected Problems\nA high-severity circular dependency exists among the `flask` package modules, including `flask.app`, `flask.cli`, and `flask.sansio.app`. Additionally, `flask.app` exhibits the highest total connection count of 18 with a fan-in of 6 and fan-out of 12.\n\n3. Why They Matter\nThe detected circular dependency indicates that the 20 listed modules participate in a cycle of dependencies, which creates a structural arrangement where modules depend on each other. The high fan-out values in modules like `flask.app` and `flask.sansio.app` signify these modules rely on a large number of other project modules.\n\n4. Recommended Improvements\nInspect the explicit import statements within the circular dependency group to identify and remove the specific imports creating the cycle. Review the direct dependencies of `flask.app` and `flask.globals` to verify if the project can be restructured to reduce the number of external module references."
+ },
+ {
+  "repo": "flask",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 22.9,
+  "error": "",
+  "id_claims": 0,
+  "id_supported": 0,
+  "num_claims": 4,
+  "num_correct": 4,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [],
+  "chars": 825,
+  "report": "**Architecture Overview**  \nThe analysis examined 24 modules with 95 directed dependencies, 363 functions, and 237 call relationships; no unreferenced functions were found.\n\n**Detected Problems**  \nThere is one high\u2011severity circular dependency among the listed Flask modules, and 33 medium\u2011severity issues involving highly connected or high\u2011coupling modules as specified in the report.\n\n**Why They Matter**  \nThe circular dependency indicates that module reachability may be compromised, while the high\u2011coupling modules exhibit numerous incoming and outgoing connections that could affect maintenance.\n\n**Recommended Improvements**  \nInspect and refactor the circular dependency chain to eliminate reachability cycles, and review each high\u2011coupling module to determine whether its dependencies can be reorganised or reduced."
+ },
+ {
+  "repo": "flask",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 3.9,
+  "error": "",
+  "id_claims": 2,
+  "id_supported": 2,
+  "num_claims": 4,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "21 modules",
+    24
+   ],
+   [
+    "12 modules",
+    24
+   ]
+  ],
+  "chars": 1206,
+  "report": "**Architecture Overview**  \nThe codebase consists of 24 modules with 95 directed dependency edges, resulting in a graph density of\u202f0.17. The most connected modules are `flask.app` (6\u202ffan\u2011in,\u202f12\u202ffan\u2011out) and `flask.sansio.app` (7\u202ffan\u2011in,\u202f10\u202ffan\u2011out).\n\n**Detected Problems**  \nA high\u2011severity circular dependency is reported among the listed Flask sub\u2011modules. Additionally, 21 modules are flagged as highly connected and 12 modules are flagged as having high coupling, all at medium severity.\n\n**Why They Matter**  \nCircular dependencies can hinder reliable module import ordering and complicate static analysis. High connectivity and coupling indicate modules that both depend on many others and are depended on by many, increasing the scope of code potentially impacted by changes to those modules.\n\n**Recommended Improvements**  \nInspect the dependency paths that create the circular relationship and refactor to break the cycle, for example by extracting shared functionality into a separate module. Review the dependency lists of the highly connected and high\u2011coupling modules and consider introducing intermediate abstractions or splitting responsibilities to reduce the number of direct dependencies."
+ },
+ {
+  "repo": "httpx",
+  "model": "qwen/qwen3.8-27b",
+  "seconds": 2.5,
+  "error": "",
+  "id_claims": 3,
+  "id_supported": 3,
+  "num_claims": 4,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "21 highly connected modules",
+    23
+   ],
+   [
+    "6 modules",
+    23
+   ]
+  ],
+  "chars": 1250,
+  "report": "1. Architecture Overview\nThe analyzed Python codebase consists of 23 modules with 87 directed dependency edges, resulting in a graph density of approximately 0.17. Among these modules, 21 are identified as highly connected based on their fan-in and fan-out metrics.\n\n2. Detected Problems\nTwo high-severity circular dependencies were detected: one involving six modules including `httpx` and `httpx._client`, and another involving eleven modules including `httpx._auth` and `httpx._models`. Additionally, 27 medium-severity issues were found, primarily comprising 21 highly connected modules and 6 modules flagged for high coupling.\n\n3. Why They Matter\nThe circular dependencies indicate that specific groups of modules depend on each other in loops, which can complicate the isolation of dependencies within those groups. The high connectivity and high coupling metrics reflect the current volume of inbound and outbound references between these specific modules.\n\n4. Recommended Improvements\nInspect the dependency paths within the two identified circular dependency groups to determine if the relationships can be restructured. Review the high-coupling and high-connectivity modules to evaluate the necessity of their specific inter-module imports."
+ },
+ {
+  "repo": "httpx",
+  "model": "openai/gpt-oss-20b",
+  "seconds": 17.0,
+  "error": "",
+  "id_claims": 4,
+  "id_supported": 4,
+  "num_claims": 3,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "21 modules",
+    23
+   ]
+  ],
+  "chars": 1351,
+  "report": "**Architecture Overview**  \nThe codebase contains 23 modules linked by 87 directed dependency edges, yielding a graph density of 0.17. The top connected modules are `httpx._models`, `httpx._types`, `httpx._client`, `httpx`, and `httpx._urls`, each with the highest combined fan\u2011in and fan\u2011out counts.  \n\n**Detected Problems**  \nTwo high\u2011severity circular dependency groups were identified: one involving `httpx` and its transport submodules, and another involving authentication, configuration, content, and utility submodules. Additionally, 21 modules exhibit medium\u2011severity high connectivity (fan\u2011in or fan\u2011out \u2265\u202f3) and five modules show medium\u2011severity high coupling (fan\u2011in\u202f\u2265\u202f3 and fan\u2011out\u202f\u2265\u202f3).  \n\n**Why They Matter**  \nCircular dependencies create reachability loops that can complicate module loading and reasoning about code paths. Modules with high fan\u2011in or fan\u2011out serve as entry points or hubs, while high\u2011coupling modules depend on and depend upon many peers, indicating dense interconnections that may affect maintainability.  \n\n**Recommended Improvements**  \nInspect the two detected circular dependency chains and refactor to remove the cycles. Review modules with high fan\u2011in/fan\u2011out and high coupling to ensure that their dependency patterns are intentional, and consider restructuring to reduce unnecessary inter\u2011module references."
+ },
+ {
+  "repo": "httpx",
+  "model": "openai/gpt-oss-120b",
+  "seconds": 3.7,
+  "error": "",
+  "id_claims": 16,
+  "id_supported": 16,
+  "num_claims": 3,
+  "num_correct": 2,
+  "sections_present": 4,
+  "unsupported_ids": [],
+  "wrong_numbers": [
+   [
+    "21\u202fmodules",
+    23
+   ]
+  ],
+  "chars": 1653,
+  "report": "**Architecture Overview** \u2013 The analysis examined 23\u202fmodules, uncovered 29 issues (2\u202fhigh\u2011severity, 27\u202fmedium\u2011severity), identified 21\u202fmodules as highly connected, and the directed dependency graph contains 87 edges with a density of\u202f0.17.  \n\n**Detected Problems** \u2013 Two high\u2011severity circular\u2011dependency cycles were found: one involving `httpx`, `httpx._api`, `httpx._client`, `httpx._main`, `httpx._transports`, and `httpx._transports.default`; another linking `httpx._auth`, `httpx._config`, `httpx._content`, `httpx._decoders`, `httpx._exceptions`, `httpx._models`, `httpx._multipart`, `httpx._types`, `httpx._urlparse`, `httpx._urls`, and `httpx._utils`.\u202fMedium\u2011severity reports flag many modules (e.g., `httpx._models`, `httpx._types`, `httpx._client`, `httpx._urls`, etc.) as highly connected and several (`httpx._auth`, `httpx._client`, `httpx._config`, `httpx._models`, `httpx._types`, `httpx._urls`) as having high coupling.  \n\n**Why They Matter** \u2013 Circular dependencies create import\u2011order constraints and hinder independent evolution of the involved modules, while high coupling and high connectivity indicate a large number of inter\u2011module references that can increase the effort required to modify or test any single module.  \n\n**Recommended Improvements** \u2013 Inspect the two circular\u2011dependency chains and refactor them by extracting shared functionality into new abstraction modules or by re\u2011routing imports to break the cycles; for the high\u2011coupling and highly\u2011connected modules, evaluate whether some imports can be deferred, moved to helper modules, or replaced with interface\u2011based indirection to reduce direct inter\u2011module reliance."
+ }
+]

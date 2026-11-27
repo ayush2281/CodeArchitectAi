@@ -1,0 +1,63 @@
+{
+ "events292": [
+  "events292.register",
+  "events292.register.deco"
+ ],
+ "events292.dispatch": [
+  "events292.on_check0",
+  "events292.on_render1",
+  "events292.on_send2"
+ ],
+ "events292.on_check0": [],
+ "events292.on_render1": [],
+ "events292.on_send2": [],
+ "events292.register": [],
+ "events292.register.deco": [],
+ "extra29": [],
+ "extra29.Unused29.never_29": [],
+ "extra29.call_by_name_29": [
+  "extra29.hook_29"
+ ],
+ "extra29.hook_29": [],
+ "extra29.legacy_29": [],
+ "extra29.old_helper_29": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events292.dispatch",
+  "extra29.call_by_name_29",
+  "rec291.counter",
+  "rec291.counter.inc",
+  "rec291.even",
+  "rec291.fact",
+  "util290.core.job_checkx",
+  "util290.extra.combo"
+ ],
+ "rec291": [],
+ "rec291.bump": [],
+ "rec291.counter": [],
+ "rec291.counter.inc": [
+  "rec291.bump"
+ ],
+ "rec291.even": [
+  "rec291.odd"
+ ],
+ "rec291.fact": [
+  "rec291.fact"
+ ],
+ "rec291.odd": [
+  "rec291.even"
+ ],
+ "util290": [],
+ "util290.core": [],
+ "util290.core.inner": [],
+ "util290.core.job_checkx": [
+  "util290.core.inner"
+ ],
+ "util290.core.report_loady": [],
+ "util290.extra": [],
+ "util290.extra.combo": [
+  "util290.core.report_loady"
+ ]
+}

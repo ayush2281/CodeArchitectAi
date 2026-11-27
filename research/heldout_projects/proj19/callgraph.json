@@ -1,0 +1,34 @@
+{
+ "main": [
+  "res190.consume",
+  "strat191.Context.__init__",
+  "strat191.Context.execute"
+ ],
+ "res190": [],
+ "res190.Resource.__enter__": [
+  "res190.Resource.open"
+ ],
+ "res190.Resource.__exit__": [
+  "res190.Resource.close"
+ ],
+ "res190.Resource.close": [],
+ "res190.Resource.open": [],
+ "res190.consume": [
+  "res190.Resource.__enter__",
+  "res190.Resource.__exit__",
+  "res190.stream"
+ ],
+ "res190.stream": [
+  "res190.transform"
+ ],
+ "res190.transform": [],
+ "strat191": [],
+ "strat191.Context.__init__": [],
+ "strat191.Context.execute": [
+  "strat191.render_strategy1",
+  "strat191.sync_strategy0"
+ ],
+ "strat191.audit_strategy2": [],
+ "strat191.render_strategy1": [],
+ "strat191.sync_strategy0": []
+}

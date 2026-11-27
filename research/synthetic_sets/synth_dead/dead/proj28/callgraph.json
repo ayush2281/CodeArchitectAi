@@ -1,0 +1,42 @@
+{
+ "events280": [
+  "events280.register",
+  "events280.register.deco"
+ ],
+ "events280.dispatch": [
+  "events280.on_build2",
+  "events280.on_check0",
+  "events280.on_render1"
+ ],
+ "events280.on_build2": [],
+ "events280.on_check0": [],
+ "events280.on_render1": [],
+ "events280.register": [],
+ "events280.register.deco": [],
+ "extra28": [],
+ "extra28.Unused28.never_28": [],
+ "extra28.call_by_name_28": [
+  "extra28.hook_28"
+ ],
+ "extra28.hook_28": [],
+ "extra28.legacy_28": [],
+ "extra28.old_helper_28": [],
+ "func281": [],
+ "func281.account_senda": [],
+ "func281.apply_all": [
+  "func281.message_sendc",
+  "func281.message_syncb"
+ ],
+ "func281.message_sendc": [
+  "func281.account_senda"
+ ],
+ "func281.message_syncb": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events280.dispatch",
+  "extra28.call_by_name_28",
+  "func281.apply_all"
+ ]
+}

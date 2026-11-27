@@ -1,0 +1,53 @@
+{
+ "fmt201": [],
+ "fmt201.InvoiceFmt0.render": [],
+ "fmt201.MessageFmt1.render": [],
+ "fmt201.TicketFmt2.render": [],
+ "fmt201.get_formatter": [],
+ "main": [
+  "fmt201.InvoiceFmt0.render",
+  "fmt201.MessageFmt1.render",
+  "fmt201.get_formatter",
+  "res202.consume",
+  "service200.ItemService.create",
+  "service200.ItemService.listing",
+  "service200.make_service"
+ ],
+ "repo200": [],
+ "repo200.ItemRepo.__init__": [],
+ "repo200.ItemRepo.audit": [],
+ "repo200.ItemRepo.parse": [],
+ "res202": [],
+ "res202.Resource.__enter__": [
+  "res202.Resource.open"
+ ],
+ "res202.Resource.__exit__": [
+  "res202.Resource.close"
+ ],
+ "res202.Resource.close": [],
+ "res202.Resource.open": [],
+ "res202.consume": [
+  "res202.Resource.__enter__",
+  "res202.Resource.__exit__",
+  "res202.stream"
+ ],
+ "res202.stream": [
+  "res202.transform"
+ ],
+ "res202.transform": [],
+ "service200": [],
+ "service200.ItemService.__init__": [
+  "repo200.ItemRepo.__init__"
+ ],
+ "service200.ItemService.create": [
+  "repo200.ItemRepo.audit",
+  "service200.ItemService.validate"
+ ],
+ "service200.ItemService.listing": [
+  "repo200.ItemRepo.parse"
+ ],
+ "service200.ItemService.validate": [],
+ "service200.make_service": [
+  "service200.ItemService.__init__"
+ ]
+}

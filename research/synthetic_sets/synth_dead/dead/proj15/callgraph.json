@@ -1,0 +1,57 @@
+{
+ "deco152": [
+  "deco152.logged"
+ ],
+ "deco152.event_render0": [],
+ "deco152.logged": [],
+ "deco152.logged.wrapper": [
+  "deco152.event_render0",
+  "deco152.note",
+  "deco152.order_update1",
+  "deco152.user_render2"
+ ],
+ "deco152.note": [],
+ "deco152.order_update1": [],
+ "deco152.pipeline": [
+  "deco152.logged.wrapper"
+ ],
+ "deco152.user_render2": [],
+ "extra15": [],
+ "extra15.Unused15.never_15": [],
+ "extra15.call_by_name_15": [
+  "extra15.hook_15"
+ ],
+ "extra15.hook_15": [],
+ "extra15.legacy_15": [],
+ "extra15.old_helper_15": [],
+ "func151": [],
+ "func151.apply_all": [
+  "func151.message_loadc",
+  "func151.report_syncb"
+ ],
+ "func151.message_loadc": [
+  "func151.ticket_synca"
+ ],
+ "func151.report_syncb": [],
+ "func151.ticket_synca": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco152.pipeline",
+  "extra15.call_by_name_15",
+  "func151.apply_all",
+  "mix150.Model.__init__",
+  "mix150.Model.run"
+ ],
+ "mix150": [],
+ "mix150.LogMixin.log": [],
+ "mix150.Model.__init__": [],
+ "mix150.Model.run": [
+  "mix150.LogMixin.log",
+  "mix150.SaveMixin.save"
+ ],
+ "mix150.SaveMixin.save": [
+  "mix150.LogMixin.log"
+ ]
+}

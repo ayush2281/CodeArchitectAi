@@ -1,0 +1,70 @@
+{
+ "extra2": [],
+ "extra2.Unused2.never_2": [],
+ "extra2.call_by_name_2": [
+  "extra2.hook_2"
+ ],
+ "extra2.hook_2": [],
+ "extra2.legacy_2": [],
+ "extra2.old_helper_2": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra2.call_by_name_2",
+  "res21.consume",
+  "service20.JobService.create",
+  "service20.JobService.listing",
+  "service20.make_service",
+  "util22.core.account_savex",
+  "util22.extra.combo"
+ ],
+ "repo20": [],
+ "repo20.JobRepo.__init__": [],
+ "repo20.JobRepo.load": [],
+ "repo20.JobRepo.parse": [],
+ "res21": [],
+ "res21.Resource.__enter__": [
+  "res21.Resource.open"
+ ],
+ "res21.Resource.__exit__": [
+  "res21.Resource.close"
+ ],
+ "res21.Resource.close": [],
+ "res21.Resource.open": [],
+ "res21.consume": [
+  "res21.Resource.__enter__",
+  "res21.Resource.__exit__",
+  "res21.stream"
+ ],
+ "res21.stream": [
+  "res21.transform"
+ ],
+ "res21.transform": [],
+ "service20": [],
+ "service20.JobService.__init__": [
+  "repo20.JobRepo.__init__"
+ ],
+ "service20.JobService.create": [
+  "repo20.JobRepo.parse",
+  "service20.JobService.validate"
+ ],
+ "service20.JobService.listing": [
+  "repo20.JobRepo.load"
+ ],
+ "service20.JobService.validate": [],
+ "service20.make_service": [
+  "service20.JobService.__init__"
+ ],
+ "util22": [],
+ "util22.core": [],
+ "util22.core.account_savex": [
+  "util22.core.inner"
+ ],
+ "util22.core.inner": [],
+ "util22.core.user_sendy": [],
+ "util22.extra": [],
+ "util22.extra.combo": [
+  "util22.core.user_sendy"
+ ]
+}

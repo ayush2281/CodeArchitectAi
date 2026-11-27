@@ -1,0 +1,49 @@
+{
+ "extra20": [],
+ "extra20.Unused20.never_20": [],
+ "extra20.call_by_name_20": [
+  "extra20.hook_20"
+ ],
+ "extra20.hook_20": [],
+ "extra20.legacy_20": [],
+ "extra20.old_helper_20": [],
+ "func201": [],
+ "func201.account_formatb": [],
+ "func201.apply_all": [
+  "func201.account_formatb",
+  "func201.job_savec"
+ ],
+ "func201.job_savec": [
+  "func201.job_senda"
+ ],
+ "func201.job_senda": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra20.call_by_name_20",
+  "func201.apply_all",
+  "model200.User.__add__",
+  "model200.User.__call__",
+  "model200.User.__init__",
+  "model200.User.double",
+  "model200.User.from_text"
+ ],
+ "model200": [],
+ "model200.User.__add__": [
+  "model200.User.__init__"
+ ],
+ "model200.User.__call__": [
+  "model200.User.scale"
+ ],
+ "model200.User.__init__": [],
+ "model200.User.double": [
+  "model200.User.scale"
+ ],
+ "model200.User.from_text": [
+  "model200.User.__init__",
+  "model200.User.parse"
+ ],
+ "model200.User.parse": [],
+ "model200.User.scale": []
+}

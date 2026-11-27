@@ -1,0 +1,53 @@
+{
+ "deco350": [
+  "deco350.logged"
+ ],
+ "deco350.invoice_update2": [],
+ "deco350.logged": [],
+ "deco350.logged.wrapper": [
+  "deco350.invoice_update2",
+  "deco350.note",
+  "deco350.order_update0",
+  "deco350.task_format1"
+ ],
+ "deco350.note": [],
+ "deco350.order_update0": [],
+ "deco350.pipeline": [
+  "deco350.logged.wrapper"
+ ],
+ "deco350.task_format1": [],
+ "extra35": [],
+ "extra35.Unused35.never_35": [],
+ "extra35.call_by_name_35": [
+  "extra35.hook_35"
+ ],
+ "extra35.hook_35": [],
+ "extra35.legacy_35": [],
+ "extra35.old_helper_35": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "deco350.pipeline",
+  "extra35.call_by_name_35",
+  "res351.consume"
+ ],
+ "res351": [],
+ "res351.Resource.__enter__": [
+  "res351.Resource.open"
+ ],
+ "res351.Resource.__exit__": [
+  "res351.Resource.close"
+ ],
+ "res351.Resource.close": [],
+ "res351.Resource.open": [],
+ "res351.consume": [
+  "res351.Resource.__enter__",
+  "res351.Resource.__exit__",
+  "res351.stream"
+ ],
+ "res351.stream": [
+  "res351.transform"
+ ],
+ "res351.transform": []
+}

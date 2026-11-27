@@ -1,0 +1,29 @@
+{
+ "main": [
+  "mix70.Model.__init__",
+  "mix70.Model.run",
+  "util71.core.task_formatx",
+  "util71.extra.combo"
+ ],
+ "mix70": [],
+ "mix70.LogMixin.log": [],
+ "mix70.Model.__init__": [],
+ "mix70.Model.run": [
+  "mix70.LogMixin.log",
+  "mix70.SaveMixin.save"
+ ],
+ "mix70.SaveMixin.save": [
+  "mix70.LogMixin.log"
+ ],
+ "util71": [],
+ "util71.core": [],
+ "util71.core.inner": [],
+ "util71.core.job_syncy": [],
+ "util71.core.task_formatx": [
+  "util71.core.inner"
+ ],
+ "util71.extra": [],
+ "util71.extra.combo": [
+  "util71.core.job_syncy"
+ ]
+}

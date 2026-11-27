@@ -1,0 +1,45 @@
+{
+ "main": [
+  "res80.consume",
+  "service81.InvoiceService.create",
+  "service81.InvoiceService.listing",
+  "service81.make_service"
+ ],
+ "repo81": [],
+ "repo81.InvoiceRepo.__init__": [],
+ "repo81.InvoiceRepo.check": [],
+ "repo81.InvoiceRepo.sync": [],
+ "res80": [],
+ "res80.Resource.__enter__": [
+  "res80.Resource.open"
+ ],
+ "res80.Resource.__exit__": [
+  "res80.Resource.close"
+ ],
+ "res80.Resource.close": [],
+ "res80.Resource.open": [],
+ "res80.consume": [
+  "res80.Resource.__enter__",
+  "res80.Resource.__exit__",
+  "res80.stream"
+ ],
+ "res80.stream": [
+  "res80.transform"
+ ],
+ "res80.transform": [],
+ "service81": [],
+ "service81.InvoiceService.__init__": [
+  "repo81.InvoiceRepo.__init__"
+ ],
+ "service81.InvoiceService.create": [
+  "repo81.InvoiceRepo.check",
+  "service81.InvoiceService.validate"
+ ],
+ "service81.InvoiceService.listing": [
+  "repo81.InvoiceRepo.sync"
+ ],
+ "service81.InvoiceService.validate": [],
+ "service81.make_service": [
+  "service81.InvoiceService.__init__"
+ ]
+}

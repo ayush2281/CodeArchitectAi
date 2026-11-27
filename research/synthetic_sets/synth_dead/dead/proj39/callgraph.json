@@ -1,0 +1,40 @@
+{
+ "extra39": [],
+ "extra39.Unused39.never_39": [],
+ "extra39.call_by_name_39": [
+  "extra39.hook_39"
+ ],
+ "extra39.hook_39": [],
+ "extra39.legacy_39": [],
+ "extra39.old_helper_39": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra39.call_by_name_39",
+  "strat391.Context.__init__",
+  "strat391.Context.execute",
+  "util390.core.message_savex",
+  "util390.extra.combo"
+ ],
+ "strat391": [],
+ "strat391.Context.__init__": [],
+ "strat391.Context.execute": [
+  "strat391.format_strategy0",
+  "strat391.save_strategy1"
+ ],
+ "strat391.format_strategy0": [],
+ "strat391.save_strategy1": [],
+ "strat391.send_strategy2": [],
+ "util390": [],
+ "util390.core": [],
+ "util390.core.cart_syncy": [],
+ "util390.core.inner": [],
+ "util390.core.message_savex": [
+  "util390.core.inner"
+ ],
+ "util390.extra": [],
+ "util390.extra.combo": [
+  "util390.core.cart_syncy"
+ ]
+}

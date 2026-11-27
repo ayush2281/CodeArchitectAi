@@ -1,0 +1,233 @@
+[
+ {
+  "repo": "requests",
+  "url": "https://github.com/psf/requests.git",
+  "commit": "3c7baaa05ab4aa49cc819ce3a819d260de19c157",
+  "license": "Apache-2.0",
+  "files": 19,
+  "modules": 19,
+  "functions": 268,
+  "classes": 52,
+  "loc": 6413
+ },
+ {
+  "repo": "flask",
+  "url": "https://github.com/pallets/flask.git",
+  "commit": "49943b5a94413a530761350f04e896f76e8d620e",
+  "license": "BSD-3-Clause",
+  "files": 24,
+  "modules": 24,
+  "functions": 389,
+  "classes": 53,
+  "loc": 9590
+ },
+ {
+  "repo": "click",
+  "url": "https://github.com/pallets/click.git",
+  "commit": "08b803cf32ceb2ae6a772c62d5da42757a897d44",
+  "license": "BSD-3-Clause",
+  "files": 17,
+  "modules": 17,
+  "functions": 586,
+  "classes": 85,
+  "loc": 12840
+ },
+ {
+  "repo": "jinja",
+  "url": "https://github.com/pallets/jinja.git",
+  "commit": "5ef70112a1ff19c05324ff889dd30405b1002044",
+  "license": "BSD-3-Clause",
+  "files": 25,
+  "modules": 25,
+  "functions": 774,
+  "classes": 160,
+  "loc": 14376
+ },
+ {
+  "repo": "itsdangerous",
+  "url": "https://github.com/pallets/itsdangerous.git",
+  "commit": "672971d66a2ef9f85151e53283113f33d642dabd",
+  "license": "BSD-3-Clause",
+  "files": 8,
+  "modules": 8,
+  "functions": 61,
+  "classes": 18,
+  "loc": 1184
+ },
+ {
+  "repo": "httpx",
+  "url": "https://github.com/encode/httpx.git",
+  "commit": "7cff5f79bc78649bbcd3fd9aa7a74c86e0f63016",
+  "license": "BSD-3-Clause",
+  "files": 23,
+  "modules": 23,
+  "functions": 446,
+  "classes": 87,
+  "loc": 8850
+ },
+ {
+  "repo": "attrs",
+  "url": "https://github.com/python-attrs/attrs.git",
+  "commit": "f830e60f9c6485aa7037a52f03fdd28428dfbfc4",
+  "license": "MIT",
+  "files": 19,
+  "modules": 19,
+  "functions": 215,
+  "classes": 37,
+  "loc": 6447
+ },
+ {
+  "repo": "tqdm",
+  "url": "https://github.com/tqdm/tqdm.git",
+  "commit": "9cf5a12b1f955468a17f0ba3c59092b23e4258ac",
+  "license": "MPL-2.0 and MIT",
+  "files": 31,
+  "modules": 31,
+  "functions": 238,
+  "classes": 41,
+  "loc": 4694
+ },
+ {
+  "repo": "rich",
+  "url": "https://github.com/Textualize/rich.git",
+  "commit": "3a109ccdffe5b2d0e30684a304fbd388e99ce57b",
+  "license": "MIT",
+  "files": 100,
+  "modules": 100,
+  "functions": 912,
+  "classes": 181,
+  "loc": 38448
+ },
+ {
+  "repo": "python-dotenv",
+  "url": "https://github.com/theskumar/python-dotenv.git",
+  "commit": "4fbc6ff07215367ece731006855e732d1405992c",
+  "license": "BSD-3-Clause",
+  "files": 8,
+  "modules": 8,
+  "functions": 66,
+  "classes": 10,
+  "loc": 1189
+ },
+ {
+  "repo": "werkzeug",
+  "url": "https://github.com/pallets/werkzeug.git",
+  "commit": "0f43c6ebd426039e4b99ec22535c2c8a2ec2f69f",
+  "license": "BSD-3-Clause",
+  "files": 54,
+  "modules": 54,
+  "functions": 1154,
+  "classes": 183,
+  "loc": 24027
+ },
+ {
+  "repo": "markupsafe",
+  "url": "https://github.com/pallets/markupsafe.git",
+  "commit": "4e111271b1494995708a9e878a10829b5e10c7ba",
+  "license": "BSD-3-Clause",
+  "files": 2,
+  "modules": 2,
+  "functions": 53,
+  "classes": 5,
+  "loc": 399
+ },
+ {
+  "repo": "pluggy",
+  "url": "https://github.com/pytest-dev/pluggy.git",
+  "commit": "93de545c3a31880feaf0f6bb8870b30d602cf681",
+  "license": "MIT",
+  "files": 13,
+  "modules": 13,
+  "functions": 105,
+  "classes": 18,
+  "loc": 2119
+ },
+ {
+  "repo": "more-itertools",
+  "url": "https://github.com/more-itertools/more-itertools.git",
+  "commit": "e3f79f4fde5f7c107f70a20730b17240a05ba99b",
+  "license": "MIT",
+  "files": 3,
+  "modules": 3,
+  "functions": 280,
+  "classes": 15,
+  "loc": 7293
+ },
+ {
+  "repo": "urllib3",
+  "url": "https://github.com/urllib3/urllib3.git",
+  "commit": "d9f9b0ad5b99247e06aa9a50b7a5747aa5c2e35d",
+  "license": "MIT",
+  "files": 35,
+  "modules": 35,
+  "functions": 514,
+  "classes": 104,
+  "loc": 12430
+ },
+ {
+  "repo": "starlette",
+  "url": "https://github.com/encode/starlette.git",
+  "commit": "63d868e1b89063fa1059dafe239e41f924c33805",
+  "license": "BSD-3-Clause",
+  "files": 36,
+  "modules": 36,
+  "functions": 528,
+  "classes": 114,
+  "loc": 7124
+ },
+ {
+  "repo": "jsonschema",
+  "url": "https://github.com/python-jsonschema/jsonschema.git",
+  "commit": "64b62de5df4ec52d7679c770427329e86a22c395",
+  "license": "MIT",
+  "files": 37,
+  "modules": 37,
+  "functions": 704,
+  "classes": 70,
+  "loc": 11684
+ },
+ {
+  "repo": "typer",
+  "url": "https://github.com/fastapi/typer.git",
+  "commit": "2517edde5a1292a712e2f16e600754c52c6f00d9",
+  "license": "MIT",
+  "files": 34,
+  "modules": 34,
+  "functions": 569,
+  "classes": 79,
+  "loc": 13452
+ },
+ {
+  "repo": "tomli",
+  "url": "https://github.com/hukkin/tomli.git",
+  "commit": "43a86ade8b795c6ef9b4ec53372a607cd1ed426f",
+  "license": "MIT",
+  "files": 4,
+  "modules": 4,
+  "functions": 40,
+  "classes": 5,
+  "loc": 942
+ },
+ {
+  "repo": "idna",
+  "url": "https://github.com/kjd/idna.git",
+  "commit": "d357725082245ff90f5cf8800a3fc297b1f2319a",
+  "license": "BSD-3-Clause",
+  "files": 10,
+  "modules": 10,
+  "functions": 47,
+  "classes": 9,
+  "loc": 20438
+ },
+ {
+  "repo": "django",
+  "url": "https://github.com/django/django.git",
+  "commit": "0eae0b2584ed1e13d696ae1a5d8016a5c2dc7149",
+  "license": "BSD-3-Clause",
+  "files": 909,
+  "modules": 909,
+  "functions": 9630,
+  "classes": 2005,
+  "loc": 167341
+ }
+]

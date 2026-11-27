@@ -1,0 +1,51 @@
+{
+ "events152": [
+  "events152.register",
+  "events152.register.deco"
+ ],
+ "events152.dispatch": [
+  "events152.on_audit0",
+  "events152.on_audit1",
+  "events152.on_load2"
+ ],
+ "events152.on_audit0": [],
+ "events152.on_audit1": [],
+ "events152.on_load2": [],
+ "events152.register": [],
+ "events152.register.deco": [],
+ "main": [
+  "events152.dispatch",
+  "rec151.counter",
+  "rec151.counter.inc",
+  "rec151.even",
+  "rec151.fact",
+  "util150.core.item_buildx",
+  "util150.extra.combo"
+ ],
+ "rec151": [],
+ "rec151.bump": [],
+ "rec151.counter": [],
+ "rec151.counter.inc": [
+  "rec151.bump"
+ ],
+ "rec151.even": [
+  "rec151.odd"
+ ],
+ "rec151.fact": [
+  "rec151.fact"
+ ],
+ "rec151.odd": [
+  "rec151.even"
+ ],
+ "util150": [],
+ "util150.core": [],
+ "util150.core.event_audity": [],
+ "util150.core.inner": [],
+ "util150.core.item_buildx": [
+  "util150.core.inner"
+ ],
+ "util150.extra": [],
+ "util150.extra.combo": [
+  "util150.core.event_audity"
+ ]
+}

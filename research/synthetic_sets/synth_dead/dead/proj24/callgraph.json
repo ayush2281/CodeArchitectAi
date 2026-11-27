@@ -1,0 +1,50 @@
+{
+ "events241": [
+  "events241.register",
+  "events241.register.deco"
+ ],
+ "events241.dispatch": [
+  "events241.on_audit1",
+  "events241.on_check2",
+  "events241.on_render0"
+ ],
+ "events241.on_audit1": [],
+ "events241.on_check2": [],
+ "events241.on_render0": [],
+ "events241.register": [],
+ "events241.register.deco": [],
+ "extra24": [],
+ "extra24.Unused24.never_24": [],
+ "extra24.call_by_name_24": [
+  "extra24.hook_24"
+ ],
+ "extra24.hook_24": [],
+ "extra24.legacy_24": [],
+ "extra24.old_helper_24": [],
+ "fmt242": [],
+ "fmt242.EventFmt2.render": [],
+ "fmt242.OrderFmt0.render": [],
+ "fmt242.TicketFmt1.render": [],
+ "fmt242.get_formatter": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events241.dispatch",
+  "extra24.call_by_name_24",
+  "fmt242.OrderFmt0.render",
+  "fmt242.TicketFmt1.render",
+  "fmt242.get_formatter",
+  "strat240.Context.__init__",
+  "strat240.Context.execute"
+ ],
+ "strat240": [],
+ "strat240.Context.__init__": [],
+ "strat240.Context.execute": [
+  "strat240.send_strategy0",
+  "strat240.send_strategy1"
+ ],
+ "strat240.send_strategy0": [],
+ "strat240.send_strategy1": [],
+ "strat240.sync_strategy2": []
+}

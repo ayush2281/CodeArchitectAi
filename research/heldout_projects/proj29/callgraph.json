@@ -1,0 +1,60 @@
+{
+ "events290": [
+  "events290.register",
+  "events290.register.deco"
+ ],
+ "events290.dispatch": [
+  "events290.on_audit2",
+  "events290.on_build0",
+  "events290.on_format1"
+ ],
+ "events290.on_audit2": [],
+ "events290.on_build0": [],
+ "events290.on_format1": [],
+ "events290.register": [],
+ "events290.register.deco": [],
+ "main": [
+  "events290.dispatch",
+  "model292.Cart.__add__",
+  "model292.Cart.__call__",
+  "model292.Cart.__init__",
+  "model292.Cart.double",
+  "model292.Cart.from_text",
+  "rec291.counter",
+  "rec291.counter.inc",
+  "rec291.even",
+  "rec291.fact"
+ ],
+ "model292": [],
+ "model292.Cart.__add__": [
+  "model292.Cart.__init__"
+ ],
+ "model292.Cart.__call__": [
+  "model292.Cart.scale"
+ ],
+ "model292.Cart.__init__": [],
+ "model292.Cart.double": [
+  "model292.Cart.scale"
+ ],
+ "model292.Cart.from_text": [
+  "model292.Cart.__init__",
+  "model292.Cart.parse"
+ ],
+ "model292.Cart.parse": [],
+ "model292.Cart.scale": [],
+ "rec291": [],
+ "rec291.bump": [],
+ "rec291.counter": [],
+ "rec291.counter.inc": [
+  "rec291.bump"
+ ],
+ "rec291.even": [
+  "rec291.odd"
+ ],
+ "rec291.fact": [
+  "rec291.fact"
+ ],
+ "rec291.odd": [
+  "rec291.even"
+ ]
+}

@@ -1,0 +1,289 @@
+{
+ "by_model": {
+  "qwen/qwen3.8-27b": {
+   "reports": 10,
+   "num_claims": 29,
+   "num_strict": 20,
+   "num_lenient": 25,
+   "id_claims": 33,
+   "id_supported": 33,
+   "complete": 10,
+   "seconds": 31.000000000000004
+  },
+  "openai/gpt-oss-20b": {
+   "reports": 10,
+   "num_claims": 31,
+   "num_strict": 27,
+   "num_lenient": 29,
+   "id_claims": 43,
+   "id_supported": 43,
+   "complete": 10,
+   "seconds": 75.1
+  },
+  "openai/gpt-oss-120b": {
+   "reports": 10,
+   "num_claims": 27,
+   "num_strict": 25,
+   "num_lenient": 26,
+   "id_claims": 64,
+   "id_supported": 64,
+   "complete": 10,
+   "seconds": 36.2
+  }
+ },
+ "rows": [
+  {
+   "repo": "itsdangerous",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 5,
+   "strict_ok": 4,
+   "lenient_ok": 5,
+   "ungrounded": []
+  },
+  {
+   "repo": "itsdangerous",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 2,
+   "strict_ok": 2,
+   "lenient_ok": 2,
+   "ungrounded": []
+  },
+  {
+   "repo": "itsdangerous",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 0,
+   "strict_ok": 0,
+   "lenient_ok": 0,
+   "ungrounded": []
+  },
+  {
+   "repo": "python-dotenv",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 2,
+   "strict_ok": 2,
+   "lenient_ok": 2,
+   "ungrounded": []
+  },
+  {
+   "repo": "python-dotenv",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 3,
+   "strict_ok": 2,
+   "lenient_ok": 3,
+   "ungrounded": []
+  },
+  {
+   "repo": "python-dotenv",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 1,
+   "strict_ok": 1,
+   "lenient_ok": 1,
+   "ungrounded": []
+  },
+  {
+   "repo": "markupsafe",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 0,
+   "strict_ok": 0,
+   "lenient_ok": 0,
+   "ungrounded": []
+  },
+  {
+   "repo": "markupsafe",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 0,
+   "strict_ok": 0,
+   "lenient_ok": 0,
+   "ungrounded": []
+  },
+  {
+   "repo": "markupsafe",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 3,
+   "strict_ok": 3,
+   "lenient_ok": 3,
+   "ungrounded": []
+  },
+  {
+   "repo": "pluggy",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 1,
+   "strict_ok": 1,
+   "lenient_ok": 1,
+   "ungrounded": []
+  },
+  {
+   "repo": "pluggy",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 4,
+   "strict_ok": 4,
+   "lenient_ok": 4,
+   "ungrounded": []
+  },
+  {
+   "repo": "pluggy",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 2,
+   "strict_ok": 2,
+   "lenient_ok": 2,
+   "ungrounded": []
+  },
+  {
+   "repo": "tomli",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 0,
+   "strict_ok": 0,
+   "lenient_ok": 0,
+   "ungrounded": []
+  },
+  {
+   "repo": "tomli",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 0,
+   "strict_ok": 0,
+   "lenient_ok": 0,
+   "ungrounded": []
+  },
+  {
+   "repo": "tomli",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 4,
+   "strict_ok": 4,
+   "lenient_ok": 4,
+   "ungrounded": []
+  },
+  {
+   "repo": "click",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 5,
+   "strict_ok": 2,
+   "lenient_ok": 5,
+   "ungrounded": []
+  },
+  {
+   "repo": "click",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 5,
+   "strict_ok": 3,
+   "lenient_ok": 4,
+   "ungrounded": [
+    "224, 541 functions"
+   ]
+  },
+  {
+   "repo": "click",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 2,
+   "strict_ok": 2,
+   "lenient_ok": 2,
+   "ungrounded": []
+  },
+  {
+   "repo": "jinja",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 4,
+   "strict_ok": 3,
+   "lenient_ok": 3,
+   "ungrounded": [
+    "20 jinja2 modules"
+   ]
+  },
+  {
+   "repo": "jinja",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 6,
+   "strict_ok": 5,
+   "lenient_ok": 5,
+   "ungrounded": [
+    "19 Jinja2 modules"
+   ]
+  },
+  {
+   "repo": "jinja",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 6,
+   "strict_ok": 5,
+   "lenient_ok": 5,
+   "ungrounded": [
+    "20 listed Jinja2 modules"
+   ]
+  },
+  {
+   "repo": "requests",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 4,
+   "strict_ok": 3,
+   "lenient_ok": 4,
+   "ungrounded": []
+  },
+  {
+   "repo": "requests",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 4,
+   "strict_ok": 4,
+   "lenient_ok": 4,
+   "ungrounded": []
+  },
+  {
+   "repo": "requests",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 2,
+   "strict_ok": 2,
+   "lenient_ok": 2,
+   "ungrounded": []
+  },
+  {
+   "repo": "flask",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 4,
+   "strict_ok": 2,
+   "lenient_ok": 2,
+   "ungrounded": [
+    "20 modules",
+    "20 listed modules"
+   ]
+  },
+  {
+   "repo": "flask",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 4,
+   "strict_ok": 4,
+   "lenient_ok": 4,
+   "ungrounded": []
+  },
+  {
+   "repo": "flask",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 4,
+   "strict_ok": 3,
+   "lenient_ok": 4,
+   "ungrounded": []
+  },
+  {
+   "repo": "httpx",
+   "model": "qwen/qwen3.8-27b",
+   "num_claims": 4,
+   "strict_ok": 3,
+   "lenient_ok": 3,
+   "ungrounded": [
+    "6 modules"
+   ]
+  },
+  {
+   "repo": "httpx",
+   "model": "openai/gpt-oss-20b",
+   "num_claims": 3,
+   "strict_ok": 3,
+   "lenient_ok": 3,
+   "ungrounded": []
+  },
+  {
+   "repo": "httpx",
+   "model": "openai/gpt-oss-120b",
+   "num_claims": 3,
+   "strict_ok": 3,
+   "lenient_ok": 3,
+   "ungrounded": []
+  }
+ ]
+}

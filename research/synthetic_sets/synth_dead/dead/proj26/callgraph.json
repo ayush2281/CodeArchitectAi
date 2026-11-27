@@ -1,0 +1,50 @@
+{
+ "extra26": [],
+ "extra26.Unused26.never_26": [],
+ "extra26.call_by_name_26": [
+  "extra26.hook_26"
+ ],
+ "extra26.hook_26": [],
+ "extra26.legacy_26": [],
+ "extra26.old_helper_26": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "extra26.call_by_name_26",
+  "mix260.Model.__init__",
+  "mix260.Model.run",
+  "model261.Item.__add__",
+  "model261.Item.__call__",
+  "model261.Item.__init__",
+  "model261.Item.double",
+  "model261.Item.from_text"
+ ],
+ "mix260": [],
+ "mix260.LogMixin.log": [],
+ "mix260.Model.__init__": [],
+ "mix260.Model.run": [
+  "mix260.LogMixin.log",
+  "mix260.SaveMixin.save"
+ ],
+ "mix260.SaveMixin.save": [
+  "mix260.LogMixin.log"
+ ],
+ "model261": [],
+ "model261.Item.__add__": [
+  "model261.Item.__init__"
+ ],
+ "model261.Item.__call__": [
+  "model261.Item.scale"
+ ],
+ "model261.Item.__init__": [],
+ "model261.Item.double": [
+  "model261.Item.scale"
+ ],
+ "model261.Item.from_text": [
+  "model261.Item.__init__",
+  "model261.Item.parse"
+ ],
+ "model261.Item.parse": [],
+ "model261.Item.scale": []
+}

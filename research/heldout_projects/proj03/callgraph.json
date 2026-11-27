@@ -1,0 +1,35 @@
+{
+ "deco30": [
+  "deco30.logged"
+ ],
+ "deco30.cart_send2": [],
+ "deco30.job_sync1": [],
+ "deco30.logged": [],
+ "deco30.logged.wrapper": [
+  "deco30.cart_send2",
+  "deco30.job_sync1",
+  "deco30.message_save0",
+  "deco30.note"
+ ],
+ "deco30.message_save0": [],
+ "deco30.note": [],
+ "deco30.pipeline": [
+  "deco30.logged.wrapper"
+ ],
+ "main": [
+  "deco30.pipeline",
+  "util31.core.event_formatx",
+  "util31.extra.combo"
+ ],
+ "util31": [],
+ "util31.core": [],
+ "util31.core.cart_audity": [],
+ "util31.core.event_formatx": [
+  "util31.core.inner"
+ ],
+ "util31.core.inner": [],
+ "util31.extra": [],
+ "util31.extra.combo": [
+  "util31.core.cart_audity"
+ ]
+}

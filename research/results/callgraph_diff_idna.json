@@ -1,0 +1,1 @@
+{"v2_only": [["idna.core._punycode", "idna.codec.Codec.encode"], ["idna.core.alabel", "idna.codec.Codec.encode"], ["idna.core.check_label", "idna.codec.Codec.decode"], ["idna.core.ulabel", "idna.codec.Codec.decode"], ["idna.core.ulabel", "idna.codec.Codec.encode"]], "pycg_only": []}

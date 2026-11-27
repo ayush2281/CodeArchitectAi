@@ -1,0 +1,63 @@
+{
+ "events60": [
+  "events60.register",
+  "events60.register.deco"
+ ],
+ "events60.dispatch": [
+  "events60.on_build2",
+  "events60.on_format1",
+  "events60.on_send0"
+ ],
+ "events60.on_build2": [],
+ "events60.on_format1": [],
+ "events60.on_send0": [],
+ "events60.register": [],
+ "events60.register.deco": [],
+ "extra6": [],
+ "extra6.Unused6.never_6": [],
+ "extra6.call_by_name_6": [
+  "extra6.hook_6"
+ ],
+ "extra6.hook_6": [],
+ "extra6.legacy_6": [],
+ "extra6.old_helper_6": [],
+ "main": [
+  "main.main"
+ ],
+ "main.main": [
+  "events60.dispatch",
+  "extra6.call_by_name_6",
+  "res61.consume",
+  "util62.core.message_syncx",
+  "util62.extra.combo"
+ ],
+ "res61": [],
+ "res61.Resource.__enter__": [
+  "res61.Resource.open"
+ ],
+ "res61.Resource.__exit__": [
+  "res61.Resource.close"
+ ],
+ "res61.Resource.close": [],
+ "res61.Resource.open": [],
+ "res61.consume": [
+  "res61.Resource.__enter__",
+  "res61.Resource.__exit__",
+  "res61.stream"
+ ],
+ "res61.stream": [
+  "res61.transform"
+ ],
+ "res61.transform": [],
+ "util62": [],
+ "util62.core": [],
+ "util62.core.event_sendy": [],
+ "util62.core.inner": [],
+ "util62.core.message_syncx": [
+  "util62.core.inner"
+ ],
+ "util62.extra": [],
+ "util62.extra.combo": [
+  "util62.core.event_sendy"
+ ]
+}
