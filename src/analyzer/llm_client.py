@@ -1,8 +1,13 @@
-import os
 
+import os
+from dotenv import load_dotenv
 from groq import Groq
 
+# Load the project's .env file and override older environment variables
+load_dotenv(override=True)
+
 MODEL_NAME = "qwen/qwen3.8-27b"
+
 client = Groq(
     api_key=os.environ["GROQ_API_KEY"],
 )

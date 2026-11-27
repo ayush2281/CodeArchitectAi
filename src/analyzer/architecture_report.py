@@ -90,7 +90,6 @@ Only discuss facts and problems directly supported by the supplied analysis.
 Interpret fan-in as the number of project modules that depend on a module.
 Interpret fan-out as the number of project modules that the module depends on.
 Do not infer failure propagation, bottlenecks, criticality, or runtime impact from fan-in/fan-out alone.
-
 Do not infer effects on module loading, testing, runtime behavior, stability, or system behavior from the detected dependency cycle or fan-in/fan-out values. Recommendations must be limited to inspecting or restructuring the explicitly detected dependency relationships; do not assume that dependencies should be unidirectional unless the analysis establishes that requirement.
 Do not infer maintenance difficulty, rigidity, change impact, or architectural quality from fan-in/fan-out alone.
 Do not describe high fan-in/fan-out as tight integration, interlocking boundaries, or similar qualitative architectural characteristics. Do not recommend rebalancing fan-in or fan-out unless the analysis explicitly establishes that as a goal.
